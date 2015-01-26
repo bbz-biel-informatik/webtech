@@ -123,6 +123,7 @@ Rechnungen
 5 * 2 + 1
 ```
 
+
 Achtung!
 
 ```js
@@ -130,6 +131,8 @@ Achtung!
 ```
 
 gibt `Infinity`
+
+und von `Infinity` kommt man nicht mehr weg...
 
 
 
@@ -145,6 +148,7 @@ Immer in Anführungszeichen schreiben
 "Magst du Pizza?"
 ```
 
+
 Achtung!
 
 ```js
@@ -158,9 +162,19 @@ gibt `ReferenceError: Hans is not defined`
 Rechnungen mit Texten: Addition hängt die Texte zusammen
 
 ```js
-"Walter" + " " + "Meier"
+"Walter" + "Meier"
 ```
 
+Aber wie gibts eine Lücke?
+
+
+```js
+"Walter " + "Meier"
+
+"Walter" + " Meier"
+
+"Walter" + " " + "Meier"
+```
 
 
 ## Zusammenfassung
@@ -173,6 +187,17 @@ Texte immer mit Anführungszeichen
 3 + 4
 
 "Hans"
+```
+
+Was passiert mit Zahlen in Anführungszeichen?
+
+
+Werden als Text behandelt und nicht ausgerechnet!
+
+```js
+"1 + 3"
+
+"Hänsel und Gretel"
 ```
 
 
@@ -193,11 +218,29 @@ Zeigt Text oder Zahlen in einer Nachrichtenbox an:
 
 ```js
 alert("Hallo Welt")
+```
 
+<img data-src="images/alert.png">
+
+
+```js
 alert(3 + 4)
 ```
 
 Warum `7` und nicht `3 + 4`?
+
+
+Code in der Klammer wird zuerst ausgerechnet, erst dann angezeigt.
+
+```js
+alert(3 + 4)
+```
+
+wird umgeschrieben zu
+
+```js
+alert(7)
+```
 
 
 
@@ -208,3 +251,68 @@ Fragt nach einer Benutzereingabe
 ```js
 prompt("Wie alt bist du?")
 ```
+
+<img data-src="images/prompt.png">
+
+
+
+## Datentyp 3: Booleans
+
+Wahr oder Falsch
+
+Meist Resultat aus einem Vergleich, selten sonst gebraucht
+
+```js
+3 < 4.1
+
+3 > 5
+```
+
+
+
+## Vergleichsoperatoren
+
+Vergleiche zwischen zwei Zahlen mit 4 wichtigen Vergleichen:
+
+* Gleichheit: `==`
+* Ungleichheit: `!=`
+* Grösser: `>`
+* Kleiner: `<`
+
+```js
+1 == 1
+
+1 != 2
+
+3 > 4
+
+7 < 6
+```
+
+
+
+Vergleich von Texten
+
+```js
+"Paul" == "Walter"
+
+"Paul" < "Walter"
+```
+
+
+Nach dem Alphabet, Grossbuchstaben vor Kleinbuchstaben
+
+ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz
+
+```js
+"Bertha" < "alex"
+```
+
+wahr oder falsch?
+
+
+```js
+"Bertha" < "alex"
+```
+
+B ist vor a &rarr; "Bertha" ist kleiner als "alex" &rarr; wahr
