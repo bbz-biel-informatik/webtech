@@ -67,13 +67,13 @@ alert(a + b);
 
 
 
-## Javascript-Sandkasten
+## Sandkasten
 
-Sandkasten auf [repl.it](http://repl.it)
+Developer Tools im Browser öffnen
 
-* Kann nichts kaputtgehen
-* Wir arbeiten nur im rechten Fenster
-* Nach jeder Eingabe einmal <key>&lt;Enter&gt;</key> drücken
+* Firefox: Ctrl + Shift + K
+* Chrome: Ctrl + Shift + J
+* Internet Explorer: F12
 
 
 
@@ -202,16 +202,6 @@ Werden als Text behandelt und nicht ausgerechnet!
 
 "Hänsel und Gretel"
 ```
-
-
-
-## Stufe 2
-
-Developer Tools im Browser öffnen
-
-* Firefox: Ctrl + Shift + K
-* Chrome: Ctrl + Shift + J
-* Internet Explorer: F12
 
 
 
