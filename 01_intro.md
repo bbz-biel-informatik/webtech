@@ -421,3 +421,9 @@ alert("Du bist " + alter + " Jahre alt.")
 * Schreibe ein Programm, das dich nach dem Alter fragt, und ausrechnet, wie alt du in 5 Jahren bist (um einen Text in eine Zahl umzuwandeln, kannst du `var zahl = Number("3.12")` verwenden)
 * Schreibe ein Programm, das dich nach einer Zahl fragt, und die Quadratzahl davon ausrechnet
 * Schreibe ein Programm, das dich nach 2 Seitenlängen eines Dreiecks fragt, und mit Phythagoras die dritte Seite ausrechnet (Wurzel: `var c = Math.sqrt(9)`)
+
+
+
+## Aufgaben 3
+
+* Schreibe ein Programm, das dich nach einem Passwort fragt, und einen Fehler anzeigt, wenn es kürzer als 8 Zeichen ist. Um die Länge einer Text-Variable zu erhalten, kannst du `.length` verwenden (z.B. sollte mit `var pw = "asdfg"` der Befehl `pw.length` die Zahl 5 geben. Die kannst du dann in einem Vergleich verwenden)
