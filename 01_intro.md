@@ -34,7 +34,7 @@ Informatiker, Startup-Gründer
 
 ## Semesterplan
 
-Folgt noch, erster Test um den 17.2.
+Folgt noch, erster Test ungefähr am 17.2.
 
 
 
@@ -45,6 +45,7 @@ Folgt noch, erster Test um den 17.2.
 * Gratis
 * 3D-Grafik, Animationen, Musik abspielen, ...
 * Läuft auf dem PC des Benutzers
+* Plattformunabhängig
 
 ```javascript
 var a = 2
@@ -98,6 +99,8 @@ Andere:
 5.4
 0.24354634
 ```
+
+Wichtig: Dezimaltrennzeichen ist der Punkt
 
 
 
@@ -289,6 +292,8 @@ Vergleiche zwischen zwei Zahlen mit 4 wichtigen Vergleichen:
 7 < 6
 ```
 
+Wichtig: Gleichheit mit Doppel-Gleich!
+
 
 
 Vergleich von Texten
@@ -316,3 +321,72 @@ wahr oder falsch?
 ```
 
 B ist vor a &rarr; "Bertha" ist kleiner als "alex" &rarr; wahr
+
+
+
+## Variablen
+
+Werte können gespeichert und später wieder verwendet werden:
+
+```js
+var resultat = 7 * 7
+
+var alter = 34
+
+var name = "Hans Peter"
+```
+
+Sagt dem PC, dass er eine neue Variable mit Namen `resultat` bzw. `alter` erstellen, und die Werte darin speichern soll.
+
+
+Wiederverwendung über Variablenname
+
+```js
+var resultat = 7 * 7
+
+alert(resultat);
+```
+
+Variablenname wird intern mit dem Wert der Variable ersetzt.
+
+
+Gültige Namen
+
+Nur Buchstaben und Zahlen, erstes Zeichen muss ein Buchstabe sein. Keine Leerzeichen. Einzige Sonderzeichen: `$` und `_`
+
+
+Variablen überschreiben
+
+```js
+var resultat = 7 * 7
+
+alert(resultat)
+
+resultat = 8 * 8
+
+alert(resultat)
+```
+
+Variablen können mit einer neuen Wertzuweisung überschrieben werden.
+
+`var` nicht wiederholen, weil die Variable schon existiert!
+
+
+
+## Zuweisungsoperator
+
+Variablenzuweisungen mit dem Zuweisungsoperator `=`
+
+Rechte Seite wird ausgerechnet und der linken Seite zugewiesen
+
+OK
+
+```js
+var a = 3 + 4
+```
+
+Falsch
+
+```js
+3 + 4 = 2 + 5
+```
