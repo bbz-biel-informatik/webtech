@@ -126,6 +126,8 @@ Rechnungen
 5 * 2 + 1
 ```
 
+Leerzeichen spielen keine Rolle, werden ignoriert
+
 
 Achtung!
 
