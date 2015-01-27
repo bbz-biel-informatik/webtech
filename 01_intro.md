@@ -390,3 +390,25 @@ Falsch
 ```js
 3 + 4 = 2 + 5
 ```
+
+
+
+## Beispiele
+
+```js
+var name = prompt("Wie ist dein Name?")
+alert(name);
+```
+
+```js
+var alter = prompt("Was ist dein Alter?")
+alert("Du bist " + alter + " Jahre alt.")
+```
+
+
+
+## Aufgaben
+
+* Schreibe ein Programm, das dich nach dem Alter fragt, und ausrechnet, wie alt du in 5 Jahren bist
+* Schreibe ein Programm, das dich nach dem Vor- und Nachnamen fragt, und die beiden dann zusammen ausgibt
+* Schreibe ein Programm, das dich nach dem Vor- und Nachnamen fragt, und die beiden dann zusammen ausgibt (zuerst Nachname, dann Vorname)
