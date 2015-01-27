@@ -409,6 +409,8 @@ alert("Du bist " + alter + " Jahre alt.")
 
 ## Aufgaben
 
-* Schreibe ein Programm, das dich nach dem Alter fragt, und ausrechnet, wie alt du in 5 Jahren bist
 * Schreibe ein Programm, das dich nach dem Vor- und Nachnamen fragt, und die beiden dann zusammen ausgibt
+* Schreibe ein Programm, das dich nach 2 Zahlen fragt und testet, ob sie gleich sind
+* Schreibe ein Programm, das dich nach 2 Zahlen fragt und testet, ob die erste kleiner als die zweite ist
 * Schreibe ein Programm, das dich nach dem Vor- und Nachnamen fragt, und die beiden dann zusammen ausgibt (zuerst Nachname, dann Vorname)
+* Schreibe ein Programm, das dich nach dem Alter fragt, und ausrechnet, wie alt du in 5 Jahren bist (um einen Text in eine Zahl umzuwandeln, kannst du `var zahl = Number("3.12")` verwenden)
