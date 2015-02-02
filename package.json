@@ -6,7 +6,8 @@
   "subdomain": "revealjs",
   "scripts": {
     "test": "grunt test",
-    "start": ""
+    "start": "",
+    "postinstall": "echo postinstall time; ./node_modules/grunt-cli/bin/grunt serve"
   },
   "author": {
     "name": "Hakim El Hattab",
