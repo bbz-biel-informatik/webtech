@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <meta charset="UTF-8">
+</head>
+<xmp theme="united" style="display:none;">
+
+# Skript Web-Technologie Bedingungen
+
+&copy; 2015 Lukas Diener
+
+## Datentypen
+
+Informationen können im PC verschiedene Datentypen haben. Je nach Datentyp kann man dann unterschiedliche Sachen mit den gepspeicherten
+Informationen machen. Die bekanntesten und am meisten verwendeten Datentypen sind:
+
+* Zahlen
+* Texte
+* Booleans
+
+Der PC weiss, dass er nur mit Zahlen rechnen kann und umgekehrt nur Texte in Grossschreibung umwandeln kann. Je nachdem, in welcher Form
+man in einem Programm also seine Informationen speichert, kann man sie dann unterschiedlich verwenden.
+
+## Datentyp 1: Zahlen
+
+Zahlen werden in einem Programm wie normale Zahlen verwendet. Zu beachten ist, dass als Dezimaltrennzeichen ein Punkt und nicht ein Komma
+verwendet werden muss, zum Beispiel so:
+
+```js
+3.454
+7
+4000
+```
+
+Mit diesen Zahlen kann der PC dann rechnen, genau so wie mit einem normalen Taschenrechner. Die am meisten verwendeten Operationen sind
+die Addition, die Subtraktion, die Multiplikation und die Division, was in dieser Reihenfolge so aussieht:
+
+```js
+3.4 + 5
+5 - 3
+4 * 1.2
+13 / 2
+```
+
+Ausserdem können Klammern verwendet werden, damit ein Teil einer Rechnung zuerst ausgeführt wird:
+
+##### Wichtig: ab hier werden jeweils das Zeichen ◀ eine Codeeingabe und das Zeichen ▶ die Ausgabe des PCs darstellen, analog zur Browserkonsole.
+
+```js
+◀ (5 - 2) * 3
+▶ 9
+```
+
+## Datentyp 2: Texte
+
+Wenn man in einem Programm Texte verwenden möchte, muss man diese immer in Anführungszeichen schreiben:
+
+```js
+"Hans"
+"Magst du Pizza?"
+```
+
+Auch mit Texten kann man (beschränkt) rechnen. Man kann mehrere Texte mit dem `+`-Operator aneinanderhängen:
+
+```js
+◀ "Hans" + "Peter"
+▶ "HansPeter"
+```
+Ausserdem kann mit `.length` die Länge eines Textes herausgefunden werden:
+
+```js
+◀ "Hanspeter".length
+▶ 9
+```
+
+## Datentyp 3: Booleans
+
+Booleans sind spezielle Informationen, die nur die Werte wahr (`true`) und falsch (`false`) annehmen können. Anders als Texte und Zahlen
+werden sie aber selten in Programmen direkt verwendet, sondern entstehen fast immer aus einem Vergleich.
+
+
+```js
+◀ 3 < 4.1
+▶ true
+
+◀ 3 > 5
+▶ false
+```
+
+Vergleiche können mit unterschiedlichen sogenannten Vergleichsoperatoren stattfinden. Zusätzlich zu 'kleiner als' und 'grösser als' von vorher
+werden auch die Ungleichheit und Gleichheit häufig gebraucht.
+
+```js
+1 == 1      // Gleichheit
+1 != 2      // Ungleichheit
+3 > 4       // Grösser als
+7 < 6       // Kleiner als
+```
+
+Auch Texte können verglichen werden. Dabei schaut der PC die Buchstaben nacheinander an und vergleicht die beiden Wörter. Wenn ein
+Buchstabe vor dem anderen kommt, gilt er als kleiner.
+
+```js
+◀ "Paul Kalkbrenner" < "Walter White"
+▶ true
+```
+
+Das obige Beispiel gibt als Resultat `true`, weil der PC zuerst die Buchstaben "P" und "W" vergleicht. Weil P im Alphabet vor W kommt, gilt
+P als kleiner als W. Deshalb ist auch der Text "Paul Kalkbrenner" kleiner als "Walter White".
+
+## Variablen
+
+Damit Werte auch gespeichert und später wiederverwendet werden können, gibt es sogenannte Variablen. Variablen sind benannte Behälter, in denen
+man Werte speichern und später über den Namen wieder darauf zugreifen kann. Ein gutes Bild dafür sind Eimer, die mit dem Namen der Variable
+angeschrieben sind. Man kann dann einen Wert in den Eimer rein werfen und später wieder rausholen, wenn man den Namen des richtigen Eimers kennt.
+
+Der Code
+
+```js
+var age = 34
+```
+kreiert eine neue Variable mit dem Namen `age`, die den Wert `34` beinhaltet. Später kann der Wert über den Namen wieder abgerufen werden, zum
+Beispiel um ihn in einer Nachricht anzuzeigen (`alert(age)`).
+
+Das Schlüsselwort `var` sagt dem PC, dass er unter dem folgenden Namen eine neue Variable speichern soll. Und zwar den Wert, der die Rechnung
+auf der rechten Seite des Gleichzeichens ergibt.
+
+So können auch die Resultate einer `prompt()`-Abfrage (die der Eingabe des Benutzers entspricht) in einer Variable gespeichert werden:
+
+```js
+var name = prompt("Wie ist dein Name?")
+alert(name)
+```
+
+## Referenz
+
+* `alert()`: Nachricht anzeigen; [Dokumentation](https://developer.mozilla.org/en-US/docs/Web/API/Window.alert)
+* `prompt()`: Nachricht anzeigen und zu Eingabe auffordern; [Dokumentation](https://developer.mozilla.org/en-US/docs/Web/API/Window.prompt)
+* `Number()`: Text in Zahl umwandeln; [Dokumentation](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number#Example.3A_Convert_numeric_strings_to_numbers)
+
+
+</xmp>
+
+<script src="http://strapdownjs.com/v/0.2/strapdown.js"></script>
+</html>
