@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <meta charset="UTF-8">
+</head>
+<xmp theme="united" style="display:none;">
+
+# Übungen Bedingungen
+
+## Zusammenfassung
+
+```js
+var a = prompt("Wie alt bist du?");
+var alter = Number(a);
+if(alter < 18) {
+  alert("Du bist minderjährig");
+} else {
+  alert("Du bist volljährig");
+}
+```
+
+## Aufgaben
+
+### Noten
+
+* Schreibe ein Programm, das für eine eingegebene Schulnote (1-6) anzeigt, ob die Prüfung bestanden ist oder nicht.
+
+### Vorzeichen
+
+* Schreibe ein Programm, das für eine eingegebene Zahl anzeigt, ob sie negativ, positiv oder Null ist.
+
+### Passworttest
+
+* Schreibe ein Programm, das den Benutzer ein Passwort eingeben lässt, und anzeigt, ob es sicher genug ist. Das Passwort gilt (hier) als sicher, wenn es 8 oder mehr Zeichen beinhaltet. Die Länge eines Texts kannst du mit `.length` rausfinden
+
+```js
+var a = "Testpasswort";
+var länge = a.length;
+```
+
+### Wochentage
+
+* Schreibe ein Programm, bei dem der Benutzer eine Zahl zwischen 1 und 7 eingeben kann, für die der PC dann den entsprechenden Wochentag anzeigt (Montag für 1, Dienstag für 2 usw.)
+* Zeige eine Fehlermeldung an, wenn eine ungültige Zahl eingegeben wird (kleiner als 1 oder grösser als 7)
+
+### Tageszeit
+
+* Schreibe ein Programm, das für eine eingegebene Uhrzeit die entsprechende Tageszeit anzeigt (Morgen für Stunden zwischen 8 und 12 Uhr, Mittag zwischen 12 und 13 Uhr, Nachmittag für 13 bis 17 Uhr und Abend für 17 bis 21 Uhr). Es reicht, wenn der Benutzer die Stunde eingibt (z.B. 9).
+
+### Alterskontrolle
+
+* Schreibe ein Programm, das den Benutzer nach seinem Alter fragt und anzeigt, welche Getränke die Person trinken darf. Dabei sollen die Regeln gelten, dass man bis 16 Jahre Pingu-Sirup trinken darf, ab 16 Bier und ab 18 Schnaps.
+
+### Schaltjahre
+
+Ein Jahr ist ein Schaltjahr, wenn es durch 4 teilbar ist. Ist es aber auch durch 100 teilbar, ist es kein Schaltjahr. Wenn es aber wiederum durch 400 teilbar ist, ist es trotzdem ein Schaltjahr (1900 war keines, 2000 war eines).
+
+* Schreibe ein Programm, das für ein eingegebenes Jahr anzeigt, ob es ein Schaltjahr war oder nicht.
+
+Tipp: um herauszufinden, ob eine Zahl durch eine andere teilbar ist, kannst du den Modulus-Operator  % verwenden. Er berechnet den Rest einer Division. `12 % 5` gibt z.B. `2`, weil `(12 / 5)` = `2 Rest 2`. Wenn du dann testest, ob der Rest gerade Null ist, findest du raus, ob die Zahl teilbar ist `if(12 % 4 == 0) { alert('12 ist durch 4 teilbar') }`
+
+
+
+# Übungen Schleifen
+
+## Zusammenfassung
+
+```js
+var a = 0;
+while(a < 11) {
+  if(a % 2 == 0) {
+    alert(a);
+  }
+  a = a + 1;
+}
+```
+
+## Aufgaben
+
+### Dreierreihe
+
+* Schreibe ein Programm, das die Zahlen der Dreierreihe anzeigt.
+
+### FizzBuzz
+
+* Schreibe ein Programm, das durch die ersten 20 ganzen Zahlen durchläuft und jeweils
+  * "Fizz" anzeigt, wenn die Zahl durch 3 teilbar ist
+  * "Buzz" anzeigt, wenn die Zahl durch 5 teilbar ist
+  * "FizzBuzz" anzeigt, wenn die Zahl durch 3 und 5 teilbar ist
+  * Die Zahl selber anzeigt, wenn sie weder durch 3 noch durch 5 teilbar ist
+
+### Summe
+
+* Schreibe ein Programm, das die Summe der ersten 20 Zahlen berechnet (1 + 2 + ... + 20). Zur Kontrolle: das Resultat sollte 210 sein.
+
+### Rückwärts
+
+* Schreibe ein Programm, das von 10 aus rückwärts bis Null zählt und jeweils die Zahlen anzeigt.
+
+
+</xmp>
+
+<script src="http://strapdownjs.com/v/0.2/strapdown.js"></script>
+</html>
