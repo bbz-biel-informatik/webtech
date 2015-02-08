@@ -132,6 +132,73 @@ var name = prompt("Wie ist dein Name?")
 alert(name)
 ```
 
+## Bedingungen
+
+Mit Bedingungen kann der PC auf verschiedene Eingaben und Zustände reagieren. Dafür muss man dem PC genau beschreiben, was er in welchem Fall tun soll.
+
+Bedingungen (oder _Konditionale_) werden in Javsscript wie folgt geschrieben:
+
+```js
+var alter = prompt('Wie alt bist du?');
+if(alter >= 18) {
+  alert('Du bist volljährig');
+}
+```
+
+Das Schlüsselwort `if` leitet die Bedingung ein. In der Klammer danach folgt die sogenannte _Bedingung_. Wenn die Bedingung wahr ist (wenn die Variable `alter` grösser oder gleich 18 ist), wird der _Bedingungsinhalt_, der Code zwischen den geschweiften Klammern, ausgeführt. In den geschweiften Klammern dürfen auch mehrere Zeilen Code stehen.
+
+In diesem Beispiel wurde eine Bedingung verwendet, bei der nur einer der beiden möglichen Fälle (der andere wäre, dass `alter` kleiner als 18 ist) behandelt wird. Wenn der gegenteilige Fall eintreten würde, würde der _Bedingungsinhalt_ einfach übersprungen werden.
+
+Es gibt aber auch die Möglichkeit, Code zu definieren, der ausgeführt wird, falls die Bedingung nicht wahr ist. Dazu wird das Schlüsselwort `else` verwendet.
+
+```js
+var alter = prompt('Wie alt bist du?');
+if(alter >= 18) {
+  alert('Du bist volljährig');
+} else {
+  alert('Du bist minderjährig');
+}
+```
+
+Der Code im Block nach `else` wird **nur** ausgeführt, wenn die Bedingung nicht wahr ist, das heisst, wenn `alter` kleiner als 18 ist.
+
+In dieser Art können beliebig viele Fälle in die Bedingung eingeführt werden, indem sie mit `else if` abgetrennt werden. Wichtig: sobald eine der Bedingungen erfüllt ist, wird der entsprechende Code ausgeführt und alle anderen Bedingungen übersprungen. Es kann also nie sein, dass der PC in einem `if`-`else if`-`else`-Block den Code mehrerer Bedingungen ausführt.
+
+```js
+var marke = prompt('Welche Automarke hast du?');
+var modelle = '';
+if(marke == 'VW') {
+  modelle = 'Golf, Passat';
+} else if (marke == 'Fiat') {
+  modelle = 'Lupo, Punto';
+} else if (marke == 'Toyota') {
+  modelle = 'Prius, Yaris';
+}
+alert('Die Modelle deiner Automarke sind: ' + modelle);
+```
+
+## Schleifen
+
+Damit Code oder Codeteile mehrmals wiederholt werden können, existieren sogenannte Schleifen. Sie funktionieren ähnlich wie Bedingungen, und trennen Code vom Rest des Programms ab. Die bekannteste und meistverwendete Form von Schleifen sind die _for-Schleifen_ und werden in Javascript so geschrieben:
+
+```js
+for(var i = 1; i <= 10; i = i + 1) {
+  alert(i);
+}
+```
+
+Das Schlüsselwort `for` leitet die Schleife ein und sagt dem PC, dass als nächstes ein _Schleifenkopf_ kommt. Der _Schleifeninhalt_, der Code zwischen den geschweiften Klammern, wird hier so lange ausgeführt, wie die Bedingung im Schleifenkopf wahr ist. Die Funktionsweise ist also ähnlich wie die der Bedingungen, mit dem Unterschied, dass eine Schleife mehrmals ausgeführt werden kann.
+
+Der Schleifenkopf besteht aus 3 Teilen, die mit einem Strichpunkt voneinander abgetrennt sind. Der erste Teil (`var i = 1`) ist der sogenannte _Initialisierungscode_. Er wird ausgeführt, wenn der PC zum ersten mal bei der Schleife ankommt. In diesem Beispiel wird die Variable `i`, eine Zählvariable, auf den Wert `1` gesetzt.
+
+Im zweiten Teil, der _Schleifenbedingung_ (`i <= 10`) wird festgelegt, unter welchen Umständen der Code der Schleife ausgeführt werden soll. Hier ist die Bedingung, dass `i` kleiner als oder gerade 10 sein soll.
+
+Der letzte Teil, der _Endcode_ (`i = i + 1`), legt fest, was zum Schluss von jedem Schleifendurchlauf ausgeführt werden soll. In diesem Beispiel wird hier die Variable `i` um `1` hochgezählt.
+
+Das heisst, der Code `alert(i)` wird insgesamt 10 Mal ausgeführt. Jedes Mal wird der Wert von i (und damit die Nachricht in der Nachrichtenbox) um 1 erhöht. Zu Beginn wird die Zahl 1 angezeigt, danach die Zahl 2, dann die 3 und so weiter, bis als letztes die Zahl 10 angezeigt wird. Sobald der _Endcode_ die Variable `i` auf den Wert 11 erhöht hat, ist die Schleifen-Bedingung nicht mehr wahr und der PC springt aus der Schleife raus und führt das Programm weiter aus.
+
+Praktisch jede for-Schleife sieht so aus wie die obige, meist wird nur die Bedingung verändert. Initialisierung und Endcode bleiben aber fast immer gleich.
+
 ## Referenz
 
 * `alert()`: Nachricht anzeigen; [Dokumentation](https://developer.mozilla.org/en-US/docs/Web/API/Window.alert)
