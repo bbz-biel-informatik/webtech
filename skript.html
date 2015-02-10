@@ -177,6 +177,24 @@ if(marke == 'VW') {
 alert('Die Modelle deiner Automarke sind: ' + modelle);
 ```
 
+Um mehrere Bedingungen zu verknüpfen gibt es zwei logische Operatoren, den UND- und den ODER-Operator.
+
+Der UND-Operator verlangt, dass alle Bedingungen wahr sind, damit der Codeblock ausgeführt wird. In diesem Beispiel müssen der Name _und_ das Passwort stimmen.
+
+```js
+if(name == "Hans" && passwort == "8z43c4") {
+  alert('Richtig');
+}
+```
+
+Der ODER-Operator verknüpft die Bedingungen so, dass mindestens eine davon wahr sein muss. Sobald eine wahr ist, wird der Code ausgeführt.
+
+```js
+if(note < 1 || note > 6) {
+  alert('Note ungültig')
+}
+```
+
 ## Schleifen
 
 Damit Code oder Codeteile mehrmals wiederholt werden können, existieren sogenannte Schleifen. Sie funktionieren ähnlich wie Bedingungen, und trennen Code vom Rest des Programms ab. Die bekannteste und meistverwendete Form von Schleifen sind die _for-Schleifen_ und werden in Javascript so geschrieben:
