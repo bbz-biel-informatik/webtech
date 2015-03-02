@@ -36,11 +36,6 @@
           margin-top: 70%;
           font-size: 18px;
         }
-
-        .slides {
-        	padding-top: 60px !important;
-        	overflow-y: scroll !important;
-        }
       </style>
 
 		<!--[if lt IE 9]>
@@ -49,36 +44,51 @@
 	</head>
 
 	<body>
+
 		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
 			<div class="slides">
-				<h3>Webtechnologie &mdash; Animation und Interaktion</h3>
-				<p><a href="skript.html">Skript</a></p>
-				<table>
-					<th>Datum</th><th>Thema</th><th>Folien</th><th>Übungen</th>
-					<tr>
-						<td>27.1.</td><td>Datentypen, Variablen</td><td><a href="index1.html">Folien</a></td><td><a href="exercises/exercise01.html">Übungen</a></td>
-					</tr>
-					<tr>
-						<td>3.2.</td><td>Bedingungen</td><td><a href="index2.html">Folien</a></td><td><a href="exercises/exercise02.html">Übungen</a></td>
-					</tr>
-					<tr>
-						<td>10.2.</td><td>Schleifen</td><td><a href="index3.html">Folien</a></td><td><a href="exercises/exercise03.html">Übungen</a></td>
-					</tr>
-					<tr>
-						<td>17.2.</td><td>Selbständig üben</td><td></td><td><a href="exercises/exercise04.html">Übungen</a></td>
-					</tr>
-          <tr>
-            <td>24.2.</td><td><a href="tests/test01.html">Test-Infos</a></td><td><a href="index4.html">Folien</a></td><td><a href="exercises/exercise05.html">Übungen</a></td>
-          </tr>
-					<tr>
-						<td>3.3.</td><td>Javascript in Seite einbinden</td><td><a href="index5.html">Folien</a></td><td><a href="exercises/exercise05.html">Übungen</a></td>
-					</tr>
-				</table>
+        <section data-markdown="05.md"
+          data-separator="^\n\n\n"  
+          data-separator-vertical="^\n\n"  
+          data-separator-notes="^Note:"  
+          data-charset="utf-8">
+        </section>
+        <!--<div class="footer">
+          <p>© 2015 Lukas Diener</p>
+        </div>-->
 			</div>
+
 		</div>
-		
 
 		<script src="lib/js/head.min.js"></script>
 		<script src="js/reveal.js"></script>
+
+		<script>
+
+			// Full list of configuration options available at:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+				// Optional reveal.js plugins
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true },
+					{ src: 'plugin/notes/notes.js', async: true }
+				]
+			});
+
+		</script>
+
 	</body>
 </html>
