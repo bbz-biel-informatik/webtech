@@ -223,6 +223,90 @@ Praktisch jede for-Schleife sieht so aus wie die obige, meist wird nur die Bedin
 * `prompt()`: Nachricht anzeigen und zu Eingabe auffordern; [Dokumentation](https://developer.mozilla.org/en-US/docs/Web/API/Window.prompt)
 * `Number()`: Text in Zahl umwandeln; [Dokumentation](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number#Example.3A_Convert_numeric_strings_to_numbers)
 
+## Einbindung
+
+Javascript wird über ein spezielles HTML-Tag, das `<script>`-Tag, in eine Seite eigebunden. Die Einbindung sieht so aus:
+
+```html
+<​html>
+  <​body>
+    <​script type="text/javascript">
+      alert("Hallo");
+    <​/script>
+  <​/body>
+<​/html>  
+```
+Zu beachten ist, dass das `<script>`-Tag immer das letzte Element im <body> sein sollte.
+      
+      
+Code, der in einem `<script>` Tag steht, wird immer sofort nach dem Laden der Seite ausgeführt.
+      
+## Buttons
+
+Knöpfe werden im HTML wie folgt definiert:
+
+```html
+<​b​utton>Klick mich<​/button>
+```
+
+Über das `onclick`-Attribut kann festgelegt werden, was bei einem Klick auf den Knopf passieren soll. Der Wert des Attributs ist der Name der Funktion, die ausgeführt werden soll:
+
+```html
+<​b​utton onclick="etwas_machen()">Klick mich<​/button>
+```
+
+Die Funktion muss in einem Skript-Tag definiert sein:
+
+```html
+<script type="text/javascript">
+  function etwas_machen() {
+    alert('Hallo');
+  }
+</script>
+```
+
+## Elemente verändern
+
+Um Elemente einer HTML-Seite zu verändern, muss immer zuerst eine Referenz auf das Element geholt werden und das Element dann in einer Variable gespeichert werden. Um HTML-Elemente in Javascript zu referenzieren, können die bekannten CSS-Selektoren verwendet werden (`#` für ID, `.` für Klassen).
+
+Der Code
+
+```js
+var bodyElement = document.querySelector('body');
+bodyElement.style.backgroundColor = 'red';
+```
+
+wählt zuerst mit `document.querySelector` das `body`-Element aus und speichert es in der Variable `bodyElement`. Danach wird mit `.style.backgroundColor` die Hintergrundfarbe auf rot gesetzt.
+
+Der Ausdruck nach `.style` entspricht jeweils der CSS-Regel (hier: `background-color`). Wichtig ist hier, dass CSS-Regeln mit einem Bindestrich leicht abgeändert werden: der Bindestrich wird gelöscht, dafür der nächste Buchstabe gross geschrieben (`font-size` &rarr; `fontSize`, `border-radius` &rarr; `borderRadius`) - der Wert kann hingegen **immer** direkt aus dem CSS übernommen werden.
+
+Der Code
+
+```js
+var bodyElement = document.querySelector('body');
+bodyElement.style.backgroundColor = 'red';
+```
+entspricht somit den CSS-Regeln
+
+```css
+body {
+  background-color: red;
+}
+```
+
+
+## Mehrere Elemente anwählen
+
+Eine Einschränkung von `document.querySelector()` ist, dass immer nur das erste passende Element ausgewählt wird. Wenn mehrere Elemente ausgewählt werden sollen, muss `document.querySelectorAll()` verwendet werden. Die Funktionsweise ist dieselbe, mit dem Unterschied, dass `querySelectorAll` statt einem einzigen Elemente eine Liste von Elementen zurückgibt.
+
+Die Elemente müssen dann mithilfe einer for-Schleife einzeln bearbeitet werden:
+
+```js
+var elemente = document.querySelectorAll('p');
+for(var i = 0; i < elemente.length; i = i + 1) {
+    elemente[i].style.color = 'red';
+}
+```
 
 ##### Dieses Skript darf nur mit Genehmigung des <a href="mailto:lukas@zeilenwerk.ch">Autors</a> weiterverbreitet werden.
 
