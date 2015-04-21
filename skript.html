@@ -308,6 +308,107 @@ for(var i = 0; i < elemente.length; i = i + 1) {
 }
 ```
 
+
+## Events
+
+Statt nur auf Klicks zu reagieren, können mit Hilfe von `Events` beliebige Ereignisse abgefangen werden, wie zum Beispiel das auswählen eines Textfelds oder das Drüberfahren der Maus über ein Bild.
+
+Die Funktion `addEventListener` lässt den PC auf ein bestimmtes Ereignis warten und dann bestimmten Code ausführen:
+
+```html
+<div style="background-color: red">Bla</div>
+```
+
+```js
+var d = document.querySelector('div');
+d.addEventListener("click", klick);
+
+function klick() {
+    d.style.backgroundColor = 'blue';
+}
+```
+
+In diesem Beispiel wartet der PC auf den Event `click` auf dem ersten Div-Element, das heisst, auf einen Klick auf das Div. Nach dem Klick wird die Funktion (bzw. der **Event-Handler**) `klick` ausgeführt, die unten definiert ist, und die Hintergrundfarbe des `div`s auf blau ändert.
+
+Eine vollständige Liste der Ereignisse befindet sich <a href="https://developer.mozilla.org/en-US/docs/Web/Reference/Events">hier</a>.
+
+Sollen Events für mehrere Elemente separat ausgewertet werden, existiert in den Event-Handlern die Variable `this`. In ihr ist das Element gespeichert, das vom Event betroffen war, z.B. das Div, auf das geklickt wurde.
+
+```js
+var d = document.querySelectorAll('input');
+for(var i = 0; i < d.length; i = i + 1) {
+  d[i].addEventListener('focus', grau);
+  d[i].addEventListener('blur', weiss);
+}
+
+function grau() {
+  this.style.backgroundColor = 'red';
+}
+
+function weiss() {
+  this.style.backgroundColor = 'white';
+}
+```
+
+So wird jeweils nur die Farbe des ausgewählten Elements geändert, anstatt die Farbe aller Input-Elemente.
+
+
+## Attribute lesen
+
+Manchmal muss man die Attribute von Elementen lesen, z.B. das `href`-Attribut eines Link-Elements. Javascript bietet eine einfache Möglichkeit dazu, `getAttribute`:
+
+```js
+var link = document.querySelector('a');
+var url = link.getAttribute('href');
+```
+
+`getAttribute()` wird der Attributname angegeben, der gesucht wird (hier: `href`). Umgekehrt können mit Javascript Attribute auch gesetzt werden, und zwar mit `setAttribute`. Hier müssen der Attributname und der neue Wert angegeben werden:
+
+```js
+var link = document.querySelector('a');
+link.setAttribute('href', 'http://www.google.com');
+```
+
+## Elemente generieren
+
+Es gibt Anwendungen, bei denen neue Elemente per Javascript generiert werden müssen. Das funktioniert ähnlich wie die bisherigen Funktionen zur Bearbeitung von Elementen, und zwar mit der Funktion `createElement()`:
+
+```js
+var div = document.createElement("div");
+var body = document.querySelector('body');
+body.appendChild(div);
+```
+
+`createElement` generiert ein neues Div, zeigt es aber noch nicht an. Dazu muss das neue Element zuerst an ein schon existierendes Element angehängt werden (hier: `body`). Dies geschieht mit `appendChild`.
+
+Nach diesen Schritten ist das neue `div`-Element als letztes Element im `body` sichtbar.
+
+## Elemente löschen
+
+Elemente können auch per JS wieder gelöscht werden. Dies ist ein bisschen kompliziert, weil ein Umweg über das Elternelement gemacht werden muss:
+
+```js
+var überschrift = document.querySelector('h1');
+überschrift.parentNode.removeChild(überschrift);
+```
+
+Das heisst, dass man eigentlich dem Elternelement sagen muss, welches seiner Kinderelemente gelöscht werden sollen. Das ist analog zur Erstellung eines Elements, bei der auch dem Elternelement gesagt wird, dass ihm jetzt ein neues Kinderelement angehängt wird.
+
+## Formulardaten
+
+Ähnlich wie das Lesen von Attributen können auch Formulardaten gelesen werden. Dazu muss zuerst das Eingabefeld mit `querySelector` ausgewählt werden, und dann der Wert mit `.value` gelesen werden:
+
+```js
+var e = document.querySelector('#nameInput');
+var wert = e.value;
+```
+
+Genau gleich kann auch ein neuer Wert gesetzt werden:
+
+```js
+e.value = 'Test';
+```
+
 ##### Dieses Skript darf nur mit Genehmigung des <a href="mailto:lukas@zeilenwerk.ch">Autors</a> weiterverbreitet werden.
 
 </xmp>
