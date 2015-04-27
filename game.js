@@ -7,7 +7,7 @@ function createEntity(element) {
         positionX: function() { return this.element.offset().left; },
         positionY: function() { return this.element.offset().top; },
         setPosition: function(x, y) { this.element.css({left: x, top: y }); },
-        move: function() { this.element.css({left: this.positionX() + cos2(this.richtung) * this.speed(), top: this.positionY() + sin2(this.richtung) * this.speed() }); }
+        move: function() { this.element.css({left: this.positionX() + cos2(this.richtung) * this.speed(), top: this.positionY() - sin2(this.richtung) * this.speed() }); }
     };
 }
 
