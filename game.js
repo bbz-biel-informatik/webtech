@@ -1,4 +1,5 @@
 function createEntity(element) {
+  element.css({position: 'absolute'});
     return {
         element: element,
         game: null,
