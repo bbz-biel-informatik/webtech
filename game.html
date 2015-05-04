@@ -1,23 +1,36 @@
 <html>
   <head>
-    <script src="http://lukasdiener.ch/bbz/game.js"></script>
+    <script src="game.js"></script>
     <script src="http://lukasdiener.ch/bbz/jquery.js"></script>
     <style>
       #game{ width: 300px; height: 300px; border: 1px solid blue;}
       .player{ width: 15px; height: 15px; background-color: red; position: absolute;}
+      .player2{ width: 15px; height: 15px; background-color: blue; position: absolute;}
     </style>
   </head>
   <body>
     <div id="game"></div>
     <script>
+      var game = createGame($('#game'));
       var player = createEntity($('<div class="player"></div>'));
-      $('#game').append(player.element);
+      var player2 = createEntity($('<div class="player2"></div>'));
+      game.add(player);
+      game.add(player2);
       
       player.geschwindigkeit = 1;
       player.richtung = 0;
       
+      player2.geschwindigkeit = 0;
+      player2.richtung = 0;
+      
+      player2.setPosition(100, 0);
+      
       function repeat() {
         // Code hier einfügen
+        
+        if(player.collision(player2)) {
+          player.richtung = 180;
+        }
         
         player.move();
         
