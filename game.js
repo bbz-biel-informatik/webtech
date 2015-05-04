@@ -5,12 +5,12 @@ function createEntity(element) {
         richtung: 0,
         geschwindigkeit: 1,
         speed: function() { return this.geschwindigkeit; },
-        positionX: function() { return this.element.offset().left; },
-        positionY: function() { return this.element.offset().top; },
+        positionX: function() { return this.element.offset().left - this.game.left(); },
+        positionY: function() { return this.element.offset().top - this.game.top(); },
         height: function() { return this.element.height(); },
         width: function() { return this.element.width(); },
         setPosition: function(x, y) { this.element.css({left: x + this.game.left(), top: y + this.game.top() }); },
-        move: function() { this.element.css({left: this.positionX() + cos2(this.richtung) * this.speed(), top: this.positionY() - sin2(this.richtung) * this.speed() }); },
+        move: function() { this.element.css({left: this.positionX() + this.game.left() + cos2(this.richtung) * this.speed(), top: this.positionY() + this.game.top() - sin2(this.richtung) * this.speed() }); },
       collision: function(b) {
         return !(
           ((this.positionY() + this.height()) < (b.positionY())) ||

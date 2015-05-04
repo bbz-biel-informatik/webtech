@@ -31,6 +31,9 @@
         if(player.collision(player2)) {
           player.richtung = 180;
         }
+        if(player.positionX() < 0) {
+          player.richtung = 0;
+        }
         
         player.move();
         
