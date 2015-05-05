@@ -409,6 +409,144 @@ Genau gleich kann auch ein neuer Wert gesetzt werden:
 e.value = 'Test';
 ```
 
+## JQuery
+
+JQuery ist eine Programmbibliothek, die uns viel Arbeit abnimmt. Sie vereinfacht die Interaktion mit HTML-Elementen und verkürzt den zu schreibenden Code stark. JQuery kann direkt über ein `<script>`-Tag in die Seite eingebunden werden:
+
+```html
+<​head>
+  <​script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"><​/script>
+<​/head>
+```
+
+  Alle Befehle sind bei JQuery ähnlich aufgebaut; es wird jeweils mit einem (CSS-) Selektor ein oder mehrere Elemente ausgewählt, und dann auf diese Elemente eine Aktion ausgeführt:
+
+
+`$(selektor).aktion();`
+
+Aktionen können verschiedene Änderungen am Element selber sein, wie ein Wechsel der Schriftfarbe oder der Position.
+
+Um beispielsweise alle Textabschnitte (`<p>`) einer Website auszuwählen und ihre Schriftfarbe auf blau zu setzen, kann man mit JQuery den folgenden Code schreiben:
+
+Alle Textabschnitte auswählen und ausblenden:
+
+```js
+$("p").css({'color': 'blue'});
+```
+
+Zum Vergleich der "normale" JavaScript-Code:
+
+```js
+var paragraphs = document.querySelectorAll('p');
+for(var i = 0; i < paragraphs.length; i = i + 1) {
+  paragraphs[i].style.color = 'blue';
+}
+```
+
+Wichtig: JQuery wählt immer alle Elemente aus, die auf den Selektor passen!
+
+Ähnlich dazu können auch alle Bilder einer Website ausgeblendet werden:
+
+```js
+$("img").hide();
+```
+
+Wenn nur ein Teil aller gleichen Elemente verändert werden sollen, muss man diesen im HTML eine Klasse geben und dann in JQuery nur die Elemente mit der entsprechenden Klasse auswählen (gleich wie in CSS!):
+
+```js
+$('img.large').css({position: 'fixed'});
+```
+
+## Event-Handler
+
+Auch die Event-Listener können mit JQuery sehr viel kürzer als im normalen JavaScript geschrieben werden. Der folgende Code wählt den Button mit der ID `test` aus und sagt dem PC, dass er den Website-Hintergrund rot färben soll, sobald ein Benutzer auf den gewählten Button klickt:
+
+```js
+$("button#test").click(function(){
+  $("body").css({'background-color': 'red'});
+});
+```
+
+Weitere Events (neben dem `click` wie im Beispiel stehen in der [JQuery-Dokumentation](https://api.jquery.com/category/events/).
+
+# Javascript-Games
+
+## Game-Loop
+
+Bisherige Programme haben jeweils auf eine Benutzereingabe reagiert, ihren Code ausgeführt, und beendeten dann. Spiele müssen im Gegensatz dazu auch ohne Benutzereingabe weiterlaufen können. Dazu gibt es den sogenannten **Game-Loop**. Der Game-Loop ist eine spezielle Schleife (wie eine `for`-Schleife), die unendlich lange ausgeführt wird. Der Loop wird etwa 60 Mal pro Sekunde ausgeführt, und bei jedem Durchlauf werden Positionen von Spielern, Benutzereingaben und weitere Berechnungen neu gemacht. Wenn sich ein Objekt im Spiel bewegt, heisst das, dass es in Wirklichkeit nur 60 Mal pro Sekunde einen kleinen Sprung macht. Weil das Auge aber nicht so schnell ist, sieht es aus, als ob die Bewegung flüssig sei.
+
+  Der Game-Loop wird wie folgt programmiert:
+  
+  ```js
+  function repeat() {
+      // rechnen
+
+      requestAnimationFrame(repeat);
+  }
+
+  requestAnimationFrame(repeat);
+  ```
+
+  Damit kontrolliert der PC selbständig, dass der Loop etwa 60 Mal pro Sekunde ausgeführt wird. Der gesamte Code, der zwischen den geschweiften Klammern von `repeat` steht, wird bei jedem Berechnungsschritt des Spiels wiederholt.
+
+## Einrichtung
+
+  Das Spiel benötigt 2 JavaScript-Dateien, die mit einem Skript-Tag eingebunden werden müssen:
+
+* `http://lukasdiener.ch/bbz/game.js`
+* `http://lukasdiener.ch/bbz/jquery.js`
+
+Ausserdem muss im HTML-Code ein Element definiert sein, das das Spielfeld darstellt:
+
+```html
+<body>
+  <div id="game"></div>
+</body>
+```
+
+Danach kann mit dem folgenden Code ein kleines Spiel erzeugt werden:
+
+```js
+var game = createGame($('#game'));
+var player = createEntity($('<div class="player"></div>'));
+game.add(player);
+
+player.geschwindigkeit = 2;
+player.richtung = 0;
+
+function repeat() {
+  player.move();
+
+  if(player.positionX() > 300) {
+    player.richtung = 180;
+  }
+
+  requestAnimationFrame(repeat);
+}
+
+requestAnimationFrame(repeat);
+```
+
+Die Zeilen `createGame` und `createEntity` generieren hier das Spielfeld beziehungsweise das Spielobjekt. Jedes Spielobjekt kann nun auf verschiedene Arten verändert werden. Die einzelnen Eigenschaften und Funktionen sind [auf den Folien](http://lukasdiener.ch/bbz/index11.html#/2/3) erklärt.
+
+Wichtig ist hier die Unterscheidung zwischen dem Code, der zur Vorbereitung des Spiels dient, und dem Code, der während dem Spiel den Verlauf bestimmt.
+
+Zum **Vorbereitungscode** gehören Abläufe, die nur einmal ausgeführt werden müssen, wie die Erstellung des Spielfelds und der Objekte im Spiel, sowie das Setzen der anfänglichen Geschwindigkeit und Bewegungsrichtung. Dieser Code steht **vor** dem Game-Loop.
+
+Zum **Spielcode** gehören alle Abläufe, die während jedem kleinen Schritt des Spiels ausgeführt werden müssen, wie die Überprüfung, ob ein Spieler ausserhalb des Spielfelds ist. Dieser Code steht **im** Game-Loop.
+
+## Kollisionen
+
+Mit wenig Code kann auch getestet werden, ob zwei Elemente kollidieren, und passend drauf reagiert werden.
+
+```js
+if(player1.collision(player2)) {
+  player1.richtung = 180;
+}
+```
+
+Sobald die beiden Objekte `player1` und `player2` sich berühren, ist der Aufruf `collision()` wahr und der Code der Bedingung wird ausgeführt (`player1` wechselt die Richtung).
+
 ##### Dieses Skript darf nur mit Genehmigung des <a href="mailto:lukas@zeilenwerk.ch">Autors</a> weiterverbreitet werden.
 
 </xmp>
