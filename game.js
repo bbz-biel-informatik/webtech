@@ -4,6 +4,7 @@ function createEntity(element) {
         element: element,
         game: null,
         richtung: 0,
+        vs: 0,
         geschwindigkeit: 1,
         speed: function() { return this.geschwindigkeit; },
         positionX: function() { return this.element.offset().left - this.game.left(); },
@@ -11,7 +12,40 @@ function createEntity(element) {
         height: function() { return this.element.height(); },
         width: function() { return this.element.width(); },
         setPosition: function(x, y) { this.element.css({left: x + this.game.left(), top: y + this.game.top() }); },
-        move: function() { this.element.css({left: this.positionX() + this.game.left() + cos2(this.richtung) * this.speed(), top: this.positionY() + this.game.top() - sin2(this.richtung) * this.speed() }); },
+        jump: function(force) { this.vs = -4 * force; },
+        weightless: false,
+        colliding: function() {
+          for(var i = 0; i < this.game.entities.length; i++) {
+            var entity = this.game.entities[i];
+            if(this == entity) {
+              continue;
+            }
+            if(this.collision(entity)) {
+              return true;
+            }
+          }
+          return false;
+        },
+        move: function() {
+          var left = this.positionX() + this.game.left() + cos2(this.richtung) * this.speed();
+          var top = this.positionY() + this.game.top() - sin2(this.richtung) * this.speed();
+          
+          if(this.game.gravity > 0 && this.weightless === false) {
+            if(this.colliding()) {
+              this.vs = 0;
+            }
+            
+            if(!this.colliding()) {
+              this.vs += 0.2 * this.game.gravity;
+            }
+            top += (this.vs * this.game.gravity);
+          }
+
+          this.element.css({
+            left: left,
+            top: top
+          });
+        },
       collision: function(b) {
         return !(
           ((this.positionY() + this.height()) < (b.positionY())) ||
@@ -32,12 +66,25 @@ function createGame(element) {
       entity.game = this;
       this.element.append(entity.element);
     },
+    remove: function(entity) {
+      this.element.remove(entity.element);
+      var index = this.entities.indexOf(entity);
+      if (index > -1) {
+        this.entities.splice(index, 1);
+      }
+    },
     top: function() {
       return this.element.offset().top;
     },
     left: function() {
       return this.element.offset().left;
-    }
+    },
+    gravity: 0,
+      move: function() {
+        for(var i = 0; i < this.entities.length; i++) {
+          this.entities[i].move();
+        }
+      }
   };
 }
 
