@@ -1,3 +1,5 @@
+var jmp = false;
+
 function createEntity(element) {
   element.css({position: 'absolute'});
     return {
@@ -12,7 +14,7 @@ function createEntity(element) {
         height: function() { return this.element.height(); },
         width: function() { return this.element.width(); },
         setPosition: function(x, y) { this.element.css({left: x + this.game.left(), top: y + this.game.top() }); },
-        jump: function(force) { this.vs = -4 * force; },
+        jump: function(force) { this.vs = -4 * force; jmp = true; },
         weightless: false,
         colliding: function() {
           for(var i = 0; i < this.game.entities.length; i++) {
@@ -21,7 +23,7 @@ function createEntity(element) {
               continue;
             }
             if(this.collision(entity)) {
-              return true;
+              return entity;
             }
           }
           return false;
@@ -31,14 +33,15 @@ function createEntity(element) {
           var top = this.positionY() + this.game.top() - sin2(this.richtung) * this.speed();
           
           if(this.game.gravity > 0 && this.weightless === false) {
-            if(this.colliding()) {
+            var a = this.colliding();
+            if(a && !jmp) {
               this.vs = 0;
-            }
-            
-            if(!this.colliding()) {
+              top = a.element.position().top - this.element.height();
+            } else {
               this.vs += 0.2 * this.game.gravity;
+              top += (this.vs * this.game.gravity);
+              jmp = false;
             }
-            top += (this.vs * this.game.gravity);
           }
 
           this.element.css({
