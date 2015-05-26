@@ -70,7 +70,7 @@ function createGame(element) {
       this.element.append(entity.element);
     },
     remove: function(entity) {
-      this.element.remove(entity.element);
+      entity.element.remove();
       var index = this.entities.indexOf(entity);
       if (index > -1) {
         this.entities.splice(index, 1);
