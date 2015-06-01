@@ -10,6 +10,7 @@ function createEntity(element) {
         geschwindigkeit: 1,
         score: 0,
         scoreSelector: '#random7438923749823',
+        name: '',
         speed: function() { return this.geschwindigkeit; },
         positionX: function() { return this.element.offset().left - this.game.left(); },
         positionY: function() { return this.element.offset().top - this.game.top(); },
@@ -94,6 +95,23 @@ function createGame(element) {
         for(var i = 0; i < this.entities.length; i++) {
           $(this.entities[i].scoreSelector).text(this.entities[i].score);
         }
+      },
+      save: function() {
+        this.updateScores();
+        for(var i = 0; i < this.entities.length; i++) {
+          var name = this.entities[i].name;
+          var score = this.entities[i].score;
+          localStorage.setItem(name, score);
+        }
+      },
+      scores: function() {
+        var r = [];
+        for(var i = 0, len = localStorage.length; i < len; ++i ) {
+          var key = localStorage.key(i);
+          var val = localStorage.getItem(key);
+          r.push({name: key, score: val});
+        }
+        return r.sort(function(a, b){ return a.score-b.score; } );
       }
   };
 }
