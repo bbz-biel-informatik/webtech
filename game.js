@@ -8,6 +8,8 @@ function createEntity(element) {
         richtung: 0,
         vs: 0,
         geschwindigkeit: 1,
+        score: 0,
+        scoreSelector: '#random7438923749823',
         speed: function() { return this.geschwindigkeit; },
         positionX: function() { return this.element.offset().left - this.game.left(); },
         positionY: function() { return this.element.offset().top - this.game.top(); },
@@ -86,6 +88,11 @@ function createGame(element) {
       move: function() {
         for(var i = 0; i < this.entities.length; i++) {
           this.entities[i].move();
+        }
+      },
+      updateScores: function() {
+        for(var i = 0; i < this.entities.length; i++) {
+          $(this.entities[i].scoreSelector).text(this.entities[i].score);
         }
       }
   };
