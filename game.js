@@ -111,7 +111,7 @@ function createGame(element) {
           var val = localStorage.getItem(key);
           r.push({name: key, score: val});
         }
-        return r.sort(function(a, b){ return a.score-b.score; } );
+        return r.sort(function(a, b){ return b.score - a.score; } );
       }
   };
 }
