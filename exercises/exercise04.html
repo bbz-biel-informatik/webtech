@@ -33,6 +33,90 @@ Schreibe ein Programm, dass die ersten 20 Fibonacci-Zahlen anzeigt. Zur Erinneru
 
 Schreibe ein Programm, das automatisch die ersten 10 Primzahlen findet.
 
+
+## Lösungen
+
+### Prozent
+
+```js
+var z1 = prompt("Zahl 1?");
+var z2 = prompt("Zahl 2?");
+
+alert(z2 / z1 * 100 + '%');
+```
+
+### Kreisradius
+
+```js
+var r = prompt("Radius?");
+
+alert(Math.PI * r * r);
+```
+
+### Zahlen raten
+
+```js
+var num = Math.round(Math.random() * 100);
+for(var i = 0; i < 10; i = i + 1) {
+  var r = prompt('Zahl?');
+  if(r < num) {
+    alert('zu klein');
+  } else if(r > num) {
+    alert('zu gross');
+  } else {
+    alert('richtig!');
+    break;
+  }
+}
+```
+
+### Mehrfache von 3 oder 5
+
+```js
+var summe = 0;
+for(var i = 0; i < 100; i = i + 1) {
+  if(i % 3 == 0 || i % 5 == 0) {
+    summe = summe + i;
+  }
+}
+alert(summe);
+```
+
+### Fibonacci
+
+```js
+var vorletzte = 1;
+var letzte = 1;
+for(var i = 0; i < 18; i = i + 1) {
+  var nächste = vorletzte + letzte;
+  alert(nächste);
+  vorletzte = letzte;
+  letzte = nächste;               // zahlen 1 nach hinten schieben
+}
+```
+
+### Primzahlen
+
+```js
+function istPrimzahl(num) {
+  if(num < 2) {
+    return false;
+  }
+  for (var i = 2; i < num; i = i + 1) { // für jede Zahl wird getestet, ob sie durch irgendeine Zahl teilbar ist
+    if(num % i == 0)
+      return false;
+  }
+  return true;
+}
+
+for(var i = 0; i < 100; i = i + 1){
+  if(istPrimzahl(i)) {
+    alert(i);
+  }
+}
+
+```
+
 </xmp>
 
 <script src="http://strapdownjs.com/v/0.2/strapdown.js"></script>

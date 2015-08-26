@@ -47,6 +47,105 @@ Nimm eine bestehende Website von dir (z.B. die aus HTML/CSS) und füge Knöpfe h
 
 Ändere deinen Code so ab, dass die Website immer noch einigermassen gut aussieht. Wenn du z.B. den Hintergrund dunkel machst, solltest du die Schrift dafür heller machen. Das Ziel ist, dass man die Website umschalten kann zwischen zwei Versionen, z.B. einer hellen und einer dunklen.
 
+### Lösungen
+
+## Aufgabe 1
+
+```js
+var farben = ['gelb', 'grün', 'blau'];
+
+for(var i = 0; i < farben.length; i = i + 1) {
+  alert('Meine ' + i + '. Wahl ist ' + farben[i]);
+}
+```
+
+## Aufgabe 2
+
+```js
+var farben = ['gelb', 'grün', 'blau'];
+
+alert(farben.join(', '));
+
+// oder
+
+var text = '';
+for(var i = 0; i < farben.length; i = i + 1) {
+  text = text + farben[i] + ', ';
+}
+alert(text);
+```
+
+## Aufgabe 3
+
+```js
+function sum(array) {
+  var summe = 0;
+  for(var i = 0; i < array.length; i = i + 1) {
+    summe = summe + i;
+  }
+  return summe;
+}
+```
+
+## Aufgabe 3.5
+
+```js
+function averge(array) {
+  var summe = 0;
+  for(var i = 0; i < array.length; i = i + 1) {
+    summe = summe + array[i];
+  }
+  return summe / array.length;
+}
+```
+
+## Aufgabe 4
+
+```js
+function maxCount(array) {
+  var counter = []
+  for(var i = 0; i < array.length; i = i + 1) {
+    var zahl = array[i];
+    if(counter[zahl] == undefined) {
+      counter[zahl] = 0;
+    }
+    counter[zahl] = counter[zahl] + 1;
+  }
+  
+  var max = 0;
+  for(var i = 0; i < counter.length; i = i + 1) {
+    var zahl = counter[i];
+    if(zahl > max) {
+      max = zahl;
+    }
+  }
+  
+  return counter.indexOf(max);
+}
+```
+
+## Aufgabe 5
+
+Siehe `Aufgabe 4`.
+
+## Aufgabe 6
+
+Mit [Insertion Sort](https://de.wikipedia.org/wiki/Insertionsort).
+
+```js
+function sort(array) {
+  for(var i = 2; i < array.length; i = i + 1) {
+    for(var k = i; i > 1 && array[k] < array[k-1]; k = k - 1) {
+      // Position k mit k-1 austauschen
+      var temp = array[k];
+      array[k] = array[k-1];
+      array[k-1] = array[k];
+    }
+  }
+  return array;
+}
+```
+
 </xmp>
 
 <script src="http://strapdownjs.com/v/0.2/strapdown.js"></script>

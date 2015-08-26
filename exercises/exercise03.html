@@ -90,6 +90,26 @@ for(var i = 10; i >= 0; i = i - 1) {
   alert(i);
 }
 ```
+
+### Summe der Quadrate vs. Quadrat der Summe
+
+```js
+var summe = 0;
+
+for(var i = 0; i < 100; i = i + 1) {
+  summe = summe + i;
+}
+
+alert("Quadrat der Summe: " + (summe * summe));
+
+var summe2 = 0;
+
+for(var i = 0; i < 100; i = i + 1) {
+  summe2 = summe2 + (i * i);        // entspricht i^2
+}
+
+alert("Summe der Quadrate: " + summe2);
+```
 </xmp>
 
 <script src="http://strapdownjs.com/v/0.2/strapdown.js"></script>
