@@ -9,7 +9,27 @@
 
 ## Aufgabe 1
 
-Schreibe Javascript-Code, der *jedem* Element beim Drüberfahren mit der Maus einen roten Rahmen macht
+Schreibe Javascript-Code, der *jedem* Element beim Drüberfahren mit der Maus einen roten Rahmen macht. Du kannst den CSS-Selektor `*` dazu verwenden.
+
+Bonus: Wenn du die Maus über ein Element bewegst, wird der `mouseover`-Event automatisch auch für alle Eltern-Elemente ausgeführt. Wenn du diese nicht färben möchtest,
+kannst du verhindern, dass sich der Event weiterbewegt. Dazu musst du deine Handler-Funktion etwas umschreiben und bei der Funktionsdefinition einen neuen Parameter `e` angeben:
+
+Alt:
+
+```js
+function färben() {
+  //dein Code hier
+}
+```
+
+Neu:
+
+```js
+function färben(e) {
+  //dein Code hier
+  e.stopPropagation();
+}
+```
 
 ## Aufgabe 2
 
