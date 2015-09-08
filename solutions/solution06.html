@@ -1,5 +1,5 @@
 Aufgabe 1
-
+<pre>
 var image = document.querySelector('img')
 image.addEventListener('click', scale);
 
@@ -15,15 +15,15 @@ function scale() {
     large = true;
   }
 }
-
+</pre>
 
 Aufgabe 2
-
-<form>
-  <input type="text"/> Benutzername
-  <input type="text"/> Email
-  <input type="submit"/>
-</form>
+<pre>
+<&nbsp;form>
+  <&nbsp;input type="text"/> Benutzername
+  <&nbsp;input type="text"/> Email
+  <&nbsp;input type="submit"/>
+<&nbsp;/form>
 
 var submit = document.querySelector("input[type=submit]");
 
@@ -35,9 +35,9 @@ function move() {
   submit.style.left = Math.random() * 200 + 'px';
   console.log(submit.style.left + ' ' + submit.style.top)
 }
-
+</pre>
 Aufgabe 3
-
+<pre>
 var all = document.querySelectorAll("*");
 
 for(var i = 0; i < all.length; i++) {
@@ -54,3 +54,5 @@ function changeColorBack(e) {
   this.style.border = 'none';
   e.stopPropagation();
 }
+</pre>
+
