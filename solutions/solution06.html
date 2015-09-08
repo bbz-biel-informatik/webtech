@@ -1,0 +1,56 @@
+Aufgabe 1
+
+var image = document.querySelector('img')
+image.addEventListener('click', scale);
+
+var large = false;
+
+function scale() {
+  if(large) {
+    image.style.width = '';
+    large = false;
+  }
+  else {
+    image.style.width = '80%';
+    large = true;
+  }
+}
+
+
+Aufgabe 2
+
+<form>
+  <input type="text"/> Benutzername
+  <input type="text"/> Email
+  <input type="submit"/>
+</form>
+
+var submit = document.querySelector("input[type=submit]");
+
+submit.addEventListener('mouseover', move);
+
+function move() {
+  submit.style.position = 'absolute';
+  submit.style.top = Math.random() * 200 + 'px';
+  submit.style.left = Math.random() * 200 + 'px';
+  console.log(submit.style.left + ' ' + submit.style.top)
+}
+
+Aufgabe 3
+
+var all = document.querySelectorAll("*");
+
+for(var i = 0; i < all.length; i++) {
+	all[i].addEventListener('mouseover', changeColor);
+    all[i].addEventListener('mouseout', changeColorBack);
+}
+
+function changeColor(e) {
+  this.style.border = '1px solid red';
+  e.stopPropagation();
+}
+
+function changeColorBack(e) {
+  this.style.border = 'none';
+  e.stopPropagation();
+}
