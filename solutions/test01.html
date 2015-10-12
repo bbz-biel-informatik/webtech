@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <meta charset="UTF-8">
+</head>
+<xmp theme="united" style="display:none;">
+
+## Zahlen gerade / ungerade
+
+```js
+for(var i = 0; i <= 20; i = i + 1) {
+  if(i % 2 == 0) {
+    alert(i + ' gerade');
+  } else {
+    alert(i + ' ungerade');
+  }
+}
+```
+
+## Differenz in Array
+
+```js
+for(var i = 0; i < array.length - 1; i = i + 1) {
+  alert(array[i] - array[i+1]);
+}
+```
+
+## Durchschnitt
+
+```js
+var summe = 0;
+for(var i = 0; i < array.length; i = i + 1) {
+  summe = summe + array[i];
+}
+alert(summe / array.length);
+```
+
+## Teilbarkeit durch 2 und 3
+
+```js
+for(var i = 100; i >= 0; i = i + 1) {
+  if(i % 2 == 0 && i % 3 == 0) {
+    alert('teilbar');
+  } else {
+    alert('nicht teilbar');
+  }
+}
+```
+
+</xmp>
+
+<script src="http://strapdownjs.com/v/0.2/strapdown.js"></script>
+</html>
