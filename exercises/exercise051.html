@@ -31,6 +31,91 @@ Schreibe Code, der auf deiner Website jedem zweiten Bild einen blauen und jedem 
 
 Schreibe Code, der auf deiner Website den Textabschnitten den Text rot färbt, aber nur, wenn mehr als 3 Abschnitte existieren (zur Erinnerung: die Anzahl Elemente in einem Array kannst du mit `myArray.length` abrufen).
 
+# Lösungen
+
+## Aufgabe 0
+
+```html
+<button onclick="aktion">Klick mich</button>
+```
+
+```js
+function aktion() {
+  alert('Klick');
+}
+```
+
+## Aufgabe 1
+
+```html
+<button onclick="farbe_wechseln">Farbe ändern</button>
+```
+
+```js
+function farbe_wechseln() {
+  var heading = document.querySelector('h1');
+  heading.style.color = 'red';
+}
+```
+
+## Aufgabe 2
+
+```html
+<button onclick="farbe_wechseln">Farbe ändern</button>
+```
+
+```js
+var farbe = 1;
+
+function farbe_wechseln() {
+  var heading = document.querySelector('h1');
+  var background = document.querySelector('body');
+  if(farbe == 1) {
+    heading.style.color = 'red';
+    background.style.color = 'blue';
+    farbe = 0;
+  } else {
+    heading.style.color = 'blue';
+    background.style.color = 'red';
+    farbe = 1;
+  }
+}
+```
+
+## Aufgabe 3
+
+```js
+var bilder = document.querySelectorAll('img');
+for(var i = 0; i < bilder.length; i = i + 1) {
+  bilder[i].style.border = '1px solid red';
+}
+```
+
+## Aufgabe 4
+
+```js
+var bilder = document.querySelectorAll('img');
+for(var i = 0; i < bilder.length; i = i + 1) {
+  if(i % 2 == 0) {
+    bilder[i].style.border = '1px solid red';
+  } else {
+    bilder[i].style.border = '1px solid blue';
+  }
+}
+```
+
+## Aufgabe 5
+
+```js
+var abschnitte = document.querySelectorAll('p');
+if(abschnitte.length > 3) {
+  for(var i = 0; i < abschnitte.length; i = i + 1) {
+    abschnitte[i].style.color = 'red';
+  }
+}
+
+```
+
 </xmp>
 
 <script src="http://strapdownjs.com/v/0.2/strapdown.js"></script>
