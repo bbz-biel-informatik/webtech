@@ -1,0 +1,49 @@
+<html>
+<head>
+  <style>
+    p {
+      width: 600px;
+    }
+
+    .todo-list, input[type=text] {
+      width: 600px;
+    }
+
+    input[type=text] {
+      padding: 12px;
+    }
+
+    .todo-item {
+      border: 1px solid #DDD;
+      padding: 12px;
+      margin-top: 2px;
+    }
+  </style>
+</head>
+<body>
+  <form class="todo">
+    <input type="text" name="text"/>
+    <input type="submit"/>
+  </form>
+
+  <div class="todo-list">
+    <div class="todo-item">
+      <p>my text</p>
+    </div>
+    <div class="todo-item">
+      <p>my text 2</p>
+    </div>
+  </div>
+
+  <script>
+    function handleInput(e) {
+      var newText = document.querySelector('input[name=text]').value;
+      alert(newText);
+      e.preventDefault();
+    }
+
+    var form = document.getElementsByTagName('form')[0];
+    form.addEventListener('submit', handleInput);
+  </script>
+</body>
+</html>
