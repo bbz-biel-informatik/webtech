@@ -2,6 +2,7 @@
 <html>
 <head>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r73/three.js"></script>
+  <script src="three.js"></script>
 </head>
 <body>
   <div id="container"></div>
@@ -25,6 +26,7 @@
 
     window.setInterval(function() {
       cube.rotation.y += 0.01;
+      cube.scale.x += 0.01;
       renderer.render(scene, camera);
     }, 16);
 
