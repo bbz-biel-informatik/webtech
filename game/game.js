@@ -1,6 +1,12 @@
 var WIDTH, HEIGHT, scene, renderer, camera, cube;
 var stats;
-var peer, myId, peers, connections;
+var keys = [];
+var cubes = [];
+var peer, myId, myColor, peers, connections;
+var COLORS = [0xff0000, 0x0ff000, 0x00ff00, 0x000ff0, 0x0000ff];
+
+var defaultMaterial = new THREE.MeshBasicMaterial({color: 0xFF0000});
+var defaultGeometry = new THREE.CubeGeometry(2, 2, 2);
 
 function setup() {
   WIDTH  = window.innerWidth;
@@ -15,11 +21,20 @@ function setup() {
   camera.position.set(0, 3.5, 5);
   camera.lookAt(scene.position);
 
-  cube = new THREE.Mesh(new THREE.CubeGeometry(2, 2, 2), new THREE.MeshNormalMaterial());
+  myColor = Math.random() * 0xffffff;
+  defaultMaterial.color.setHex(myColor);
+  cube = new THREE.Mesh(defaultGeometry, defaultMaterial);
   scene.add(cube);
 
   document.body.appendChild(renderer.domElement);
 
+  document.addEventListener('keydown', function(event) {
+    keys[event.keyCode] = true;
+  });
+
+  document.addEventListener('keyup', function(event) {
+    keys[event.keyCode] = false;
+  });
 
   // stats
   stats = new Stats();
@@ -40,7 +55,7 @@ function setup() {
 
   peer.on('open', function(id) {
     myId = id;
-    alert("Peer id is: " + id);
+    displayText("Peer id is: " + id + "... ");
 
     sendIdToServer(myId);
   });
@@ -49,23 +64,60 @@ function setup() {
     var peerId = conn.peer;
     peers.push(peerId);
     connections.push(conn);
+    cubes[peerId] = createCube();
 
     conn.on('data', function(data) {
       handleData(peerId, data);
     });
-
-    conn.send('Hello');
   });
 }
 
+function setdown() {
+  $.post("http://localhost:4567/goodbye", myId);
+}
+
+function createCube() {
+  var c = new THREE.Mesh(defaultGeometry, defaultMaterial);
+  scene.add(c);
+}
+
+function getRandomColor() {
+    var letters = '0123456789ABCDEF'.split('');
+    var color = '#';
+    for (var i = 0; i < 6; i++ ) {
+        color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+}
+
+function setColor(obj, color) {
+  obj.material = new THREE.MeshBasicMaterial({color: color});
+}
+
+function displayText(text) {
+  var $status = $('#status');
+  $status.text($status.text() + "\n" + text);
+}
+
 function handleData(peerId, data) {
-  console.log(data);
+  switch(data.type) {
+    case 'color':
+      setColor(cubes[peerId], data.value);
+      break;
+    case 'position':
+      cubes[peerId].position.set(data.value[0], data.value[1], data.value[2]);
+      break;
+    default:
+      console.log(peerId + ': ' + data);
+  }
 }
 
 function sendIdToServer(id) {
   jQuery.ajaxSetup({async:false});
 
   $.post( "http://localhost:4567/hello", id );
+
+  displayText("Registered on server... ");
 
   getIdsFromServer();
 }
@@ -78,9 +130,12 @@ function getIdsFromServer() {
         var conn = peer.connect(id);
         peers.push(id);
         connections.push(conn);
+        cubes[id] = createCube();
       }
     }
-    console.log(peers);
+    displayText("Got " + peers.length + " peers... ");
+    setColor(cube, myColor);
+    broadcast({type: 'color', value: myColor});
   });
 }
 
@@ -93,15 +148,28 @@ function broadcast(msg) {
 var counter = 0;
 
 function render() {
-  if(counter % 20 == 0) {
-    broadcast([cube.position.x, cube.position.y, cube.position.z]);
+  window.requestAnimationFrame(render);
+  if(counter % 20 === 0) {
+    broadcast({type: 'position', value: [cube.position.x, cube.position.y, cube.position.z]});
+    broadcast({type: 'color', value: myColor});
   }
   counter++;
   stats.begin();
 
-  cube.rotation.y += 0.01;
+  if(keys[40]) {
+    cube.translateZ(0.05);
+  }
+  if(keys[38]) {
+    cube.translateZ(-0.05);
+  }
+  if(keys[39]) {
+    cube.translateX(0.05);
+  }
+  if(keys[37]) {
+    cube.translateX(-0.05);
+  }
+
   renderer.render(scene, camera);
 
   stats.end();
-  window.requestAnimationFrame(render);
 }
