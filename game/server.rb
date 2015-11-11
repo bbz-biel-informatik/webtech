@@ -11,7 +11,7 @@ peers = []
 
 post '/hello' do
   id = request.body.read
-  peers << id
+  peers << JSON.parse(id)
   200
 end
 

@@ -32,24 +32,10 @@ function setup() {
   data = generateHeight( worldWidth, worldDepth );
 
   var geometry = new THREE.PlaneBufferGeometry( 7500, 7500, worldWidth - 1, worldDepth - 1 );
-				geometry.rotateX( - Math.PI / 2 );
+  geometry.rotateX( - Math.PI / 2 );
 
-				var vertices = geometry.attributes.position.array;
-
-				for ( var i = 0, j = 0, l = vertices.length; i < l; i ++, j += 3 ) {
-
-					vertices[ j + 1 ] = data[ i ] * 1;
-
-				}
-
-				texture = new THREE.CanvasTexture( generateTexture( data, worldWidth, worldDepth ) );
-				texture.wrapS = THREE.ClampToEdgeWrapping;
-				texture.wrapT = THREE.ClampToEdgeWrapping;
-
-				mesh = new THREE.Mesh( geometry, new THREE.MeshNormalMaterial( { map: texture } ) );
-				scene.add( mesh );
-
-        camera.position.y = data[ 50 + 50 * 100 ] * 10 + 500;
+  mesh = new THREE.Mesh( geometry, new THREE.MeshNormalMaterial({ wireframe: true }) );
+  scene.add( mesh );
 
   document.body.appendChild(renderer.domElement);
 
