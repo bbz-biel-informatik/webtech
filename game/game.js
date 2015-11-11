@@ -2,11 +2,13 @@ var WIDTH, HEIGHT, scene, renderer, camera, cube, plane;
 var stats;
 var keys = [];
 var cubes = [];
+var checkpoints = []
 var peer, myId, myName, myColor, peers, connections;
 var COLORS = [0xff0000, 0x0ff000, 0x00ff00, 0x000ff0, 0x0000ff];
+var CUBE_HEIGHT = 2;
 
 var defaultMaterial = new THREE.MeshBasicMaterial({color: 0xFF0000});
-var defaultGeometry = new THREE.CubeGeometry(2, 2, 2);
+var defaultGeometry = new THREE.CubeGeometry(2, CUBE_HEIGHT, 2);
 
 function setup() {
   WIDTH  = window.innerWidth;
@@ -17,21 +19,32 @@ function setup() {
   renderer = new THREE.WebGLRenderer({ antialias: true });
   renderer.setSize(WIDTH, HEIGHT);
 
-  camera = new THREE.PerspectiveCamera(70, WIDTH / HEIGHT, 1, 100);
-  camera.position.set(0, 3.5, 5);
+  camera = new THREE.PerspectiveCamera(70, WIDTH / HEIGHT, 1, 500);
+  camera.position.set(0, 2.5, 5);
   camera.lookAt(scene.position);
 
   myColor = Math.random() * 0xffffff;
   cube = new THREE.Mesh(defaultGeometry, defaultMaterial);
   scene.add(cube);
+  cube.position.y = CUBE_HEIGHT / 2;
+  cube.add(camera);
   setColor(cube, myColor);
 
   var worldWidth = 100;
   var worldDepth = 100;
 
+  for(var i = 0; i < 5; i++) {
+    var c = new THREE.Mesh(defaultGeometry, defaultMaterial);
+    c.scale.set(5, 5, 5);
+    setColor(c, Math.random() * 0xffffff);
+    c.position.set(-250 + Math.random() * 500, 2.5, -250 + Math.random() * 500);
+    scene.add(c);
+    checkpoints.push(c);
+  }
+
   //data = generateHeight( worldWidth, worldDepth );
 
-  var geometry = new THREE.PlaneBufferGeometry( 7500, 7500, worldWidth - 1, worldDepth - 1 );
+  var geometry = new THREE.PlaneBufferGeometry( 500, 500, worldWidth - 1, worldDepth - 1 );
   geometry.rotateX( - Math.PI / 2 );
 
   mesh = new THREE.Mesh( geometry, new THREE.MeshNormalMaterial({ wireframe: true }) );
@@ -192,29 +205,46 @@ function render() {
   stats.begin();
 
   if(keys[40]) {
-    speed = speed + 0.005;
-  }
-  if(keys[38]) {
     speed = speed - 0.005;
   }
+  if(keys[38]) {
+    speed = speed + 0.005;
+  }
   if(keys[39]) {
-    cube.rotateY(-(MAX_SPEED - speed) * 0.02);
+    cube.rotateY(-(MAX_SPEED - speed * 0.5) * 0.02);
   }
   if(keys[37]) {
-    cube.rotateY((MAX_SPEED - speed) * 0.02);
+    cube.rotateY((MAX_SPEED - speed * 0.5) * 0.02);
   }
+
+  checkCollision();
 
   if(speed > MAX_SPEED)
     speed = MAX_SPEED;
+  if(speed < -MAX_SPEED)
+    speed = -MAX_SPEED
 
-  cube.translateZ(speed);
-
-  /*camera.position.x = cube.position.x;
-  camera.position.y = cube.position.y + 3.5;
-  camera.position.z = cube.position.z + 5;
-	camera.lookAt( cube.position );*/
+  cube.translateZ(-speed);
 
   renderer.render(scene, camera);
 
   stats.end();
+}
+
+function checkCollision() {
+  for (var vertexIndex = 0; vertexIndex < cube.geometry.vertices.length; vertexIndex++) {
+    var localVertex = cube.geometry.vertices[vertexIndex].clone();
+    var globalVertex = localVertex.applyMatrix4(cube.matrix);
+    var directionVector = globalVertex.sub( cube.position );
+
+    var ray = new THREE.Raycaster( cube.position, directionVector.clone().normalize() );
+    var collisionResults = ray.intersectObjects( checkpoints );
+    if ( collisionResults.length > 0 && collisionResults.length < 5 && collisionResults[0].distance < directionVector.length() )
+    {
+      console.log(collisionResults);
+        for(var i = 0; i < collisionResults.length; i++) {
+          setColor(collisionResults[i].object, 0x00FF00);
+        }
+    }
+  }
 }
