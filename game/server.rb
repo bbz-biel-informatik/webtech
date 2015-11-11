@@ -7,6 +7,10 @@ configure do
   enable :cross_origin
 end
 
+before do
+  halt 200 if request.request_method == 'OPTIONS'
+end
+
 peers = []
 
 post '/hello' do
@@ -16,7 +20,7 @@ post '/hello' do
 end
 
 post '/goodbye' do
-  id = request.body.read
+  id = JSON.parse(request.body.read)
   peers.delete id
   200
 end
