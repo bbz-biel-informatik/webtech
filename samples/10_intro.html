@@ -6,6 +6,35 @@
 </head>
 <body>
   <div id="container"></div>
+  <script id="fragment_shh" type="x-shader/x-fragment">
+    #ifdef GL_ES
+      precision highp float;
+    #endif
+
+    uniform sampler2D tOne;
+    uniform sampler2D tSec;
+
+    varying vec2 vUv;
+
+    void main(void) {
+      vec3 c;
+      vec4 Ca = texture2D(tOne, vUv);
+      vec4 Cb = texture2D(tSec, vUv);
+      c = Ca.rgb * Ca.a + Cb.rgb * Cb.a * (1.0 - Ca.a); // blending
+      gl_FragColor = vec4(c, 1.0);
+    }
+  </script>
+
+  <script id="vertex_shh" type="x-shader/x-vertex">
+    varying vec2 vUv;
+
+    void main() {
+      vUv = uv;
+      vec4 mvPosition = modelViewMatrix * vec4( position, 1.0 );
+      gl_Position = projectionMatrix * mvPosition;
+    }
+  </script>
+
   <script>
     var WIDTH  = window.innerWidth;
     var HEIGHT = window.innerHeight;
@@ -19,7 +48,24 @@
     camera.position.set(0, 3.5, 5);
     camera.lookAt(scene.position);
 
-    cube = new THREE.Mesh(new THREE.CubeGeometry(2, 2, 2), new THREE.MeshNormalMaterial());
+    var vertShader = document.getElementById('vertex_shh').innerHTML;
+    var fragShader = document.getElementById('fragment_shh').innerHTML;
+
+    var attributes = {};
+
+    var uniforms = {
+      tOne: { type: "t", value: THREE.ImageUtils.loadTexture( "cover.png" ) },
+      tSec: { type: "t", value: THREE.ImageUtils.loadTexture( "grass.jpg" ) }
+    };
+
+    var material_shh = new THREE.ShaderMaterial({
+      uniforms: uniforms,
+      attributes: attributes,
+      vertexShader: vertShader,
+      fragmentShader: fragShader
+    });
+
+    cube = new THREE.Mesh(new THREE.CubeGeometry(2, 2, 2), material_shh);
     scene.add(cube);
 
     document.body.appendChild(renderer.domElement);
