@@ -13,15 +13,21 @@
 
     uniform sampler2D tOne;
     uniform sampler2D tSec;
+    uniform sampler2D tTer;
 
     varying vec2 vUv;
 
     void main(void) {
-      vec3 c;
       vec4 Ca = texture2D(tOne, vUv);
       vec4 Cb = texture2D(tSec, vUv);
-      c = Ca.rgb * Ca.a + Cb.rgb * Cb.a * (1.0 - Ca.a); // blending
-      gl_FragColor = vec4(c, 1.0);
+      vec4 Cc = texture2D(tTer, vUv);
+      // Standard, single: gl_FragColor = vec4(c, 1.0);
+      vec4 color = Ca;
+      // mix(neu, bestehend, maske);
+      // maske: 1.0 - x für normal, x für invertiert
+      color = mix(Cb, color, (1.0 - Cb.a));
+      color = mix(Cc, color, (1.0 - Cc.a));
+      gl_FragColor = color;
     }
   </script>
 
@@ -54,8 +60,9 @@
     var attributes = {};
 
     var uniforms = {
-      tOne: { type: "t", value: THREE.ImageUtils.loadTexture( "cover.png" ) },
-      tSec: { type: "t", value: THREE.ImageUtils.loadTexture( "grass.jpg" ) }
+      tOne: { type: "t", value: THREE.ImageUtils.loadTexture( "grass.jpg" ) },
+      tSec: { type: "t", value: THREE.ImageUtils.loadTexture( "cover.png" ) },
+      tTer: { type: "t", value: THREE.ImageUtils.loadTexture( "circle.png" ) }
     };
 
     var material_shh = new THREE.ShaderMaterial({
