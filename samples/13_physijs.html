@@ -23,12 +23,16 @@
     camera.position.set(0, 3.5, 5);
     camera.lookAt(scene.position);
 
-    cube = new Physijs.BoxMesh(new THREE.CubeGeometry(2, 2, 2), new THREE.MeshNormalMaterial());
+    cube = new Physijs.BoxMesh(new THREE.BoxGeometry(2, 2, 2), new THREE.MeshNormalMaterial());
     scene.add(cube);
 
-    floor = new Physijs.BoxMesh(new THREE.CubeGeometry(100, 1, 100), new THREE.MeshNormalMaterial(), 0);
+    floor = new Physijs.BoxMesh(new THREE.BoxGeometry(100, 1, 100), new THREE.MeshNormalMaterial(), 0);
     floor.position.set(-50, -5, -50);
     scene.add(floor);
+
+    floor.addEventListener( 'collision', function() {
+      console.log('collided!');
+    });
 
     document.addEventListener('keydown', function() {
       console.log('a');

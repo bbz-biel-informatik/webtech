@@ -10,6 +10,7 @@
 
       uniform sampler2D tOne;
       uniform sampler2D tSec;
+      uniform sampler2D tTer;
 
       varying vec2 vUv;
 
@@ -17,8 +18,12 @@
         vec3 c;
         vec4 Ca = texture2D(tOne, vUv);
         vec4 Cb = texture2D(tSec, vUv);
-        c = Ca.rgb * Ca.a + Cb.rgb * Cb.a * (1.0 - Ca.a);
-        gl_FragColor = vec4(c, 1.0);
+
+        vec4 color = Ca;
+        color = mix(Cb, color, (1.0 - Cb.a));
+        color = mix(Cc, color, (1.0 - Cc.a));
+
+        gl_FragColor = color;
       }
     </script>
 
