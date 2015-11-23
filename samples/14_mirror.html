@@ -1,0 +1,62 @@
+<!doctype html>
+<html>
+<head>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r73/three.js"></script>
+  <script type="text/javascript" src="physi.js"></script>
+  <script type="text/javascript" src="Mirror.js"></script>
+</head>
+<body>
+  <div id="container"></div>
+  <script>
+    Physijs.scripts.worker = 'physijs_worker.js';
+    Physijs.scripts.ammo = 'ammo.js';
+
+    var WIDTH  = window.innerWidth;
+    var HEIGHT = window.innerHeight;
+
+    var scene = new Physijs.Scene();
+
+    renderer = new THREE.WebGLRenderer({ antialias: true });
+    renderer.setSize(WIDTH, HEIGHT);
+
+    camera = new THREE.PerspectiveCamera(70, WIDTH / HEIGHT, 1, 100);
+    camera.position.set(0, 3.5, 5);
+    camera.lookAt(scene.position);
+
+    // Mirror code begin
+
+    var planeGeo = new THREE.PlaneGeometry( 100, 100 );
+
+    var groundMirror = new THREE.Mirror( renderer, camera, {
+      clipBias: 0.003, textureWidth: WIDTH,
+      textureHeight: HEIGHT, color: 0x777777
+    });
+
+    var mirrorMesh = new THREE.Mesh( planeGeo, groundMirror.material );
+    mirrorMesh.add( groundMirror );
+    //mirrorMesh.position.set(0, -4, -50);
+    scene.add( mirrorMesh );
+
+    // Mirror code end
+
+    cube = new Physijs.BoxMesh(new THREE.BoxGeometry(2, 2, 2), new THREE.MeshNormalMaterial());
+    cube.position.set(1,1,2);
+    scene.add(cube);
+
+    document.addEventListener('keydown', function() {
+      console.log('a');
+      //cube.applyCentralImpulse(new THREE.Vector3(0, 100, 0));
+    });
+
+    document.body.appendChild(renderer.domElement);
+
+    window.setInterval(function() {
+      cube.rotation.y += 0.01;
+
+      groundMirror.render();
+      renderer.render(scene, camera);
+    }, 16);
+
+  </script>
+</body>
+</html>
