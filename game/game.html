@@ -14,18 +14,37 @@
       margin: 0;
       padding: 0;
     }
-    #status {
+    #players {
       position: absolute;
       color: #CCC;
       top: 20px;
       right: 20px;
-      width: 300px;
+      width: 100px;
       font-size: 12px;
+      opacity: 0.6;
+      background-color: #DDD;
+    }
+    #players li {
+      color: #000;
+      padding: 4px;
+      margin: 0px;
+      font-size: 18px;
+      line-height: 20px;
+      list-style-type: none;
+      opacity: 1;
+    }
+
+    #status {
+      display: none;
     }
   </style>
 </head>
 <body>
   <div id="status"></div>
+  <div id="players">
+    <ul>
+    </ul>
+  </div>
   <div id="container"></div>
   <script>
   document.addEventListener("DOMContentLoaded", function(event) {

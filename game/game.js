@@ -2,13 +2,15 @@ var WIDTH, HEIGHT, scene, renderer, camera, cube, plane;
 var stats;
 var keys = [];
 var cubes = [];
-var checkpoints = []
+var checkpoints = [];
 var peer, myId, myName, myColor, peers, connections;
 var COLORS = [0xff0000, 0x0ff000, 0x00ff00, 0x000ff0, 0x0000ff];
 var CUBE_HEIGHT = 2;
 
 var defaultMaterial = new THREE.MeshBasicMaterial({color: 0xFF0000});
 var defaultGeometry = new THREE.CubeGeometry(2, CUBE_HEIGHT, 2);
+
+var audio_enable = new Audio('enable.mp3');
 
 function setup() {
   WIDTH  = window.innerWidth;
@@ -92,6 +94,7 @@ function setup() {
     peers.push(peerId);
     connections.push(conn);
     cubes[peerId] = createCube();
+    addPlayerToList(peerId, '');
 
     conn.on('data', function(data) {
       handleData(peerId, data);
@@ -100,7 +103,7 @@ function setup() {
 }
 
 function setdown() {
-  $.post("http://localhost:4567/goodbye", JSON.stringify({id: id, name: name}), null, 'json');
+  $.post("http://localhost:4567/goodbye", JSON.stringify({id: myId, name: myName}), null, 'json');
 }
 
 function createCube() {
@@ -127,18 +130,30 @@ function displayText(text) {
   $status.text($status.text() + "\n" + text);
 }
 
+function addPlayerToList(id, name) {
+  var $list = $('#players > ul');
+  var $item = $('<li id="' + id + '">' + name + '</li>');
+  $list.append($item);
+}
+
 function handleData(peerId, data) {
   if(peerId === myId) {
     return;
   }
   switch(data.type) {
+    case 'name':
+      var $player = $('li#' + peerId);
+      $player.text(data.type);
+      break;
     case 'color':
-      console.log(data.value);
       setColor(cubes[peerId], data.value);
+      var $player = $('li#' + peerId);
+      var hashString = Math.round(data.value).toString(16);
+      $player.css('background-color', '#' + hashString);
       break;
     case 'position':
       cubes[peerId].position.set(data.value[0], data.value[1], data.value[2]);
-      cubes[peerId].rotation.set(data.value[3], data.value[4], data.value[5])
+      cubes[peerId].rotation.set(data.value[3], data.value[4], data.value[5]);
       break;
     default:
       console.log(peerId + ': ' + data);
@@ -163,17 +178,20 @@ function getIdsFromServer() {
       if(id != myId) {
         console.log("Player already in room: " + name + " (" + id + ")");
         peers.push(id);
+        addPlayerToList(id, name);
       }
     }
 
-    for(var i = 0; i < peers.length; i++) {
-      var id = peers[i];
-      var conn = peer.connect(id);
+    for(var j = 0; j < peers.length; j++) {
+      var peer_id = peers[j];
+      var conn = peer.connect(peer_id);
       connections.push(conn);
-      cubes[id] = createCube();
-      conn.on('data', function(data) {
-        handleData(id, data);
-      });
+      cubes[peer_id] = createCube();
+      (function(idCopy, connCopy) {
+        connCopy.on('data', function(data) {
+          handleData(idCopy, data);
+        });
+      }(id, conn));
     }
     //displayText("Got " + peers.length + " peers... ");
     setColor(cube, myColor);
@@ -199,6 +217,7 @@ function render() {
 
     if(counter % 100 === 0) {
       broadcast({type: 'color', value: myColor});
+      broadcast({type: 'name', value: myName});
     }
   }
   counter++;
@@ -222,7 +241,7 @@ function render() {
   if(speed > MAX_SPEED)
     speed = MAX_SPEED;
   if(speed < -MAX_SPEED)
-    speed = -MAX_SPEED
+    speed = -MAX_SPEED;
 
   cube.translateZ(-speed);
 
@@ -241,9 +260,9 @@ function checkCollision() {
     var collisionResults = ray.intersectObjects( checkpoints );
     if ( collisionResults.length > 0 && collisionResults.length < 5 && collisionResults[0].distance < directionVector.length() )
     {
-      console.log(collisionResults);
         for(var i = 0; i < collisionResults.length; i++) {
-          setColor(collisionResults[i].object, 0x00FF00);
+          setColor(collisionResults[i].object, myColor);
+          audio_enable.play();
         }
     }
   }
