@@ -1,4 +1,4 @@
-var WIDTH, HEIGHT, scene, renderer, camera, cube, plane;
+var WIDTH, HEIGHT, scene, renderer, camera, cube, plane, controls;
 var stats;
 var keys = [];
 var cubes = [];
@@ -12,6 +12,20 @@ var defaultGeometry = new THREE.CubeGeometry(2, CUBE_HEIGHT, 2);
 
 var audio_enable = new Audio('enable.mp3');
 
+var clock = new THREE.Clock();
+
+function fullscreen() {
+  if (container.requestFullscreen) {
+    container.requestFullscreen();
+  } else if (container.msRequestFullscreen) {
+    container.msRequestFullscreen();
+  } else if (container.mozRequestFullScreen) {
+    container.mozRequestFullScreen();
+  } else if (container.webkitRequestFullscreen) {
+    container.webkitRequestFullscreen();
+  }
+}
+
 function setup() {
   WIDTH  = window.innerWidth;
   HEIGHT = window.innerHeight;
@@ -20,10 +34,40 @@ function setup() {
 
   renderer = new THREE.WebGLRenderer({ antialias: true });
   renderer.setSize(WIDTH, HEIGHT);
+  element = renderer.domElement;
+
+  effect = new THREE.StereoEffect( renderer );
+  effect.eyeSeparation = 1;
+  effect.setSize( window.innerWidth, window.innerHeight );
+
 
   camera = new THREE.PerspectiveCamera(70, WIDTH / HEIGHT, 1, 500);
   camera.position.set(0, 2.5, 5);
   camera.lookAt(scene.position);
+
+  controls = new THREE.OrbitControls(camera, element);
+  controls.target.set(
+    camera.position.x + 0.15,
+    camera.position.y,
+    camera.position.z
+  );
+  controls.noPan = true;
+  controls.noZoom = true;
+
+  function setOrientationControls(e) {
+    if (!e.alpha) {
+      return;
+    }
+
+    controls = new THREE.DeviceOrientationControls(camera, true);
+    controls.connect();
+    controls.update();
+
+    element.addEventListener('click', fullscreen, false);
+
+    window.removeEventListener('deviceorientation', setOrientationControls, true);
+  }
+  window.addEventListener('deviceorientation', setOrientationControls, true);
 
   myColor = Math.random() * 0xffffff;
   cube = new THREE.Mesh(defaultGeometry, defaultMaterial);
@@ -35,7 +79,7 @@ function setup() {
   var worldWidth = 100;
   var worldDepth = 100;
 
-  for(var i = 0; i < 5; i++) {
+  for(var i = 0; i < 100; i++) {
     var c = new THREE.Mesh(defaultGeometry, defaultMaterial);
     c.scale.set(5, 5, 5);
     setColor(c, Math.random() * 0xffffff);
@@ -43,6 +87,8 @@ function setup() {
     scene.add(c);
     checkpoints.push(c);
   }
+
+  cube.lookAt(checkpoints[checkpoints.length - 1]);
 
   //data = generateHeight( worldWidth, worldDepth );
 
@@ -207,11 +253,16 @@ function broadcast(msg) {
 
 var counter = 0;
 
-var speed = 0;
+var speed = 0.3;
 var MAX_SPEED = 1;
 
 function render() {
   window.requestAnimationFrame(render);
+
+  var dt = clock.getDelta();
+
+  controls.update(dt);
+
   if(counter % 10 === 0) {
     broadcast({type: 'position', value: [cube.position.x, cube.position.y, cube.position.z, cube.rotation.x, cube.rotation.y, cube.rotation.z]});
 
@@ -245,7 +296,7 @@ function render() {
 
   cube.translateZ(-speed);
 
-  renderer.render(scene, camera);
+  effect.render(scene, camera);
 
   stats.end();
 }
