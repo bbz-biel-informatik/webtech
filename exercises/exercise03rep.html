@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <meta charset="UTF-8">
+</head>
+<xmp theme="united" style="display:none;">
+
+# Übungen Datentypen &amp; Variablen
+
+## Aufgaben
+
+### Zeitrechner
+
+* Schreibe ein Programm, dem du mit `prompt()` eine Zeitdauer in Sekunden
+eingeben kannst, das dir die Dauer in Stunden umrechnet. Eine Eingabe von `7200`
+soll als Resultat `2` geben.
+
+### Temperaturrechner
+
+* Schreibe ein Programm, dem du eine Temperatur in Grad Fahrenheit geben kannst,
+die es in Grad Celsius umrechnet. [Link zur Formel](http://www.metric-conversions.org/de/temperatur/fahrenheit-in-celsius.htm)
+
+### Fläche eines Dreiecks
+
+* Schreibe ein Programm, dem du die Breite und die Höhe eines beliebigen Dreiecks
+geben kannst, so dass es die Fläche berechnet (Erinnerung: `A = 0.5 * b * h`)
+
+### Proben-Notenrechner
+
+* Die Note in einer Probe wird meist mit der folgenden Formel berechnet: `(<Erreichte Punkte> / <Max Punkte>) * 5 + 1`.
+  Schreibe ein Programm, dem du sowohl die maximale Punktzahl als auch die erreichte Punktzahl eingeben kannst,
+  so dass es dir die erreichte Note berechnet.
+
+# Übungen Bedingungen
+
+## Zusammenfassung
+
+```js
+var a = 26;
+if(a > 18 || a < 100) {
+  alert("Du musst arbeiten");
+}
+```
+
+## Aufgaben
+
+### Grösste Zahl
+
+* Schreibe ein Programm, das dich nach 3 Zahlen fragt, und dann die grösste dieser Zahlen anzeigt.
+
+### Ziffern zählen
+
+* Schreibe ein Programm, das dich nach einer Zahl fragt, und dann die Anzahl Ziffern berechnet (es reicht wenn es bis 5 Stellen unterstützt).
+
+### Teilbarkeit
+
+* Schreibe ein Programm, das dich nach einer Zahl fragt und dann anzeigt, ob sie durch 3 teilbar ist
+(Ausabe: `"durch 3 teilbar"`) durch 5 (Ausabe: `"durch 5 teilbar"`) oder durch beide (`"beide"`).
+
+### negativ, null, positiv
+
+* Schreibe ein Programm, das dich nach einer Zahl fragt und dann anzeigt, ob die Zahl negativ, null,
+oder positiv ist (Ausgabe: "negativ", "null", oder "positiv").
+
+### Vokal/Konsonant
+
+* Schreibe ein Programm, das dich nach einem Buchstaben fragt und dann anzeigt, ob es ein Vokal oder ein Konsonant ist.
+
+### Wochentag
+
+* Schreibe ein Programm, das dich nach einer Zahl fragt und dann den entsprechenden Wochentag anzeigt (1 = Montag, 2 = Dienstag usw.)
+
+# Übungen Schleifen
+
+## Zusammenfassung
+
+```js
+for(var i = 1; i < 10; i = i + 1) {
+  alert(i);
+}
+```
+
+## Aufgaben
+
+### Summen
+
+  * Schreibe ein Programm, das die Summe aller Zahlen von 1 bis 100 berechnet und anzeigt (1 + 2 + 3 + ... + 100)
+  * Ändere das Programm so, dass du eine Obergrenze eingeben kannst. Wenn du 23 eingibst, soll das Programm nur
+  noch die Zahlen bis und mit 23 addieren.
+  * Ändere das Programm so ab, dass es nicht bei 1, sondern bei 10 beginnt.
+
+### Treppe
+
+* Schreibe ein Programm, das das folgende Muster in die Konsole schreibt (mit `console.log(x)`):
+
+
+    #
+    ##
+    ###
+    ####
+    #####
+
+
+### Multiplikationstabelle
+
+  * Schreibe ein Programm, das eine Multiplikationstabelle in die Konsole schreibt in der Form
+
+
+    1 2 3 4 5 6 7 8 9 10
+    2 4 6 8 10 12 14 16 18 20
+    3 6 9 12 15 18 21 24 27 30
+    ...
+
+# Übungen Schleifen &amp; Bedingungen
+
+## Zusammenfassung
+
+## Aufgaben
+
+### Gerade Zahlen
+
+* Schreibe ein Programm, das nacheinander alle geraden Zahlen zwischen 0 und 100 in der Konsole anzeigt (`console.log(x)`).
+
+### Summe der Dreierreihe
+
+* Schreibe ein Programm, das die Summer der Dreierreihe bis 100 berechnet (3 + 6 + 9 + ... + 99)
+* Ändere das Programm so, dass es dich nach einer Obergrenze fragt, und die Summe nur bis dorthin berechnet (für 28: 3 + 6 + 9 + ... + 27)
+
+### Zahl raten
+
+* Schreibe ein Programm, das zufällig eine Zahl zwischen 0 und 100 generiert (`var zahl = Math.random() * 100`).
+Danach soll es dich nach einer Zahl fragen, und dir sagen, ob du zu tief, zu hoch oder richtig geschätzt hast.
+
+### Würfel
+
+* Schreibe ein Programm, das wie oben 10 Zufallszahlen zwischen 1 und 6 generiert
+(`var zahl = Math.random() * 5 + 1`) und so einen Würfelwurf simuliert. Es soll dann
+für die 10 Würfe a) die tiefste Zahl, b) die höchste Zahl und c) den Durchschnitt anzeigen.
+
+</xmp>
+
+<script src="http://strapdownjs.com/v/0.2/strapdown.js"></script>
+</html>
