@@ -134,7 +134,7 @@ wird wiederholt, solange die Bedingung wahr ist (d.h. die Variable `i` zählt vo
 Rechnet den **Rest** der Division aus!
 
 * `12%5` gibt 2 (12 / 5 = 2 Rest *2*)
-* `12%6` gibt 0 (12 / 6 = 2 Rest *2*)
+* `12%6` gibt 0 (12 / 6 = 2 Rest *0*)
 
 Zum Testen, ob eine Zahl gerade oder ungerade ist (oder: durch 2 teilbar)
 
