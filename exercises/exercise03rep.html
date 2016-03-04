@@ -131,6 +131,249 @@ Danach soll es dich nach einer Zahl fragen, und dir sagen, ob du zu tief, zu hoc
 (`var zahl = Math.random() * 5 + 1`) und so einen Würfelwurf simuliert. Es soll dann
 für die 10 Würfe a) die tiefste Zahl, b) die höchste Zahl und c) den Durchschnitt anzeigen.
 
+
+# Lösungen
+
+### Zeitrechner
+
+```js
+var a = prompt("Zeitdauer?")
+var b = Number(a);
+alert(b / 3600);
+```
+
+### Temperaturrechner
+
+```js
+var a = prompt("Temperatur?")
+var b = Number(a);
+var f = (b - 32) / 1.8
+alert(f);
+```
+
+### Dreieck
+
+```js
+var b = prompt("Breite?")
+var h = prompt("Höhe?")
+var a = 0.5 * Number(b) * Number(h)
+alert(a);
+```
+
+### Noten
+
+```js
+var e = prompt("Erreicht?")
+var m = prompt("Max?")
+var note = Number(e) / Number(max) * 5 + 1
+alert(note);
+```
+
+### Grösste Zahl
+
+```js
+var a = prompt("erste Zahl?")
+a = Number(a)
+var b = prompt("zweite Zahl?")
+b = Number(b)
+var c = prompt("dritte Zahl?")
+c = Number(c)
+if(a > b && a > c) {
+  alert(a);
+} else if(b > c && b > a) {
+  alert(b);
+} else if(c > b && c > a) {
+  alert(c);
+}
+```
+
+### Ziffern
+
+```js
+var a = prompt("Zahl?")
+alert(a.length);
+
+// oder
+
+if(a >= 0 && a <= 9) {
+  alert(1);
+}
+if(a >= 10 && a <= 99) {
+  alert(2);
+}
+if(a >= 100 && a <= 999) {
+  alert(3);
+}
+if(a >= 1000 && a <= 9999) {
+  alert(4);
+}
+if(a >= 10000 && a <= 99999) {
+  alert(5);
+}
+```
+
+### Teilbarkeit
+
+```js
+var a = prompt("Zahl?")
+a = Number(a)
+if(a % 3 == 0 && a % 5 == 0) {
+  alert("beide")
+} else if(a % 3 == 0) {
+  alert("durch 3");
+} else if(a % 5 == 0) {
+  alert("durch 5");
+}
+```
+
+### Negativ/null/positiv
+
+```js
+var a = prompt("Zahl?")
+a = Number(a)
+if(a == 0) {
+  alert("null")
+} else if(a < 0) {
+  alert("negativ");
+} else if(a > 0) {
+  alert("positiv");
+}
+```
+
+### Vokal/Konsonant
+
+```js
+var a = prompt("Buchstabe?")
+if(a == 'a' || a == 'e' || a == 'i' || a == 'o' || a == 'u') {
+  alert("Vokal")
+} else {
+  alert("Konsonant");
+}
+```
+
+### Summe 1
+
+```js
+var summe = 0;
+for(var i = 1; i <= 100; i = i + 1) {
+  summe = summe + i;
+}
+alert(summe);
+```
+
+### Summe 2
+
+```js
+var grenze = prompt("Obergrenze?")
+var summe = 0;
+for(var i = 1; i <= Number(grenze); i = i + 1) {
+  summe = summe + i;
+}
+alert(summe);
+```
+
+### Summe 3
+
+```js
+var summe = 0;
+for(var i = 10; i <= 100; i = i + 1) {
+  summe = summe + i;
+}
+alert(summe);
+```
+
+### Treppe
+
+```js
+for(var i = 1; i <= 10; i = i + 1) {
+  var text = ''
+  for(var j = 1; j <= i; j = j + 1) {
+    text = text + '#'
+  }
+  console.log(text)
+}
+
+// oder
+
+for(var t = '#'; t != '###########'; t = t + '#') {
+  console.log(t)
+}
+```
+
+## Multiplikation
+
+```js
+for(var i = 1; i <= 10; i = i + 1) {
+  var text = ''
+  for(var j = 1; j <= 10; j = j + 1) {
+    text = text + (i * j) + ' '
+  }
+  console.log(text)
+}
+```
+
+### Gerade Zahlen
+
+```js
+for(var i = 1; i <= 100; i = i + 1) {
+  if(i % 2 == 0) {
+    console.log(i)
+  }
+}
+// oder (mit Zweierschritten!)
+
+for(var i = 0; i <= 100; i = i + 2) {
+  console.log(i)
+}
+```
+
+### Summe Dreierreihe
+
+```js
+var obergrenze = prompt("Grenze?")
+var summe = 0;
+for(var i = 3; i <= Number(obergrenze); i = i + 3) {
+  summe = summe + i;
+}
+alert(summe);
+```
+
+### Zahl raten
+
+```js
+var zahl = Math.random() * 100;
+var a = prompt("Zahl raten")
+a = Number(a)
+if(zahl == a) {
+  alert("richtig!")
+} else if(a < zahl) {
+  alert("zu tief")
+} else if(a > zahl) {
+  alert("zu hoch")
+}
+```
+
+### Würfel
+
+```js
+var summe = 0;
+var max = 0;
+var min = 99999
+for(var i = 1; i <= 10; i = i + 1) {
+  var z = Math.random() * 5 + 1
+  summe += z
+  if(z > max) {
+    max = z
+  }
+  if(z < min) {
+    min = z
+  }
+}
+alert(min)
+alert(max)
+alert(summe / 6)
+```
+
 </xmp>
 
 <script src="http://strapdownjs.com/v/0.2/strapdown.js"></script>
