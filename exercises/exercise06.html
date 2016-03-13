@@ -7,6 +7,10 @@
 
 # Events
 
+## Aufgabe 0
+
+Schreibe Code, der beim Klick auf die Überschrift deiner Website diese Überschrift umfärbt.
+
 ## Aufgabe 1
 
 Schreibe Code, der beim Klicken auf ein Bild dieses Bild vergrössert. Ein erneuter Klick soll das Bild wieder verkleinern.
@@ -38,69 +42,6 @@ function färben(e) {
   e.stopPropagation();
 }
 ```
-
-
-## Lösungen
-
-### Aufgabe 1
-```js
-var image = document.querySelector('img')
-image.addEventListener('click', scale);
-
-var large = false;
-
-function scale() {
-  if(large) {
-    image.style.width = '';
-    large = false;
-  }
-  else {
-    image.style.width = '80%';
-    large = true;
-  }
-}
-```
-
-### Aufgabe 2
-```js
-<&nbsp;form>
-  <&nbsp;input type="text"/> Benutzername
-  <&nbsp;input type="text"/> Email
-  <&nbsp;input type="submit"/>
-<&nbsp;/form>
-
-var submit = document.querySelector("input[type=submit]");
-
-submit.addEventListener('mouseover', move);
-
-function move() {
-  submit.style.position = 'absolute';
-  submit.style.top = Math.random() * 200 + 'px';
-  submit.style.left = Math.random() * 200 + 'px';
-  console.log(submit.style.left + ' ' + submit.style.top)
-}
-```
-### Aufgabe 3
-```js
-
-var all = document.querySelectorAll("*");
-
-for(var i = 0; i < all.length; i++) {
-	all[i].addEventListener('mouseover', changeColor);
-    all[i].addEventListener('mouseout', changeColorBack);
-}
-
-function changeColor(e) {
-  this.style.border = '1px solid red';
-  e.stopPropagation();
-}
-
-function changeColorBack(e) {
-  this.style.border = 'none';
-  e.stopPropagation();
-}
-```
-
 
 
 </xmp>
