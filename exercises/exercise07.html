@@ -7,6 +7,38 @@
 
 # Elemente generieren und löschen
 
+## Divs
+
+Baue auf deiner Website ein Knopf ein, der bei jedem Klick ein rotes, quadratisches Div generiert und einfügt
+
+## Bilder
+
+Ändere deinen Knopf so ab, dass er nicht ein div, sondern ein beliebiges Bild einfügt.
+
+## Schneesimulation
+
+Baue auf deiner Website eine Funktion ein, die Schneefall simuliert. Die Website soll dazu in kurzen Zeitabständen
+an einer zufälligen Position ein kleines weisses div generieren. Um Code zu wiederholen kannst du diesen Befehl nehmen:
+
+```
+    window.setInterval(function() {
+
+      var x = document.createElement('div')
+      ....
+
+    }, 50)
+
+```
+
+Der Code wird so alle 50 ms (20 Mal pro Sekunde) ausgeführt. Um Elemente zufällig auf der Seite zu positionieren kannst
+du den folgenden Code verwenden (wenn x dein Div ist):
+
+```
+    x.style.position = 'absolute'
+    x.style.left = Math.random() * 100 + '%'
+    x.style.top = Math.random() * 100 + '%'
+```
+
 ## Websitevorschau
 
 Versuche eine Website zu bauen, die mehrere Links zu externen Seiten und einen einzigen iframe beinhaltet. Sobald ein Besucher auf einen Link klickt, soll dieser nicht geöffnet, sondern im iframe angezeigt werden. Um eine Website in einem iframe anzuzeigen, kannst du dessen `src`-Attribut auf die Website-URL setzen.
