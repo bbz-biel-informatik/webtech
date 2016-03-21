@@ -17,20 +17,8 @@ Baue auf deiner Website ein Knopf ein, der bei jedem Klick ein rotes, quadratisc
 
 ## Schneesimulation
 
-Baue auf deiner Website eine Funktion ein, die Schneefall simuliert. Die Website soll dazu in kurzen Zeitabständen
-an einer zufälligen Position ein kleines weisses div generieren. Um Code zu wiederholen kannst du diesen Befehl nehmen:
-
-```
-    window.setInterval(function() {
-
-      var x = document.createElement('div')
-      ....
-
-    }, 50)
-
-```
-
-Der Code wird so alle 50 ms (20 Mal pro Sekunde) ausgeführt. Um Elemente zufällig auf der Seite zu positionieren kannst
+Baue auf deiner Website eine Funktion ein, die Schneefall simuliert. Die Website soll dazu bei jedem Knopfdruck
+an einer zufälligen Position ein kleines weisses div generieren. Um Elemente zufällig auf der Seite zu positionieren kannst
 du den folgenden Code verwenden (wenn x dein Div ist):
 
 ```
@@ -38,6 +26,20 @@ du den folgenden Code verwenden (wenn x dein Div ist):
     x.style.left = Math.random() * 100 + '%'
     x.style.top = Math.random() * 100 + '%'
 ```
+
+## Schnee 2
+
+Schreibe den Code zur Schneesimulation so um, dass der Schnee automatisch (ohne Klick) erscheint. Um Code zu
+wiederholen kannst du diesen Befehl nehmen:
+
+    window.setInterval(function() {
+
+      var x = document.createElement('div')
+      ....
+
+    }, 50)
+
+Der Code wird so alle 50 ms (20 Mal pro Sekunde) ausgeführt.
 
 ## Websitevorschau
 
