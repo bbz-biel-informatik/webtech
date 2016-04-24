@@ -9,15 +9,43 @@
 
 Schreibe eine Website, die drei grosse Überschriften hat und dazwischen ein wenig Text. Füge dann am oberen Rand der Seite 3 Schaltflächen hinzu, die bei einem Klick bewirken, dass der Browser zur entsprechenden Überschrift springt. <a href="sample08.html">Vorlage herunterladen</a>
 
-Um die Position eines bestehenden Elements herauszufinden, kannst du das Element auswählen: `var x = document.querySelector('#p1')` und dann die Y-Position herausfinden: `x.offsetTop`.
+Um die Position eines bestehenden Elements herauszufinden, kannst du das Element auswählen: `var x = document.querySelector('#p1')` und dann die Y-Position herausfinden: `var y = x.offsetTop`.
 
-# Sound
+# Namen speichern
 
-Baue am unteren Rand deiner Website einen Musikplayer mit 5 Liedern ein. Der Player soll SChaltflächen zum Abspielen, Pausieren und Überspringen des aktuellen Lieds haben. Der einfachste Weg ist, ein Array mit den Liedern zu speichern, in einer separaten Variable die aktuelle Position in dieser Liste zu speichern und so den Player zu steuern.
+Baue auf deiner Website eine Funktion ein, die den Besucher nach seinem Namen fragt und diesen
+im lokalen Speicher speichert. Bei den folgenden Besuchen soll die Website dann nicht mehr nach
+dem Namen fragen, sondern den Text "Hallo" sowie den Namen in einer Textbox anzeigen. Um zu
+testen, ob der Name schon gespeichert ist, kannst du den folgenden Code verwenden:
 
-# Position
+```js
+var name = localStorage.getItem('name');
+if(name) {
+  // name ist gespeichert, anzeigen...
+} else {
+  // name nicht gespeichert, abfragen...
+}
+```
 
-Baue auf einer Website einen Knopf ein, der die Position des Besuchers abruft. Die Website soll dann in einem Nachrichtenfenster die ungefähre Distanz nach Bern anzeigen. Du kannst [diese Formel](http://stackoverflow.com/a/27943/1641070) verwenden. Die Koordinaten von Bern sind etwa  46.9479222, 7.4446085.
+Bonus: zeige den Text oben auf der Seite in einem Titel an (`innerHTML`, siehe letzte Woche).
+
+
+# Scrollposition speichern
+
+Baue in deine Website eine Funktion ein, die die aktuelle Scroll-Position speichert. Wenn der
+Besucher die Website verlässt und später wieder besucht, soll die Website automatisch zur vorherigen
+Position springen. Achtung: die Website muss relativ lang sein, damit man sieht, ob es funktioniert.
+
+Um jeweils die aktuelle Scrollposition zu erhalten, kannst du den folgenden Code verwenden:
+
+```js
+window.addEventListener('scroll', function(e) {
+  var y = window.scrollY;
+  // weiterer Code
+});
+```
+
+Du kannst den Code von Aufgabe 2 verwenden zum Testen, ob schon ein Scrollwert gespeichert ist.
 
 </xmp>
 
