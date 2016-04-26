@@ -29,6 +29,12 @@ for(var i = 1; i < 10; i = i + 1) {
   * "FizzBuzz" anzeigt, wenn die Zahl durch 3 und 5 teilbar ist
   * Die Zahl selber anzeigt, wenn sie weder durch 3 noch durch 5 teilbar ist
 
+Um zu testen, ob Zahl `a` durch die Zahl `b` teilbar ist, kannst du den Modulo-Operator `%` verwenden. Dieser
+Operator berechnet den Rest einer Division. `5 % 3` ergibt beispielsweise 2, weil der Rest von `5 / 3` gerade 2 ist.
+Wenn der Rest von `a % b` gerade 0 ist, ist a durch b teilbar (z.B. `8 % 4` gibt 0).
+
+Das heisst, wenn `if(x % 3 == 0)`, dann ist `x` durch 3 teilbar.
+
 ### Summe
 
 * Schreibe ein Programm, das die Summe der ersten 20 Zahlen berechnet (1 + 2 + ... + 20). Zur Kontrolle: das Resultat sollte 210 sein.
