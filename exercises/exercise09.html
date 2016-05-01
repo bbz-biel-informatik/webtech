@@ -5,59 +5,47 @@
 </head>
 <xmp theme="united" style="display:none;">
 
-# Position
 
-Baue auf einer Website einen Knopf ein, der die Position des Besuchers abruft. Die Website soll dann in einem Nachrichtenfenster die ungefähre Distanz nach Bern anzeigen. Du kannst [diese Formel](http://stackoverflow.com/a/27943/1641070) verwenden. Die Koordinaten von Bern sind etwa  46.9479222, 7.4446085.
+# Uhr
 
-# Lokaler Speicher
-
-<a href="sample09.html">Hier</a> findest du ein einfaches Formular für eine Todo-Liste. Deine Aufgabe ist, neu eingetragene Aufgaben im lokalen Speicher des Browsers zu speichern, damit sie auch nach dem Neuladen der Seite noch bestehen.
-
-Ein Teil des Codes ist schon vorbereitet. Die Funktion `handleInput` wird aufgerufen, wenn du den "Absenden"-Knopf drückst und zeigt den neuen Eintrag in einem Nachrichtenfenster an.
-
-Am besten teilst du die Aufgabe auf und gehst nach den folgenden Schritten vor:
-
-
-* Anstatt neue Werte wie im Beispiel mit `alert()` anzuzeigen, sollst du sie in einem ersten Schritt im Browser speichern. Du kannst kontrollieren, ob das Speichern geklappt hat, indem du die Entwicklerkonsole öffnest und auf den Tab "Speicher" klickst.
-* Wenn das funktioniert, sollen die neu eingetragenen Einträge nun auch noch in der Liste unter dem Formular angezeigt werden. Erweitere dazu die `handleInput`-Funktion weiter.
-* Wenn auch das funktioniert soll die Website nun auch nach dem Neuladen die schon im Speicher bestehenden Einträge laden und in der Liste anzeigen.
-
-# Lösungen
-
-## Position
+Baue auf deiner Website eine Uhr ein. Alle 10 Sekunden soll dein Code die aktuelle Uhrzeit
+abrufen und auf der Website anzeigen. Du kannst den folgenden Code verwenden, um die
+Uhrzeit herauszufinden:
 
 ```js
-  navigator.geolocation.getCurrentPosition(function(position) {
-    var lat = position.coords.latitude;
-    var lng = position.coords.longitude;
-    
-    
-    // Distanz zwischen Koordinaten von http://stackoverflow.com/a/27943/1641070
-    
-    function getDistanceFromLatLonInKm(lat1,lon1,lat2,lon2) {
-      var R = 6371; // Radius of the earth in km
-      var dLat = deg2rad(lat2-lat1);  // deg2rad below
-      var dLon = deg2rad(lon2-lon1); 
-      var a = 
-        Math.sin(dLat/2) * Math.sin(dLat/2) +
-        Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) * 
-        Math.sin(dLon/2) * Math.sin(dLon/2)
-        ; 
-      var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
-      var d = R * c; // Distance in km
-      return d;
-    }
-
-    function deg2rad(deg) {
-      return deg * (Math.PI/180)
-    }
-    
-    // lat und lng sind die Koordinaten des Besuchers
-    // 46.9... und 7.4... sind die Koordinaten von Bern
-    
-    alert(getDistanceFromLatLonInKm(lat, lng, 46.9479222, 7.4446085));
-  });
+var zeit = new Date();
+var stunden = zeit.getHours();
+var minuten = zeit.getMinutes();
 ```
+
+In den Variablen `stunden` und `minuten` ist dann die aktuelle Stunde bzw. Minute gespeichert.
+
+Bonus: zeige auch noch die Sekunden an!
+
+# Bild
+
+Programmiere deine Website so, dass das erste Bild deiner Website automatisch nach rechts
+wandert. Halte die Animation an, sobald das Bild am rechten Rand angekommen ist.
+
+Tipp: Schau in den Folien das erste Beispiel an, und passe es so an, dass nicht die Breite,
+sondern z.B. der linke Margin geändert wird.
+
+# Scroll-Animation
+
+Baue die Scrollfunktion deiner Website so um, dass das Scrollen animiert ist. Gehe am besten so vor:
+
+* Speichere die Position des Ziel-Elementes: `var ende = document.querySelector('#p1').offsetTop;`
+* Schreibe eine Animation wie in den Folien
+* Stoppe die Animation, wenn `ende` erreicht ist
+
+# Schneefall
+
+Simuliere Schneefall auf deiner Website. Generiere dazu an zufälligen Positionen am
+oberen Rand der Website kleine divs, die dann herunterfallen.
+
+Verwende den folgenden Code, wenn du nicht weiterkommst: https://jsfiddle.net/e8vkkb9j. Er generiert
+den Schnee, du musst ihn nur noch fallen lassen.
+Verwende weiteres CSS und ändere die Intervalle, damit der Schnee realistischer aussieht.
 
 </xmp>
 
