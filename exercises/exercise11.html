@@ -14,14 +14,29 @@ soll zur entsprechenden Überschrift springen (z.B. '3' springt zur 3. Überschr
 
 Füge auch für Aktionen, die bishermit einem Button gestartet wurden, noch Tastaturbefehle hinzu.
 
-## Akkordeon
+## Benachrichtigungen
 
-Baue auf deiner Website ein Akkordeon-Menu ein. Style das Menu dann mit CSS, damit es
-einigermassen brauchbar aussieht.
+Baue auf deiner Website einen Timer ein, der dich nach 10 Sekunden Inaktivität fragt, ob du
+noch wach seist. Du kannst den folgenden Code als Grundgerüst verwenden:
 
-## Tabs
+```js
+// nach 10 Sekunden Nachricht anzeigen
+var timer = window.setTimeout(nachricht, 10000);
 
-Baue dein Akkordeon so um, dass es aus Tabs anstatt aus ausklappenden Elementen besteht.
+// beim Scrollen und Maus-bewegen Timer neu starten
+document.addEventListener('scroll', resetTimer);
+document.addEventListener('mousemove', resetTimer);
+
+function resetTimer() {
+  // aktuellen Timer löschen und neu starten
+	window.clearTimeout(timer);
+  timer = window.setTimeout(nachricht, 10000);
+}
+
+function nachricht() {
+  // ... dein Code
+}
+```
 
 </xmp>
 
