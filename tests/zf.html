@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <meta charset="UTF-8">
+</head>
+<xmp theme="united" style="display:none;">
+
+## Zusammenfassung Test 2 7.6.16
+
+### Ausgangslage
+
+```html
+<h1 id="bla">Titel</h1>
+<p>Test test tst</p>
+<p>Test2 test2 test2</p>
+<p>Test3 test3 test3</p>
+<p>Test4 test4 test4</p>
+```
+
+### Einzelnes Element auswählen und verändern
+
+```js
+var t = document.querySelector('#bla');
+t.style.backgroundColor = 'blue';
+t.style.fontSize = '24px';
+t.style.color = 'red';
+t.style.marginTop = '12px';
+```
+
+### Event-Handler hinzufügen
+
+```js
+var t = document.querySelector('#bla');
+t.addEventListener('click', nachricht);
+
+function nachricht() {
+  alert("hallo");
+  t.style.color = red;
+}
+```
+
+### Mehrere Elemente verändern
+
+```js
+var t = document.querySelectorAll('p');
+for(var i = 0; i < t.length; i = i + 1) {
+  if(i % 2 == 0) {
+    t[i].style.color = 'red';
+  } else {
+    t[i].style.color = 'blue';
+  }
+}
+```
+
+
+</xmp>
+
+<script src="http://strapdownjs.com/v/0.2/strapdown.js"></script>
+</html>
