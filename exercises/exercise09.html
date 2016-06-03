@@ -47,6 +47,69 @@ Verwende den folgenden Code, wenn du nicht weiterkommst: https://jsfiddle.net/e8
 den Schnee, du musst ihn nur noch fallen lassen.
 Verwende weiteres CSS und ändere die Intervalle, damit der Schnee realistischer aussieht.
 
+# Lösungen
+
+## Uhr
+
+```js
+window.setInterval(uhr, 100);
+
+function uhr() {
+  var zeit = new Date();
+  var stunden = zeit.getHours();
+  var minuten = zeit.getMinutes();
+  var sekunden = zeit.getSeconds();
+
+  var u = document.querySelector('#uhr');
+  u.innerHTML = stunden + ':' + minuten + ':' + sekunden;
+}
+```
+
+## Bild
+
+```js
+var bild = document.querySelector('img');
+
+window.setInterval(verschieben, 16);
+
+var abstand = 0;
+
+function verschieben() {
+  abstand = abstand + 1;
+  bild.style.marginLeft = abstand + 'px';
+}
+```
+
+## Scrollen
+
+```js
+var link1 = document.querySelector('#asdf');
+link1.addEventListener('click', uberschrift1);
+
+var position = 0;
+
+var x = document.querySelector('#p1')
+var ende = x.offsetTop;
+
+function uberschrift1() {
+  animation = window.setInterval(scrollen, 16);
+}
+
+function scrollen() {
+  if(position < ende) {
+    position = position + 1;
+  } else {
+    clearInterval(animation);
+  }
+  window.scrollTo(0, position)
+}
+...
+```
+
+## Schneefall
+
+[Lösung](https://jsfiddle.net/e8vkkb9j/6/)
+
 </xmp>
 
 <script src="http://strapdownjs.com/v/0.2/strapdown.js"></script>

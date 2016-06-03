@@ -48,6 +48,25 @@ ein, die in der Playlist hin- und herspringen. Du kannst mehr oder weniger den g
 für die Diashow verwenden. Pass auf, dass die Knöpfe andere IDs oder andere Klassen haben als in
 der Diashow.
 
+# Lösungen
+
+## Klickzähler
+
+```js
+var ziele = document.querySelectorAll('h1, img, p');
+for(var i = 0; i < ziele.length; i = i + 1) {
+  ziele[i].addEventListener('click', zaehler);
+}
+
+var counter = 0;
+
+function zaehler() {
+  counter = counter + 1;
+  var textFeld = document.querySelector('input');
+  textFeld.value = counter;
+}
+```
+
 </xmp>
 
 <script src="http://strapdownjs.com/v/0.2/strapdown.js"></script>

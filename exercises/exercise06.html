@@ -43,6 +43,63 @@ function färben(e) {
 }
 ```
 
+# Lösungen
+
+## 0
+
+```js
+var h = document.querySelector('h1');
+h.addEventListener('click', rot);
+
+function rot() {
+  h.style.color = 'red';
+}
+```
+
+## 1
+
+```js
+var bild = document.querySelector('img');
+bild.addEventListener('click', gross);
+
+function gross() {
+  if(bild.style.width == '800px') {
+    bild.style.width = '200px';
+  } else {
+    bild.style.width = '800px';
+  }
+}
+```
+
+## 2
+
+```js
+var send = document.querySelector('input[type=submit]');
+send.addEventListener('mouseover', bewegen);
+
+function bewegen() {
+  var x = Math.random() * 800;
+  var y = Math.random() * 600;
+  send.style.position = 'absolute';
+  send.style.left = x + 'px';
+  send.style.top = y + 'px';
+}
+```
+
+## 3
+
+```js
+var alle = document.querySelectorAll('*');
+for(var i = 0; i < alle.length; i = i + 1) {
+  alle[i].addEventListener('mouseover', rot);
+}
+
+
+function rot(e) {
+  e.stopPropagation();
+  this.style.border = '1px solid red';
+}
+```
 
 </xmp>
 

@@ -47,6 +47,51 @@ window.addEventListener('scroll', function(e) {
 
 Du kannst den Code von Aufgabe 2 verwenden zum Testen, ob schon ein Scrollwert gespeichert ist.
 
+
+# Lösungen
+
+## Scrollen
+
+```js
+var link1 = document.querySelector('#asdf');
+link1.addEventListener('click', uberschrift1);
+
+function uberschrift1() {
+  var x = document.querySelector('#p1')
+  window.scrollTo(0, x.offsetTop);
+}
+
+...
+```
+
+## Namen
+
+```js
+var n = localStorage.getItem('name');
+if(n) {
+  alert(n);
+} else {
+  var name = prompt("Name?");
+  localStorage.setItem('name', name);
+}
+```
+
+## Scrollposition
+
+```js
+window.addEventListener('scroll', function(e) {
+  var y = window.scrollY;
+  localStorage.setItem('position', y);
+});
+
+var pos = localStorage.getItem('position');
+if(pos) {
+  window.scrollTo(0, pos);
+} else {
+  // nichts machen
+}
+```
+
 </xmp>
 
 <script src="http://strapdownjs.com/v/0.2/strapdown.js"></script>

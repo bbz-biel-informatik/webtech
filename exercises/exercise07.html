@@ -71,6 +71,68 @@ Baue eine Website, die eine Diashow beinhaltet. Die Diashow soll zum nächsten B
 
 ## Lösungen
 
+## Divs
+
+```js
+var knopf = document.querySelector('button');
+knopf.addEventListener('click', div);
+
+function div() {
+  var d = document.createElement('div');
+  d.style.backgroundColor = 'red';
+  d.style.width = '200px';
+  d.style.height = '200px';
+
+  var b = document.querySelector('body');
+  b.appendChild(d);
+}
+```
+
+## Bilder
+
+Siehe Lösung "divs"
+
+```js
+  d.setAttribute('src', 'http://example.com/meinbild.jpg');
+```
+
+## Schnee
+
+
+```js
+var knopf = document.querySelector('button');
+knopf.addEventListener('click', schnee);
+
+function schnee() {
+  var x = document.createElement('div');
+  x.innerHTML = '*';
+  x.style.position = 'absolute';
+  x.style.left = Math.random() * 100 + '%';
+  x.style.top = Math.random() * 100 + '%';
+
+  var b = document.querySelector('body');
+  b.appendChild(x);
+}
+```
+
+## Schnee 2
+
+```js
+// alle 50ms einmal den Befehl schnee ausführen
+window.setInterval(schnee, 50);
+
+function schnee() {
+  var x = document.createElement('div');
+  x.innerHTML = '*';
+  x.style.position = 'absolute';
+  x.style.left = Math.random() * 100 + '%';
+  x.style.top = Math.random() * 100 + '%';
+
+  var b = document.querySelector('body');
+  b.appendChild(x);
+}
+```
+
 * [Aufgabe Vorschau](http://jsfiddle.net/vh1ga7q4/)
 * [Aufgabe Navigation](http://jsfiddle.net/9vajbj4p/)
 * [Aufgabe Diashow](http://jsfiddle.net/4m8x2sz8/)
