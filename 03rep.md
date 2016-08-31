@@ -14,8 +14,8 @@
 
 ## Probe
 
-* In zwei Wochen (3.5.16), zweite Doppelstunde
-* Stoff: bis und mit 26.4.
+* In einer Woche (8.9.16), zweite Doppelstunde
+* Stoff: bis und mit 1.9.
 * Auf Papier
 * Aufgaben ähnlich wie Übungsaufgaben
 
