@@ -17,9 +17,19 @@ for(var i = 1; i < 10; i = i + 1) {
 
 ## Aufgaben
 
+### Zahlen
+
+* Schreibe ein Programm, das die ersten 10 Zahlen nacheinander anzeigt.
+
 ### Dreierreihe
 
-* Schreibe ein Programm, das die Zahlen der Dreierreihe anzeigt.
+* Schreibe ein Programm, das die Zahlen der Dreierreihe bis 42 anzeigt.
+
+### Beliebige Reihe
+
+* Schreibe ein Programm, das den Besucher nach einer Zahl fragt und dann diese
+Reihe anzeigt (z.B. Dreierreihe für Eingabe 3). Es soll die ersten 10 Zahlen der
+Reihe anzeigen.
 
 ### FizzBuzz
 
@@ -39,87 +49,32 @@ Das heisst, wenn `if(x % 3 == 0)`, dann ist `x` durch 3 teilbar.
 
 * Schreibe ein Programm, das die Summe der ersten 20 Zahlen berechnet (1 + 2 + ... + 20). Zur Kontrolle: das Resultat sollte 210 sein.
 
+### Summe 2
+
+* Verändere das vordere Programm so, dass du die Anzahl Zahlen, die addiert werden, über ein Prompt-Fenster
+eingeben kannst.
+
 ### Rückwärts
 
 * Schreibe ein Programm, das von 10 aus rückwärts bis Null zählt und jeweils die Zahlen anzeigt.
 
 ### Summe der Quadrate vs. Quadrat der Summe
 
-* Die Summe der Quadrate der ersten 10 natürlichen Zahlen ist 385 (1^2 + 2^2 + ... + 10^2). Das Quadrat der Summe der ersten
+* Die Summe der Quadrate der ersten 10 Zahlen ist 385 (1^2 + 2^2 + ... + 10^2). Das Quadrat der Summe der ersten
 10 natürlichen Zahlen ist 3025 (1 + 2 + ... + 10)^2. Finde diese beiden Zahlen für die ersten 100 natürlichen Zahlen.
 **Tipp**: Wenn du nicht 100 `alert()`-Fenster nacheinander öffnen willst, kannst du statt `alert(x)` auch
 `console.log(x)` verwenden. Der Wert, den du an `console.log()` übergibst, wird dann in der Konsole statt in einer
 Nachrichtenbox angezeigt.
 
-## Lösungen
+### Summe 3
 
-### Dreierreihe
+Schreibe ein Programm, das dich nach einer Zahl fragt und dich dann so viele male mit einem Prompt-Fenster nach
+weiteren Zahlen fragt und danach die Summe davon ausrechnet. Beispiel: Eingabe von 3 fragt nach 3 Zahlen und rechnet
+deren Summe aus.
 
-```js
-for(var i = 1; i <= 20; i = i + 3) {
-  alert(i);
-}
+### Multiplikationstabelle
 
-// ODER
-
-for(var i = 1; i <= 20; i = i + 1) {
-  alert(i * 3);
-}
-```
-
-### FizzBuzz
-
-```js
-for(var i = 1; i <= 20; i = i + 1) {
-  if(i % 3 == 0 && i % 5 == 0) {
-    alert("FizzBuzz");
-  } else if(i % 3 == 0) {
-    alert("Fizz");
-  } else if(i % 5 == 0) {
-    alert("Buzz");
-  } else {
-    alert(i);
-  }
-}
-```
-
-### Summe
-
-```js
-var summe = 0;
-for(var i = 1; i <= 20; i = i + 1) {
-  summe = summe + i;
-}
-alert(summe);
-```
-
-### Rückwärts
-
-```js
-for(var i = 10; i >= 0; i = i - 1) {
-  alert(i);
-}
-```
-
-### Summe der Quadrate vs. Quadrat der Summe
-
-```js
-var summe = 0;
-
-for(var i = 0; i < 100; i = i + 1) {
-  summe = summe + i;
-}
-
-alert("Quadrat der Summe: " + (summe * summe));
-
-var summe2 = 0;
-
-for(var i = 0; i < 100; i = i + 1) {
-  summe2 = summe2 + (i * i);        // entspricht i^2
-}
-
-alert("Summe der Quadrate: " + summe2);
-```
+Schreibe ein Programm, das in der Konsole eine Multiplikationstabelle anzeigt.
 
 </xmp>
 
