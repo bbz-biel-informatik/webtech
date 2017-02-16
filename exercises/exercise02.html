@@ -67,6 +67,134 @@ Tipp: um herauszufinden, ob eine Zahl durch eine andere teilbar ist, kannst du d
 
 * Schreibe ein Programm, das anzeigt, ob ein eingegebener Buchstabe ein Vokal (a,e,i,o,u) ist oder nicht.
 
+
+## Lösungen
+
+### Noten
+```js
+var note = prompt("Note?");
+if(note < 4) {
+  alert("ungenügend");
+} else {
+  alert("genügend");
+}
+```
+
+### Vorzeichen
+```js
+var zahl = prompt("Zahl?");
+if(zahl < 0) {
+  alert("negativ");
+} else if(zahl > 0) {
+  alert("positiv");
+} else {
+  alert("Null");
+}
+```
+
+### Passworttest
+```js
+var pw = prompt("Passwort?");
+if(pw.length >= 8) {
+  alert("sicher");
+} else {
+  alert("unsicher");
+}
+```
+
+### Wochentage
+```js
+var tag = prompt("Wochentag?");
+if(tag == 1) {
+  alert("Montag");
+} else if(tag == 2) {
+  alert("Dienstag");
+} else if(tag == 3) {
+  alert("Mittwoch");
+} else if(tag == 4) {
+  alert("Donnerstag");
+} else if(tag == 5) {
+  alert("Freitag");
+} else if(tag == 6) {
+  alert("Samstag");
+} else if(tag == 7) {
+  alert("Sonntag");
+} else {
+  alert("ungültig");
+}
+```
+
+### Tageszeit
+```js
+var stunde = prompt("Stunde?");
+if(stunde < 12) {
+  alert("Morgen");
+} else if (stunde < 13){
+  alert("Mittag");
+} else if (stunde < 17){
+  alert("Nachmittag");
+}  else if (stunde < 21){
+  alert("Abend");
+}
+```
+
+### Alterskontrolle
+```js
+var alter = prompt("Alter?");
+if(alter < 16) {
+  alert("Sirup");
+} else if (alter < 18){
+  alert("Bier");
+} else {
+  alert("Schnaps");
+}
+```
+
+### Schaltjahre
+```js
+var jahr = prompt("Jahr?");
+if(jahr % 4 != 0) {
+  alert("Normal");
+} else if(jahr % 100 != 0) {
+  alert("Schaltjahr");
+} else if(jahr % 400 != 0) {
+  alert("Normal");
+} else {
+  alert("Schaltjahr");
+}
+```
+
+### Zwei Zahlen
+
+```js
+var z1 = prompt('Zahl 1?')
+var z2 = prompt('Zahl 1?')
+
+var a = Number(z1)
+var b = Number(z2)
+
+if(a == b) {
+  alert('gleich')
+} else if(a < b) {
+  alert('Zahl1 ist kleiner als Zahl2')
+} else if(a > b) {
+  alert('Zahl1 ist grösser als Zahl2')
+}
+```
+
+### Vokale
+
+```js
+var buchstabe = prompt('Buchstabe eingeben')
+
+if(buchstabe == 'a' || buchstabe == 'e' || buchstabe == 'i'
+ || buchstabe == 'o' || buchstabe == 'u') {
+   alert('Vokal')
+ } else {
+   alert('Konsonant')
+ }
+```
+
 </xmp>
 
 <script src="http://strapdownjs.com/v/0.2/strapdown.js"></script>
