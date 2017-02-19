@@ -4,25 +4,6 @@
 
 
 
-## Ablauf
-
-* Infos zur Probe
-* Wiederholung Variablen/Bedingungen/Schleifen
-* Üben
-
-
-
-## Probe
-
-* In einer Woche (8.9.16), zweite Doppelstunde
-* Stoff: bis und mit 1.9.
-* Auf Papier
-* Aufgaben ähnlich wie Übungsaufgaben
-
-[Infos](tests/test01.html)
-
-
-
 ## Wiederholung
 
 
@@ -96,23 +77,6 @@ if(alter < 18) {
 }
 ```
 
-
-## Bedingungen 3
-
-Falls mehrere Bedingungen getestet werden sollen:
-
-```js
-var alter = prompt("Wie alt bist du?")
-if(alter > 18) {
-  alert("Du darfst autofahren")
-} else if(alter > 16) {
-  alert("Du darfst Roller fahren")
-} else if(alter > 14) {
-  alert("Du darfst Töffli fahren")
-} else {
-  alert("Velo.")
-}
-```
 
 
 ## Schleifen
