@@ -22,6 +22,7 @@ Bestimmen, was der PC damit machen kann, z.B.
 ```
 
 
+
 ## Eingebaute Befehle
 
 `alert()` zeigt ein Nachrichtenfenster an:
@@ -37,6 +38,7 @@ prompt("Wie ist dein Name?")
 ```
 
 
+
 ### Variablen
 
 Informationen werden in Variablen gespeichert:
@@ -50,6 +52,7 @@ und können über den Variablennamen wieder verwendet werden:
 ```js
 alert(name)
 ```
+
 
 
 ## Bedingungen
@@ -91,6 +94,7 @@ for(var i = 1; i <= alter; i = i + 1) {
 ```
 
 wird wiederholt, solange die Bedingung wahr ist (d.h. die Variable `i` zählt von von 1 bis 18)
+
 
 
 ## Modulo-Operator
