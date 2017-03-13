@@ -7,32 +7,33 @@
 
 # Events
 
-## Aufgabe 0
+```js
+var x = document.querySelector('img')
+x.addEventListener("click", randHinzufügen)
 
-Schreibe Code, der sofort beim Laden der Seite die Hintergrundfarbe auf rot ändert.
+function randHinzufügen() {
+  this.style.border = '5px solid blue'
+}
+```
 
-## Aufgabe 1
+# Aufgabe 1
 
-Schreibe Code, der beim Klick auf die Überschrift deiner Website diese Überschrift umfärbt.
+Baue auf deiner Website ein, dass wenn der Benutzer auf die Überschrift klickt, sich die Textfarbe der Überschrift auf rot ändert
 
-## Aufgabe 2
 
-Schreibe Code, der beim Klicken auf ein Bild dieses Bild vergrössert.
+# Aufgabe 2
 
-### Aufgabe 2.1
+Verändere den Code der Aufgabe 1 so, dass es reicht, die Maus über die Überschrift zu bewegen, um diese zu färben. Dazu kannst
+du statt 'click' das Ereignis 'mouseover' verwenden.
 
-Erweitere deinen Code so, dass ein erneuter Klick das Bild wieder verkleinert.
+# Aufgabe 3
 
-## Aufgabe 3
+Baue auf deiner Website ein, dass Bilder, sobald man mit der Maus drüberfährt, einen roten Rahmen erhalten.
 
-Schreibe eine Website, die ein Formular beinhaltet.
+# Aufgabe 4
 
-* Sobald der Benutzer in eine Eingabefeld klickt, soll dieses einen roten Rahmen erhalten
-* Sobald der Benutzer mit der Maus über den "Absenden"-Knopf fährt, soll dieser an eine zufällige Position auf der Website springen.
-
-## Aufgabe 4
-
-Schreibe Javascript-Code, der *jedem* Element beim Draufklicken einen roten Rahmen macht. Du kannst den CSS-Selektor `*` dazu verwenden.
+Baue auf deiner Website einen hell/dunkel-Modus ein. Ein Klick auf einen Button soll das Farbschema der
+gesamten Website ändern, und zwar zwischen einem eher hellen Schema und einem dunklen.
 
 </xmp>
 
