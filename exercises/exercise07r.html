@@ -12,6 +12,16 @@
 Baue auf deiner Website Code ein, der bei jedem Klick auf ein Bild einen Zähler
 hochzählt und den aktuellen Stand in einem `alert()`-Fenster anzeigt.
 
+## Linkadresse
+
+Baue Code ein, der bei jedem Link auf der Website beim Klick darauf die Adresse des
+Links in einem `alert`-Fenster anzeigt.
+
+## Bildadresse
+
+Baue Code ein, der bei jedem Bild auf der Website beim Klick darauf die Adresse des
+Bildes in einem `alert`-Fenster anzeigt.
+
 ## Linkabfrage
 
 Baue auf deine Website Code ein, der bei einem Klick auf einen beliebigen Link fragt, ob man
@@ -44,34 +54,6 @@ im aktuellen Fenster gross angezeigt wird. Ein erneuter Klick soll es wieder ver
 
 Tipp: Setze beim Klicken die `position`, `left`, `top` und `width/height`-Eigenschaften des Bildes,
 und setze sie beim zweiten Klick wieder zurück.
-
-# Elemente erstellen
-
-## Hammer
-
-Ein Klick auf deine Website soll an der geklickten Position den Effekt von versplittertem Glas geben.
-Füge dazu bei jedem Klick an der geklickten Position das folgende Bild ein: https://i.stack.imgur.com/ClbRc.png
-
-Tipp: um einen EventListener für die ganze Seite zu programmieren kannst du `document.addEventListener('click', splitter)`
-verwenden. Verwende dann den folgenden Event Listener:
-
-```js
-function splitter(e) {
-  var x = e.pageX;
-  var y = e.pageY;
-  ...
-}
-```
-
-in den Variablen `x` und `y` sind dann die Koordinaten der Maus beim Klick gespeichert. Generiere mit `createElement`
-ein neues img-Tag und platziere es am richtigen Ort.
-
-
-## Bildpopup 2
-
-Baue die Aufgabe Bildpopup so um, dass das Bild nicht in einem neuen Fenster geöffnet wird,
-sondern als Popup auf der aktuellen Website.
-
 
 </xmp>
 
