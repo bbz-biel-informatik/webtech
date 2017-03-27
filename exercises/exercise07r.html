@@ -5,67 +5,73 @@
 </head>
 <xmp theme="united" style="display:none;">
 
-# Wiederholung und Sounds
+# Attribute lesen
 
 ## Klickzähler
 
-Baue auf deiner Website einen Klickzähler ein. Sobald ein Besucher entweder ein Bild,
-eine Überschrift oder einen Textabsatz anklickt, soll der Zähler um 1 hochzählen und
-den aktuellen Stand anzeigen (entweder mit `alert` oder in einem `<input type="text">`).
+Baue auf deiner Website Code ein, der bei jedem Klick auf ein Bild einen Zähler
+hochzählt und den aktuellen Stand in einem `alert()`-Fenster anzeigt.
 
-Zur Erinnerung:
+## Linkabfrage
 
-`<input type="text" value='0'/>`
-
-```js
-var textFeld = document.querySelector('input');
-textFeld.value = 12;
-```
-
-
-
-## Diashow
-
-Baue eine Diashow in deine Website ein. Du darfst den Beispielcode verwenden.
-
-Zusatzaufgaben:
-
-* Schaffst du es, weitere Knöpfe zu programmieren, die direkt an den Anfang/ans Ende der Bildserie
-springen?
-* Kannst du neben den Bildern eine Anzeige programmieren, die anzeigt, welches Bild gerade
-gezeigt wird (z.B. "3 von 5")? Tipp: du kannst den Inhaltstext eines Elements mit `.innerHTML` setzen,
-zum Beispiel mit `meinElement.innerHTML = x + ' von 5'`.
-
-## Musikplayer
-
-Programmiere auf deiner Website einen Musikplayer und füge mindestens eine
-Abspielen/Pause-Taste ein.
-
-Zusatzaufgabe:
-
-* Erstelle eine Playlist, die mehrere Lieder enthält. Füge dann einen "Weiter" bzw. "Zurück"-Knopf
-ein, die in der Playlist hin- und herspringen. Du kannst mehr oder weniger den gleichen Code wie
-für die Diashow verwenden. Pass auf, dass die Knöpfe andere IDs oder andere Klassen haben als in
-der Diashow.
-
-# Lösungen
-
-## Klickzähler
+Baue auf deine Website Code ein, der bei einem Klick auf einen beliebigen Link fragt, ob man
+den Link wirklich öffnen will. Die Frage kannst du so programmieren:
 
 ```js
-var ziele = document.querySelectorAll('h1, img, p');
-for(var i = 0; i < ziele.length; i = i + 1) {
-  ziele[i].addEventListener('click', zaehler);
-}
-
-var counter = 0;
-
-function zaehler() {
-  counter = counter + 1;
-  var textFeld = document.querySelector('input');
-  textFeld.value = counter;
+var antwort = confirm('Wirklich öffnen?')
+if(antwort == true) {
+  ...
+} else {
+  ...
 }
 ```
+
+## Bildpopup
+
+Schreibe Code, der bei einem Klick auf ein Bild dieses in einem neuen Fenster öffnet. Dazu
+musst du im Klick-Handler das `src`-Attribut des Bildes lesen und dann diese Adresse öffnen.
+
+Ein neues Fenster kannst du mit dem folgenden Code öffnen:
+
+```js
+window.open('http://google.com')
+```
+
+## Bildpopup 2
+
+Schreibe den Popup-Code um so dass das Fenster nicht in einem neuen Tab geöfnet wird, sondern
+im aktuellen Fenster gross angezeigt wird. Ein erneuter Klick soll es wieder verkleinern.
+
+Tipp: Setze beim Klicken die `position`, `left`, `top` und `width/height`-Eigenschaften des Bildes,
+und setze sie beim zweiten Klick wieder zurück.
+
+# Elemente erstellen
+
+## Hammer
+
+Ein Klick auf deine Website soll an der geklickten Position den Effekt von versplittertem Glas geben.
+Füge dazu bei jedem Klick an der geklickten Position das folgende Bild ein: https://i.stack.imgur.com/ClbRc.png
+
+Tipp: um einen EventListener für die ganze Seite zu programmieren kannst du `document.addEventListener('click', splitter)`
+verwenden. Verwende dann den folgenden Event Listener:
+
+```js
+function splitter(e) {
+  var x = e.pageX;
+  var y = e.pageY;
+  ...
+}
+```
+
+in den Variablen `x` und `y` sind dann die Koordinaten der Maus beim Klick gespeichert. Generiere mit `createElement`
+ein neues img-Tag und platziere es am richtigen Ort.
+
+
+## Bildpopup 2
+
+Baue die Aufgabe Bildpopup so um, dass das Bild nicht in einem neuen Fenster geöffnet wird,
+sondern als Popup auf der aktuellen Website.
+
 
 </xmp>
 
