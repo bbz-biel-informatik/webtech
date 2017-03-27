@@ -18,11 +18,11 @@ Baue auf deine Website Code ein, der bei einem Klick auf einen beliebigen Link f
 den Link wirklich öffnen will. Die Frage kannst du so programmieren:
 
 ```js
-var antwort = confirm('Wirklich öffnen?')
-if(antwort == true) {
-  ...
-} else {
-  ...
+function frage(e) {
+  var antwort = confirm('Wirklich öffnen?')
+  if(antwort == false) {
+    e.preventDefault()
+  }
 }
 ```
 
