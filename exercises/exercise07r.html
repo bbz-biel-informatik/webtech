@@ -55,6 +55,79 @@ im aktuellen Fenster gross angezeigt wird. Ein erneuter Klick soll es wieder ver
 Tipp: Setze beim Klicken die `position`, `left`, `top` und `width/height`-Eigenschaften des Bildes,
 und setze sie beim zweiten Klick wieder zurück.
 
+# Lösungen
+
+## Klickzähler
+
+```js
+var counter = 0
+
+var bilder = document.querySelectorAll('img')
+for(var i = 0; i < bilder.length; i = i + 1) {
+  bilder[i].addEventListener('click', zaehlen)
+}
+
+function zaehlen() {
+  counter = counter + 1
+  alert(counter)
+}
+```
+
+## Linkadresse
+
+```js
+var links = document.querySelectorAll('a')
+for(var i = 0; i < links.length; i = i + 1) {
+  links[i].addEventListener('click', adresse)
+}
+
+function adresse() {
+  alert(this.getAttribute('href'))
+}
+```
+
+## Bildadresse
+
+```js
+var bilder = document.querySelectorAll('img')
+for(var i = 0; i < bilder.length; i = i + 1) {
+  bilder[i].addEventListener('click', adresse)
+}
+
+function adresse() {
+  alert(this.getAttribute('src'))
+}
+```
+
+## Linkadresse
+
+```js
+var links = document.querySelectorAll('a')
+for(var i = 0; i < links.length; i = i + 1) {
+  links[i].addEventListener('click', frage)
+}
+
+function frage(e) {
+  var antwort = confirm('Wirklich öffnen?')
+  if(antwort == false) {
+    e.preventDefault()
+  }
+}
+```
+
+## Bildpopup
+
+```js
+var bilder = document.querySelectorAll('img')
+for(var i = 0; i < bilder.length; i = i + 1) {
+  bilder[i].addEventListener('click', popup)
+}
+
+function popup() {
+  window.open(this.getAttribute('src'))
+}
+```
+
 </xmp>
 
 <script src="https://cdn.rawgit.com/Naereen/StrapDown.js/master/strapdown.min.js"></script>
