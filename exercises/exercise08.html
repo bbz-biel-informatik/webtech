@@ -1,22 +1,47 @@
 <!DOCTYPE html>
 <html>
 <head>
- <meta charset="UTF-8">
+  <meta charset="UTF-8">
+  <title>Übungen Scrollen &amp; Sound</title>
 </head>
 <xmp theme="united" style="display:none;">
 
 # Scrollen
 
-Schreibe eine Website, die drei grosse Überschriften hat und dazwischen ein wenig Text. Füge dann am oberen Rand der Seite 3 Schaltflächen hinzu, die bei einem Klick bewirken, dass der Browser zur entsprechenden Überschrift springt. <a href="sample08.html">Vorlage herunterladen</a>
+Baue auf deiner Website ein paar Elemente ein, die bei einem Klick drauf an einen anderen Ort auf der Website springen.
 
-Um die Position eines bestehenden Elements herauszufinden, kannst du das Element auswählen: `var x = document.querySelector('#p1')` und dann die Y-Position herausfinden: `var y = x.offsetTop`.
-
+Du kannst beispielsweise unten auf der Seite einen Link einbauen, der an den Beginn der Website springt.
 
 # Sound
 
 Baue auf deiner Website einen kleinen Musikplayer ein. Er soll mindestens einen Play/Pause-Knopf haben, der die Musik kontrollieren kann.
 
-Wenn du willst, kannst du noch eine Lautstärkeregelung einbauen.
+Wenn der Player funktioniert, kannst du noch eine Lautstärkeregelung einbauen.
+
+Verwende dazu `audio.volume`. Du kannst die Lautstärke in einer Zahl zwischen 0 und 1 angeben, z.B. `audio.volume = 0.5`.
+
+# Animiertes Scrollen
+
+Animationen sind viele kleine Bewegungsschritte, die schnell nacheinander ausgeführt werden. Der Mensch
+kann die einzelnen Schritte nicht mehr auseinanderhalten und sieht sie als Bewegung.
+
+Mit dem Befehl `setTimeout` kannst du einen Befehl in einer gewissen Zeit in der Zukunft ausführen.
+Das kannst du verwenden, um eine Scroll-Animation zu bauen:
+
+```js
+function scrollen() {
+  window.scrollBy(0, 3)         // 3 Pixel nach unten scrollen
+  if(window.scrollY < 200) {    // wenn wir noch nicht 200px nach unten gescrollt haben
+    setTimeout(scrollen, 16)    // in 16ms (60x pro Sekunde) weiterscrollen
+  }
+}
+
+scrollen()                      // Befehl scrollen soll ausgeführt werden
+```
+
+Dieses Codestück scrollt 60x pro Sekunde um 3 Pixel nach unten, bis die Seite 200px gescrollt ist.
+
+Baue den Scroll-Code auf deiner Website so um, dass das Scrollen animiert ist.
 
 </xmp>
 
