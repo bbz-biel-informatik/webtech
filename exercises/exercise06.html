@@ -45,6 +45,87 @@ Baue auf deiner Website ein, dass Bilder, sobald man mit der Maus drüberfährt,
 Baue auf deiner Website einen hell/dunkel-Modus ein. Ein Klick auf einen Button soll das Farbschema der
 gesamten Website ändern, und zwar zwischen einem eher hellen Schema und einem dunklen.
 
+## Lösungen
+
+### Aufgabe 0
+```js
+var title = document.querySelector('h1')
+title.addEventListener('click', nachricht)
+
+function nachricht() {
+  alert("Willkommen")
+}
+```
+
+### Aufgabe 1
+```js
+var title = document.querySelector('h1')
+title.addEventListener('click', farbe)
+
+function farbe() {
+  this.style.color = 'red'
+}
+```
+
+### Aufgabe 2
+```js
+var title = document.querySelector('h1')
+title.addEventListener('mouseover', farbe)
+
+function farbe() {
+  this.style.color = 'red'
+}
+```
+
+### Aufgabe 2.5
+```js
+var title = document.querySelector('h1')
+title.addEventListener('mouseover', farbe)
+title.addEventListener('mouseout', farbeWeg)
+
+function farbe() {
+  this.style.color = 'red'
+}
+
+function farbeWeg() {
+  this.style.color = ''
+}
+```
+
+### Aufgabe 3
+```js
+var bilder = document.querySelectorAll('img')
+for(var i = 0; i < bilder.length; i = i + 1) {
+  bilder[i].addEventListener('mouseover', rand)
+}
+
+function rand() {
+  this.style.border = '1px solid red'
+}
+```
+
+### Aufgabe 4
+```js
+var title = document.querySelector('h1')
+var body = document.querySelector('body')
+
+var button = document.querySelector('button')
+
+button.addEventListener('click', farbe)
+
+function farbe() {
+  if(body.style.backgroundColor == 'black') {
+    body.style.backgroundColor = 'white'
+    title.style.color = 'black'
+  } else {
+    body.style.backgroundColor = 'black'
+    title.style.color = 'white'
+  }
+}
+```
+
+
+
 </xmp>
 
 <script src="https://cdn.rawgit.com/Naereen/StrapDown.js/master/strapdown.min.js"></script>
