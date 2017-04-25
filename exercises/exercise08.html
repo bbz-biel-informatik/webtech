@@ -31,9 +31,7 @@ Das kannst du verwenden, um eine Scroll-Animation zu bauen:
 ```js
 function scrollen() {
   window.scrollBy(0, 3)         // 3 Pixel nach unten scrollen
-  if(window.scrollY < 200) {    // wenn wir noch nicht 200px nach unten gescrollt haben
-    setTimeout(scrollen, 16)    // in 16ms (60x pro Sekunde) weiterscrollen
-  }
+  setTimeout(scrollen, 16)    // in 16ms (60x pro Sekunde) weiterscrollen
 }
 
 scrollen()                      // Befehl scrollen soll ausgeführt werden
@@ -43,7 +41,7 @@ Dieses Codestück führt den Befehl `scrollen` aus, der
 
 a) 3px nach unten scrollt
 
-b) sich selber wieder ausführt, bis die Seite 200px gescrollt ist
+b) sich selber nach 16ms wieder ausführt
 
 Für das menschliche Auge sieht das dann aus wie eine Animation.
 
