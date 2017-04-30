@@ -8,7 +8,7 @@
 
 # Scrollen
 
-Baue auf deiner Website ein paar Elemente ein, die bei einem Klick drauf an einen anderen Ort auf der Website springen.
+Baue auf deiner Website ein paar Elemente ein, die bei einem Klick drauf das Browserfenster an einen anderen Ort auf der Website bewegen.
 
 Du kannst beispielsweise unten auf der Seite einen Link einbauen, der an den Beginn der Website springt.
 
@@ -50,6 +50,51 @@ Baue den Scroll-Code auf deiner Website so um, dass das Scrollen animiert ist.
 Baue in einen Text deiner Website eine Referenz auf eine Fussnote ein, ähnlich wie auf Wikipedia: <h4>Haus<sup>1</sup></h4>
 Ein Klick auf die Zahl soll zu der entsprechenden Fussnote scrollen. Die Fussnote soll einen Link beinhalten, der wieder nach oben scrollt.
 
+
+# Lösungen
+
+## Scrollen
+
+```js
+var topButton = document.querySelector("#top")
+topButton.addEventListener('click', rauf)
+
+function rauf() {
+  window.scrollTo(0, 0)
+}
+```
+
+## Sound
+
+```js
+var audio = new Sound("http://mysounds.com/sample.mp3")
+
+var playButton = document.querySelector("#play")
+var pauseButton = document.querySelector("#pause")
+playButton.addEventListener('click', play)
+
+function play() {
+  audio.play()
+}
+
+function pause() {
+  audio.pause()
+}
+```
+
+## Animiertes Scrollen
+
+```js
+var scrollButton = document.querySelector("#scroll")
+scrollButton.addEventListener('click', scrollen)
+
+function scrollen() {
+  window.scrollBy(0, 3)
+  if(window.scrollY < 200) {    // nur weiterscrollen, wenn noch nicht 200px gescrollt
+    setTimeout(scrollen, 16)
+  }
+}
+```
 
 </xmp>
 
