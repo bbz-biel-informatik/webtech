@@ -52,6 +52,84 @@ Baue auf deiner Website für ein beliebeiges Element am unteren Rand der Seite e
 zum Anfang der Seite scrollt. Du kannst mit einem EventListener einen eigenen Befehl definieren, in dem du
 statt ein Element zu verändern den Code `window.scrollTo(0, 0)` verwenden.
 
+
+# Lösungen
+
+## Bilderrahmen
+
+```js
+var bilder = document.querySelectorAll('img')
+for(var i = 0; i < bilder.length; i = i + 1) {
+  bilder[i].addEventListener('click', rahmen)
+}
+
+function rahmen() {
+  this.style.border = '1px solid blue'
+}
+```
+
+## Bilderrahmen 2
+
+`rahmen` wie folgt anpassen:
+
+```js
+function rahmen() {
+  if(this.style.border == '1px solid blue') {
+    this.style.border = ''
+  } else {
+    this.style.border = '1px solid blue'
+  }
+}
+```
+
+## Bilderposition
+
+```js
+var bilder = document.querySelectorAll('img')
+for(var i = 0; i < bilder.length; i = i + 1) {
+  bilder[i].addEventListener('mouseover', position)
+}
+
+function position() {
+  this.style.position = 'absolute'
+  this.style.left = '200px'
+  this.style.top = '300px'
+}
+```
+
+## Fokus
+
+```js
+var felder = document.querySelectorAll('input')
+for(var i = 0; i < felder; i = i + 1) {
+  felder[i].addEventListener('focus', farbe)
+}
+
+function farbe() {
+  this.style.backgroundColor = 'blue'
+}
+```
+
+## Websitefarbe
+
+```js
+var farbe = prompt("Farbe?")
+
+var body = document.querySelector('body')
+body.style.backgroundColor = farbe
+```
+
+## Anfang der Seite
+
+```js
+var link = document.querySelector('#topLink')
+link.addEventListener('click', goTop)
+
+function goTop() {
+  window.scrollTo(0, 0)
+}
+```
+
 </xmp>
 
 <script src="https://cdn.rawgit.com/Naereen/StrapDown.js/master/strapdown.min.js"></script>
