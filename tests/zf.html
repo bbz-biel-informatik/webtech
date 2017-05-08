@@ -1,57 +1,162 @@
 <!DOCTYPE html>
 <html>
 <head>
- <meta charset="UTF-8">
+  <meta charset="UTF-8">
+  <title>Zusammenfassung Test 2</title>
 </head>
 <xmp theme="united" style="display:none;">
 
-## Zusammenfassung Test 2 7.6.16
+## Zusammenfassung Test 2
 
 ### Ausgangslage
 
 ```html
 <h1 id="bla">Titel</h1>
-<p>Test test tst</p>
-<p>Test2 test2 test2</p>
-<p>Test3 test3 test3</p>
-<p>Test4 test4 test4</p>
+<p>Als Gregor Samsa eines Morgens aus unruhigen Träumen erwachte, fand er sich
+in seinem Bett zu einem ungeheueren Ungeziefer verwandelt.</p>
+<p>Er lag auf seinem panzerartig harten Rücken und sah, wenn er den Kopf ein
+wenig hob, seinen gewölbten, braunen, von bogenförmigen Versteifungen geteilten
+Bauch, auf dessen Höhe sich die Bettdecke, zum gänzlichen Niedergleiten bereit,
+kaum noch erhalten konnte. Seine vielen, im Vergleich zu seinem sonstigen Umfang
+kläglich dünnen Beine flimmerten ihm hilflos vor den Augen.</p>
+<p>»Was ist mit mir geschehen?«, dachte er. Es war kein Traum.</p>
+<a href="http://facebook.com">Facebook</a>
+
+<a id="scroll-top">Top</a>
 ```
 
 ### Einzelnes Element auswählen und verändern
 
 ```js
-var t = document.querySelector('#bla');
-t.style.backgroundColor = 'blue';
-t.style.fontSize = '24px';
-t.style.color = 'red';
-t.style.marginTop = '12px';
+var t = document.querySelector('#bla')
+t.style.backgroundColor = 'blue'
+t.style.fontSize = '24px'
+t.style.color = 'red'
+t.style.marginTop = '12px'
 ```
+
+### Erklärung
+
+`document.querySelector()` wählt ein HTML-Element per CSS-Selektor aus, damit dieses in Javascript
+verwendet werden kann. Es können alle gültigen CSS-Selektoren verwendet werden, z.B. `input`, `.meine-klasse` und
+`section > img`. Vorsicht: `document.querySelector` wählt immer nur das erste Element aus, auf das
+der Selektor passt.
 
 ### Event-Handler hinzufügen
 
 ```js
-var t = document.querySelector('#bla');
-t.addEventListener('click', nachricht);
+var t = document.querySelector('#bla')
+t.addEventListener('click', nachricht)
 
 function nachricht() {
-  alert("hallo");
-  t.style.color = red;
+  alert("hallo")
+  this.style.color = red
 }
 ```
+
+### Erklärung
+
+Mit dem `addEventListener()`-Befehl kannst du eine Aktion registrieren, die bei bestimmten Ereignissen ausgeführt
+werden soll. Die Form ist jeweils `element.addEventListener('ereignis', aktion)`. Sobald für `element` das `ereignis`
+eintrifft, soll `aktion` ausgeführt werden.
+
+Im Beispiel oben: Sobald auf das Element mit ID bla geklickt wird, soll der Befehl `nachricht` ausgeführt werden.
+
+Wichtig: Code, der ausserhalb einer Function steht, wird beim Laden der Seite sofort ausgeführt; Code, der in einer
+Function steht wird noch nicht ausgeführt.
+
+### this-Variable
+
+In Befehlen, die mit `addEventListener` registriert wurden, ist automatisch die Variable `this` verfügbar. Sie
+enthält das HTML-Element, das vom Ereignis betroffen war (z.B. der Knopf, auf den geklickt wurde).
+
+--> Falls du im Befehl das geklickte Element selber verändern willst, kannst du die `this`-Variable verwenden. Wenn du
+ein anderes Element verändern willst, musst du es zuerst wieder mit `querySelector` auswählen.
 
 ### Mehrere Elemente verändern
 
 ```js
-var t = document.querySelectorAll('p');
-for(var i = 0; i < t.length; i = i + 1) {
-  if(i % 2 == 0) {
-    t[i].style.color = 'red';
-  } else {
-    t[i].style.color = 'blue';
-  }
+var abschnitte = document.querySelectorAll('p')
+for(var i = 0; i < abschnitte.length; i = i + 1) {
+  abschnitte[i].style.color = 'red'
 }
 ```
 
+### Erklärung
+
+Weil `document.querySelector()` immer nur ein Element auswählt (das erste passende), gibt es noch den Befehl
+`document.querySelectorAll`. Dieser wählt alle passenden Elemente aus und speichert sie in einer [Liste](/index5.html).
+
+Jedes Element in der Liste muss dann einzeln verarbeitet werden. Eine Möglichkeit dazu ist der folgende Code:
+
+```js
+abschnitte[0].style.color = 'red'
+abschnitte[1].style.color = 'red'
+abschnitte[2].style.color = 'red'
+abschnitte[3].style.color = 'red'
+...
+```
+
+Das funktioniert, wird aber aufwändig sobald viele Elemente vorhanden sind oder neue Elemente hinzugefügt werden.
+Einfacher geht es mit einer Schleife, die bei 0 beginnt (der erste Eintrag einer Liste hat Position 0) und
+hochzählt bis <= die Anzahl Einträge in der Liste.
+
+### Attribute lesen
+
+```js
+var link = document.querySelector('a')
+var url = link.getAttribute('href')
+alert(url)
+```
+
+### Erklärung
+
+Mit dem Befehl `getAttribute` können Attribute von HTML-Elementen gelesen werden (z.B. src, href, class oder id).
+Dazu wird dem Befehl der Name des gewünschten Attributs mitgegeben.
+
+### Attribute schreiben
+
+```js
+var text = document.querySelector('p')
+text.setAttribute('class', 'first-paragraph')
+```
+
+### Erklärung
+
+Mit dem Befehl `setAttribute` können Attribute von HTML-Elementen gesetzt werden (z.B. src, href, class oder id).
+Dazu wird dem Befehl der Name des Attributs und der gewünschte Wert mitgegeben.
+
+
+### Scrollen
+
+```js
+var topLink = document.querySelector('#scroll-top')
+topLink.addEventListener('click', goTop)
+
+function goTop() {
+  window.scrollTo(0, 0)
+}
+```
+
+### Erklärung
+
+Mit dem scrollTo-Befehl kann der Browser automatisch an eine gegebene Position auf der Website scrollen. Dabei
+müssen der Abstand vom linken und der Abstand vom oberen Rand angegeben werden. Der Browser rechnet immer vom
+linken oberen Rand aus.
+
+Ähnlich funktioniert der scrollBy-Befehl. Dort geht der Browser aber von der aktuellen Position auf der Website
+aus und fährt die gegebene Distanz nach rechts und nach unten.
+
+### Sound
+
+```js
+var sound = new Audio('https://ia802508.us.archive.org/5/items/testmp3testfile/mpthreetest.mp3')
+sound.play()
+```
+
+### Erklärung
+
+Musikdatein abspielen wird in 2 Schritten gemacht; zuerst muss die Datei geladen werden, dann muss sie abgespielt werden.
 
 </xmp>
 

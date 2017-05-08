@@ -1,33 +1,54 @@
 <!DOCTYPE html>
 <html>
 <head>
- <meta charset="UTF-8">
+  <meta charset="UTF-8">
+  <title>Übungen Testvorbereitung</title>
 </head>
 <xmp theme="united" style="display:none;">
 
 
-# Hintergrundfarbe
+### Farbfrage
 
-Baue auf deiner Website eine Funktion ein, die den Besucher nach einer Farbe fragt, und diese dann
-als Hintergrundfarbe setzt. Wenn der Besucher bspw. "rot" eingibt, soll der Hintergrund der
-Website rot werden.
+Schreibe Code, der dich mit `prompt()` nach einer Farbe fragt und dann den Body der Website in
+dieser Farbe einfärbt.
 
-# Hintergrundfarbe 2
+### YB
 
-Speichere die eingegebene Farbe im `localStorage` (siehe [Übungen 8](exercise08.html)), und färbe
-die Seite bei den folgenden Besuchen ohne zu fragen mit der letzten Farbe ein.
+Schreibe Code, der beim Laden der Seite die Textabschnitte abwechslungsweise in den Farben deiner
+Lieblingsfussballmannschaft färbt (also gelb/schwarz).
 
-# Musikplayer
+### XYZ
 
-Baue auf deiner Website einen Knopf ein, der nach einem Klick den Besucher nach der Internetadresse
-einer Musikdatei fragt und diese abspielt.
+abcdef ghijkl
 
+### Musikplayer
 
-# Fertig?
+Baue einen ganz einfachen Musikplayer. Besucher sollen mit `prompt()` nach der Internet-Adresse
+einer mp3-Datei gefragt werden. Danach soll diese Datei abgespielt werden.
 
-Löse noch die übrigen Aufgaben von letzter Woche ([Animation](exercise09.html)).
+### Lupe
+
+Baue auf deiner Website ein, dass das Element, das gerade unter der Maus ist, vergrössert wird
+Tipp: Verwende einen EventListener für das Ereignis `mouseover` statt `click` und setze dann
+die `fontSize`-Eigenschaft.
+
+### Bildadresse
+
+Baue ein, dass ein Klick auf ein beliebiges Bild dessen Quell-Adresse in einer `alert()`-Nachrichtenbox
+anzeigt.
+
+### Elementzähler
+
+Baue einen Button ein, der bei einem Klick die Anzahl Elemente auf der Website zählt. Du kannst
+dafür den Selektor `*` verwenden (wählt jedes Element aus). Um die Anzahl Einträge in einer Liste
+zu erhalten, verwende `listenName.length`.
+
+### Klick-Scroll
+
+Baue zwei Buttons auf deiner Website ein, die immer sichtbar sind (`position: fixed`). Ein Klick darauf
+soll bei einem Button um 20 Pixel nach oben, beim anderen um 20 Pixel nach unten scrollen.
 
 </xmp>
 
-<script src="https://cdn.rawgit.com/Naereen/StrapDown.js/master/strapdown.min.js"></script>
+<script src="http://strapdownjs.com/v/0.2/strapdown.js"></script>
 </html>
