@@ -53,6 +53,124 @@ zu erhalten, verwende `listenName.length`.
 Baue zwei Buttons auf deiner Website ein, die immer sichtbar sind (`position: fixed`). Ein Klick darauf
 soll bei einem Button um 20 Pixel nach oben, beim anderen um 20 Pixel nach unten scrollen.
 
+# Lösungen
+
+### Farbfrage
+
+```js
+var farbe = prompt('Farbe?')
+var b = document.querySelector('body')
+b.style.backgroundColor = farbe
+```
+
+### YB
+
+```js
+var abschnitte = document.querySelectorAll('p')
+for(var i = 0; i < abschnitte.length; i = i + 1) {
+  if(i % 2 == 0) {
+    abschnitte[i].style.color = 'yellow'
+  } else {
+    abschnitte[i].style.color = 'black'
+  }
+}
+```
+
+### Titel
+
+```js
+var titel = document.querySelector('h1')
+titel.style.borderBottom = '1px solid black'
+```
+
+### Musikplayer
+
+```js
+var url = prompt('Adresse mp3-Datei?')
+var audio = new Audio(url)
+audio.play()
+```
+
+### Lupe
+
+```js
+var elemente = document.querySelectorAll('p')
+for(var i = 0; i < elemente.length; i = i + 1) {
+  elemente[i].addEventListener('mouseover', gross)
+  elemente[i].addEventListener('mouseout', klein)
+}
+
+function gross() {
+  this.style.fontSize = '20px'
+}
+
+function klein() {
+  this.style.fontSize = ''
+}
+```
+
+### Bildmaske
+
+```js
+var bilder = document.querySelectorAll('img')
+for(var i = 0; i < bilder.length; i = i + 1) {
+  bilder[i].addEventListener('mouseover', untransparent)
+  bilder[i].addEventListener('mouseout', transparent)
+}
+
+function untransparent() {
+  this.style.opacity = 1
+}
+
+function transparent() {
+  this.style.opacity = 0.5
+}
+```
+
+### Bildadresse
+
+```js
+var bilder = document.querySelectorAll('img')
+for(var i = 0; i < bilder.length; i = i + 1) {
+  bilder[i].addEventListener('click', adresse)
+}
+
+function adresse() {
+  var url = this.getAttribute('src')
+  alert(url)
+}
+```
+
+### Element-Zähler
+
+```js
+var button = document.querySelector('button')
+button.addEventListener('click', zaehlen)
+
+function zaehlen() {
+  var elemente = documet.querySelectorAll('*')
+  alert(elemente.length)
+}
+```
+
+### Klick-Scroll
+
+```js
+var btn1 = document.querySelector('#up')
+var btn2 = document.querySelector('#down')
+
+btn1.addEventListener('click', up)
+btn2.addEventListener('click', down)
+
+function up() {
+  window.scrollTo(0, -20)
+}
+
+function down() {
+  window.scrollTo(0, 20)
+}
+```
+
 </xmp>
 
 <script src="https://cdn.rawgit.com/Naereen/StrapDown.js/master/strapdown.min.js"></script>
