@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Zusammenfassung jQuery</title>
+</head>
+<xmp theme="united" style="display:none;">
+
+## Zusammenfassung jQuery
+
+### Grundlagen
+
+Elemente auswählen
+
+```js
+var bild = $(".demo")
+var x = $("#test")
+var titel = $("h1")
+```
+
+### Events
+
+```js
+$(".demo").click(function(){
+    $(this).hide(200);          // $(this) wählt geklicktes Element aus
+});
+```
+
+Mögliche Events:
+
+    Maus: scroll, click, dblclick, mousedown, mouseup, mousemove, mouseover, mouseout, mouseenter, mouseleave, load, resize, scroll, unload, error
+    Tastatur: keydown, keypress, keyup
+    Elemente: blur, focus, focusin, focusout, change, select, submit
+    Browser: load, resize, scroll, unload, error
+
+### Elemente verändern
+
+#### Inhalt
+
+```js
+$("#demo").text();                  // Textinhalt abrufen
+$("#demo").html();                  // HTML-Inhalt abrufen
+$("#demo").val();                   // Formularwert abrufen
+$("#demo").html('Hey <em>yo</em>'); // HTML-Inhalt setzen
+```
+
+#### Attribute
+
+```js
+$("#link").attr("href");                    // Attribut lesen
+$("#link").attr("href",'http://htmlg.com'); // Attribut setzen
+```
+
+#### Erstellen
+
+```js
+$(".demo").prepend("Yo!");          // "Yo" als erstes Kind von .demo
+$(".demo").append("<em>Hey!</em>"); // "Hey" als letztes Kind von .demo
+$(".demo").before("Cheers");        // "Cheers" vor .demo
+$(".demo").after("<em>Peace</em>"); // "Peace" nach .demo
+```
+
+#### Löschen
+
+```js
+$("#demo").remove();
+```
+
+#### CSS
+
+```js
+$("#demo").css("background-color");     // Wert abrufen
+$("#demo").css("color", "blue");        // Wert setzen
+$("#demo").css({"color": "blue", "font-size": "20px"}); 
+```
+
+### Effekte und Animationen
+
+#### anzeigen / verstecken
+
+```js
+$("#demo").hide();      // ausblenden
+$("#demo").show(200);   // anzeigen mit Animation
+$("#demo").toggle();    // Wechsel zwischen anzeigen/verstecken
+```
+
+#### fade-in / fade-out
+
+```js
+$("#demo").fadeIn();                // langsam einblenden
+$("#demo").fadeOut(300);            // langsam ausblenden (300ms)
+$("#demo").fadeToggle("slow");      // langsam ein/ausblenden
+$("#demo").fadeTo("slow", 0.25);    // bis 0.25 Opazität ausblenden
+```
+
+#### sliden
+
+```js
+$("#demo").slideDown();
+$("#demo").slideUp("slow");
+$("#demo").slideToggle();
+```
+
+
+</xmp>
+
+<script src="https://cdn.rawgit.com/Naereen/StrapDown.js/master/strapdown.min.js"></script>
+</html>
