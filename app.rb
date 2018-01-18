@@ -4,8 +4,20 @@ get '/*.md' do
   send_file "#{params[:splat].first}.md"
 end
 
+get '/' do
+  send_file 'index.html', layout: false
+end
+
+get '/skript.html' do
+  send_file 'skript.html'
+end
+
 get '/plugin/*' do |file|
   send_file "plugin/#{params[:splat].first}"
+end
+
+get '/exercises/*' do |file|
+  send_file "exercises/#{params[:splat].first}"
 end
 
 get '/css/*' do |file|
@@ -24,9 +36,11 @@ get '/js/*' do |file|
   send_file "js/#{params[:splat].first}"
 end
 
-get '/:number' do
-  @number = params[:number]
+get '/*.html' do
+  @number = params[:splat].first.gsub('index', '').to_s
+  puts "#{@number}.md"
+  if !File.exist?("#{@number}.md")
+    @number = "0" + @number
+  end
   erb "slides/show".to_sym
 end
-
-
