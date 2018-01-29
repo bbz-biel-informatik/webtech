@@ -19,11 +19,10 @@ GEM
 
 PLATFORMS
   ruby
-  x64-mingw32
 
 DEPENDENCIES
   sinatra
   stripe
 
 BUNDLED WITH
-   1.16.1
+   1.16.0
