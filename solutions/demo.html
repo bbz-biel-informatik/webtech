@@ -1,0 +1,39 @@
+<h3>Übungen Datentypen und Variablen</h3>
+<h5>Namen</h5>
+<p>Schreibe ein Programm, das dich einzeln nach dem Vor- und Nachnamen fragt, und die beiden dann zusammen ausgibt</p>
+<button data-check data-input='["Alpha", "Beta"]' data-output='["Alpha Beta"]'>Überprüfen</button>
+<h5>Gleichheit</h5>
+<p>Schreibe ein Programm, das dich nach 2 Zahlen fragt und testet, ob sie gleich sind</p>
+
+<script>
+  oldAlert = alert;
+  oldPrompt = prompt;
+
+
+
+  document.querySelector('[data-check]').addEventListener('click', function () {
+    var xInput = JSON.parse(this.getAttribute('data-input'));
+    var xOutput = JSON.parse(this.getAttribute('data-output'));
+    var code = oldPrompt("Programm eingeben");
+    var xInputCounter = 0;
+    var xOutputCounter = 0;
+
+    prompt = function () {
+      var retVal = xInput[xInputCounter];
+      xInputCounter++;
+      return retVal;
+    }
+
+    alert = function (outVal) {
+      if (outVal == xOutput[xOutputCounter]) {
+        console.log('ok');
+        xOutputCounter++;
+        return null;
+      } else {
+        console.log('Ausgabe ' + xOutputCounter + ' sollte ' + xOutput[xOutputCounter] + ' sein, war ' + outVal);
+      }
+    }
+
+    eval(code);
+  });
+</script>
