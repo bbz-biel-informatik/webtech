@@ -17,6 +17,8 @@
     var code = oldPrompt("Programm eingeben");
     var xInputCounter = 0;
     var xOutputCounter = 0;
+    var result = document.createElement('div');
+    this.parentNode.appendChild(result);
 
     prompt = function () {
       var retVal = xInput[xInputCounter];
@@ -26,11 +28,11 @@
 
     alert = function (outVal) {
       if (outVal == xOutput[xOutputCounter]) {
-        console.log('ok');
+        result.innerHTML += 'ok';
         xOutputCounter++;
         return null;
       } else {
-        console.log('Ausgabe ' + xOutputCounter + ' sollte ' + xOutput[xOutputCounter] + ' sein, war ' + outVal);
+        result.innerHTML += ('Ausgabe ' + xOutputCounter + ' sollte ' + xOutput[xOutputCounter] + ' sein, war ' + outVal);
       }
     }
 
