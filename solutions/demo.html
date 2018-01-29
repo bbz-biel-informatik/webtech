@@ -37,5 +37,13 @@
     }
 
     eval(code);
+
+    if (xInputCounter !== xInput.length) {
+      result.innerHTML += 'Das Programm sollte ' + xInput.length + ' Eingaben akzeptieren, hat aber nur ' + xInputCounter;
+    }
+
+    if (xOutputCounter !== xOutput.length) {
+      result.innerHTML += 'Das Programm sollte ' + xOutput.length + ' Ausgaben machen, hat aber nur ' + xOutputCounter;
+    }
   });
 </script>
