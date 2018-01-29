@@ -1,8 +1,8 @@
 require 'sinatra/base'
 
 class MyApp < Sinatra::Base
-  get '/*.md' do
-    send_file "#{params[:splat].first}.md"
+  get '/presentations/*.md' do
+    send_file "presentations/#{params[:splat].first}.md"
   end
 
   get '/' do
