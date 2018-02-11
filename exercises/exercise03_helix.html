@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <script src="js/point.js"></script>
+  <script src="js/drawCommands.js" onload="setInitPos(300,200)"></script>
+</head>
+
+<body>
+  <div align='center'>
+    <h3>Zeichnungsfeld</h3>
+    <canvas id="drawboard" width="600" height="400" style="border:1px solid #d3d3d3;background:#ffffff;"></canvas>
+  </div>
+  <xmp theme="united" style="display:none;">
+  [← Übungen 3](exercise03.html)
+  ## Spirale
+
+  Die Zeichnungsbefehle können auch mit einer Länge aufgerufen werden:
+  ```js
+  right(50)
+  up(30)
+  left(50)
+  down(30)
+  ```
+  zeichnet zum Beispiel ein Rechteck mit Seitenlängen `50` und `30`.
+
+  Der Befehl `reset()` löscht das gezeichnete und setzt den Stift auf die Ausgangsposition. 
+  
+  ### Aufgabe
+  * Schreibe ein Programm, das eine Spirale zeichnet.
+  Tipp: Überlege dir, welches das kleinste zu repetierende Element ist.
+  ![helix](images/exercise03_helix.png)
+  </xmp>
+</body>
+
+<script src="https://cdn.rawgit.com/Naereen/StrapDown.js/master/strapdown.min.js"></script>
+
+</html>

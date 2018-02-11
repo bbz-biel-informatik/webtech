@@ -23,6 +23,41 @@ for(var i = 1; i <= 20; i = i + 1) {
 }
 ```
 
+### Treppe
+
+```js
+for(var i = 1; i <= 15; i = i + 1) {
+  up()
+  right()
+}
+```
+
+### Quadrat im Quadrat
+
+a.)
+
+```js
+for(var i = 1; i <= 10; i = i + 1) {
+  var breite = i * 20
+  right(breite)
+  up(breite)
+  left(breite)
+  down(breite)
+}
+```
+
+b.)
+```js
+for(var i = 1; i <= 10; i = i + 1) {
+  var breite = i * 20
+  goTo( -breite / 2, -breite / 2)
+  right(breite)
+  up(breite)
+  left(breite)
+  down(breite)
+}
+```
+
 ### FizzBuzz
 
 ```js
@@ -75,6 +110,21 @@ for(var i = 0; i < 100; i = i + 1) {
 }
 
 alert("Summe der Quadrate: " + summe2);
+```
+
+### Spirale
+
+```js
+for(var i = 1; i <= 20; i = i + 1) {
+  var breite = i * 10
+  if (i % 2 == 0){
+    up(breite)
+    left(breite)
+  } else {
+    down(breite)
+    right(breite)
+  }
+}
 ```
 
 </xmp>
