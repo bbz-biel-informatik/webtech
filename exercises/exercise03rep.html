@@ -134,6 +134,299 @@ Danach soll es dich nach einer Zahl fragen, und dir sagen, ob du zu tief, zu hoc
 für die 10 Würfe a) die tiefste Zahl, b) die höchste Zahl und c) den Durchschnitt anzeigen.
 
 
+# Lösungen
+
+### Zeitrechner
+
+```js
+var a = prompt("Zeitdauer?")
+var b = Number(a)
+alert(b / 3600)
+```
+
+### Temperaturrechner
+
+```js
+var a = prompt("Temperatur?")
+var b = Number(a)
+var f = (b - 32) / 1.8
+alert(f)
+```
+
+### Dreieck
+
+```js
+var b = prompt("Breite?")
+var h = prompt("Höhe?")
+var a = 0.5 * Number(b) * Number(h)
+alert(a)
+```
+
+### Noten
+
+```js
+var e = prompt("Erreicht?")
+var m = prompt("Max?")
+var note = Number(e) / Number(max) * 5 + 1
+alert(note)
+```
+
+### Grösste Zahl
+
+```js
+var a = prompt("erste Zahl?")
+a = Number(a)
+var b = prompt("zweite Zahl?")
+b = Number(b)
+var c = prompt("dritte Zahl?")
+c = Number(c)
+if(a > b && a > c) {
+  alert(a)
+} else {
+  if(b > c && b > a) {
+    alert(b)
+  } else {
+    if(c > b && c > a) {
+      alert(c)
+    }
+  }
+}
+```
+
+### Ziffern
+
+```js
+var a = prompt("Zahl?")
+alert(a.length)
+
+// oder
+
+var a = Number(prompt("Zahl?"))
+if(a >= 0 && a <= 9) {
+  alert(1)
+}
+if(a >= 10 && a <= 99) {
+  alert(2)
+}
+if(a >= 100 && a <= 999) {
+  alert(3)
+}
+if(a >= 1000 && a <= 9999) {
+  alert(4)
+}
+if(a >= 10000 && a <= 99999) {
+  alert(5)
+}
+```
+
+### Teilbarkeit
+
+```js
+var a = prompt("Zahl?")
+a = Number(a)
+if(a % 3 == 0 && a % 5 == 0) {
+  alert("beide")
+} else {
+  if(a % 3 == 0) {
+    alert("durch 3")
+  } else {
+    if(a % 5 == 0) {
+      alert("durch 5")
+    }
+  }
+}
+
+// oder
+
+var a = prompt("Zahl?")
+a = Number(a)
+if(a % 3 == 0) {
+  if ( a % 5 == 0){
+    alert("beide")
+  } else {
+    alert("durch 3")    
+  }
+} else {
+  if(a % 5 == 0) {
+    alert("durch 5")
+  }
+}
+```
+
+### Negativ/null/positiv
+
+```js
+var a = prompt("Zahl?")
+a = Number(a)
+// Reihenfolge, ob zuerst 0, < oder > geprüft wird, spielt keine Rolle!
+if(a == 0) {
+  alert("null")
+} else {
+  if(a < 0) {
+    alert("negativ")
+  } else {
+    // eine Zahl kann nur negativ, 0 oder positiv sein 
+    alert("positiv")
+  }
+}
+```
+
+### Vokal/Konsonant
+
+```js
+var a = prompt("Buchstabe?")
+if(a == 'a' || a == 'e' || a == 'i' || a == 'o' || a == 'u') {
+  alert("Vokal")
+} else {
+  alert("Konsonant")
+}
+```
+
+### Summe 1
+
+```js
+var summe = 0
+var i = 1 // schleifenzähler
+while(i <= 100){
+  summe = summe + i
+  i = i + 1
+}
+alert(summe)
+```
+
+### Summe 2
+
+```js
+var grenze = Number(prompt("Obergrenze?"))
+var summe = 0
+var i = 1
+while(i <= grenze){
+  summe = summe + 1
+  i = i + 1
+}
+alert(summe)
+```
+
+### Summe 3
+
+```js
+var summe = 0;
+var i = 10
+while(i <= 100){
+  summe = summe + i
+  i = i + 1
+}
+alert(summe)
+```
+
+### Treppe
+
+```js
+var i = 1
+while(i <= 10) {
+  var text = ''
+  var j = 1
+  while(j <= j) {
+    text = text + '#'
+  }
+  console.log(text)
+  i = i + 1
+}
+
+// oder
+ var text = '#'
+
+ while(text != '###########') {
+   console.log(text)
+   text = text + '#'
+ }
+```
+
+## Multiplikation
+```js
+var i = 1
+while (i <= 10) {
+  var text = ''
+  var j = 1
+  while(j <= 10) {
+    text = text + (i * j) + ' '
+    j = j + 1
+  }
+  console.log(text)
+  i = i + 1
+}
+```
+
+### Gerade Zahlen
+
+```js
+var i = 1
+while (i <= 100) {
+  if (i % 2 == 0) {
+    console.log(i)
+  }
+  i = i + 1
+}
+
+// oder (mit Zweierschritten!)
+
+var i = 1
+while (i <= 100) {
+  console.log(i)
+  i = i + 1
+}
+```
+
+### Summe Dreierreihe
+
+```js
+var obergrenze = Number(prompt("Grenze?"))
+var summe = 0
+var i = 3
+while(i <= obergrenze){
+  summe = summe + i
+  i = i + 3
+}
+alert(summe)
+```
+
+### Zahl raten
+
+```js
+var zahl = Math.random() * 100
+var a = prompt("Zahl raten")
+a = Number(a)
+if(zahl == a) {
+  alert("richtig!")
+} else if(a < zahl) {
+  alert("zu tief")
+} else if(a > zahl) {
+  alert("zu hoch")
+}
+```
+
+### Würfel
+
+```js
+var summe = 0
+var max = 0
+var min = 99999
+var i = 1
+while(i <= 10){
+  var z = Math.random() * 5 + 1
+  summe += z
+  if(z > max) {
+    max = z
+  }
+  if(z < min) {
+    min = z
+  }
+  i = i + 1
+}
+alert(min)
+alert(max)
+alert(summe / 6)
+```
 
 </xmp>
 
