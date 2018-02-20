@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <meta charset="UTF-8">
+</head>
+<xmp theme="united" style="display:none;">
+
+# Skript Web-Technologie
+
+&copy; 2015 Lukas Diener
+
+## Datentypen
+
+Informationen können im PC verschiedene Datentypen haben. Je nach Datentyp kann man dann unterschiedliche Sachen mit den gepspeicherten
+Informationen machen. Die bekanntesten und am meisten verwendeten Datentypen sind:
+
+* Zahlen
+* Texte
+* Booleans
+
+Der PC weiss, dass er nur mit Zahlen rechnen kann und umgekehrt nur Texte in Grossschreibung umwandeln kann. Je nachdem, in welcher Form
+man in einem Programm also seine Informationen speichert, kann man sie dann unterschiedlich verwenden.
+
+## Datentyp 1: Zahlen
+
+Zahlen werden in einem Programm wie normale Zahlen verwendet. Zu beachten ist, dass als Dezimaltrennzeichen ein Punkt und nicht ein Komma
+verwendet werden muss, zum Beispiel so:
+
+```js
+3.454
+7
+4000
+```
+
+Mit diesen Zahlen kann der PC dann rechnen, genau so wie mit einem normalen Taschenrechner. Die am meisten verwendeten Operationen sind
+die Addition, die Subtraktion, die Multiplikation und die Division, was in dieser Reihenfolge so aussieht:
+
+```js
+3.4 + 5
+5 - 3
+4 * 1.2
+13 / 2
+```
+
+Ausserdem können Klammern verwendet werden, damit ein Teil einer Rechnung zuerst ausgeführt wird:
+
+##### Wichtig: ab hier werden jeweils das Zeichen ◀ eine Codeeingabe und das Zeichen ▶ die Ausgabe des PCs darstellen, analog zur Browserkonsole.
+
+```js
+◀ (5 - 2) * 3
+▶ 9
+```
+
+## Datentyp 2: Texte
+
+Wenn man in einem Programm Texte verwenden möchte, muss man diese immer in Anführungszeichen schreiben:
+
+```js
+"Hans"
+"Magst du Pizza?"
+```
+
+Auch mit Texten kann man (beschränkt) rechnen. Man kann mehrere Texte mit dem `+`-Operator aneinanderhängen:
+
+```js
+◀ "Hans" + "Peter"
+▶ "HansPeter"
+```
+Ausserdem kann mit `.length` die Länge eines Textes herausgefunden werden:
+
+```js
+◀ "Hanspeter".length
+▶ 9
+```
+
+## Datentyp 3: Booleans
+
+Booleans sind spezielle Informationen, die nur die Werte wahr (`true`) und falsch (`false`) annehmen können. Anders als Texte und Zahlen
+werden sie aber selten in Programmen direkt verwendet, sondern entstehen fast immer aus einem Vergleich.
+
+
+```js
+◀ 3 < 4.1
+▶ true
+
+◀ 3 > 5
+▶ false
+```
+
+Vergleiche können mit unterschiedlichen sogenannten Vergleichsoperatoren stattfinden. Zusätzlich zu 'kleiner als' und 'grösser als' von vorher
+werden auch die Ungleichheit und Gleichheit häufig gebraucht.
+
+```js
+1 == 1      // Gleichheit
+1 != 2      // Ungleichheit
+3 > 4       // Grösser als
+7 < 6       // Kleiner als
+```
+
+Auch Texte können verglichen werden. Dabei schaut der PC die Buchstaben nacheinander an und vergleicht die beiden Wörter. Wenn ein
+Buchstabe vor dem anderen kommt, gilt er als kleiner.
+
+```js
+◀ "Paul Kalkbrenner" < "Walter White"
+▶ true
+```
+
+Das obige Beispiel gibt als Resultat `true`, weil der PC zuerst die Buchstaben "P" und "W" vergleicht. Weil P im Alphabet vor W kommt, gilt
+P als kleiner als W. Deshalb ist auch der Text "Paul Kalkbrenner" kleiner als "Walter White".
+
+## Variablen
+
+Damit Werte auch gespeichert und später wiederverwendet werden können, gibt es sogenannte Variablen. Variablen sind benannte Behälter, in denen
+man Werte speichern und später über den Namen wieder darauf zugreifen kann. Ein gutes Bild dafür sind Eimer, die mit dem Namen der Variable
+angeschrieben sind. Man kann dann einen Wert in den Eimer rein werfen und später wieder rausholen, wenn man den Namen des richtigen Eimers kennt.
+
+Der Code
+
+```js
+var age = 34
+```
+kreiert eine neue Variable mit dem Namen `age`, die den Wert `34` beinhaltet. Später kann der Wert über den Namen wieder abgerufen werden, zum
+Beispiel um ihn in einer Nachricht anzuzeigen (`alert(age)`).
+
+Das Schlüsselwort `var` sagt dem PC, dass er unter dem folgenden Namen eine neue Variable speichern soll. Und zwar den Wert, der die Rechnung
+auf der rechten Seite des Gleichzeichens ergibt.
+
+So können auch die Resultate einer `prompt()`-Abfrage (die der Eingabe des Benutzers entspricht) in einer Variable gespeichert werden:
+
+```js
+var name = prompt("Wie ist dein Name?")
+alert(name)
+```
+
+## Bedingungen
+
+Mit Bedingungen kann der PC auf verschiedene Eingaben und Zustände reagieren. Dafür muss man dem PC genau beschreiben, was er in welchem Fall tun soll.
+
+Bedingungen (oder _Konditionale_) werden in Javsscript wie folgt geschrieben:
+
+```js
+var alter = prompt('Wie alt bist du?');
+if(alter >= 18) {
+  alert('Du bist volljährig');
+}
+```
+
+Das Schlüsselwort `if` leitet die Bedingung ein. In der Klammer danach folgt die sogenannte _Bedingung_. Wenn die Bedingung wahr ist (wenn die Variable `alter` grösser oder gleich 18 ist), wird der _Bedingungsinhalt_, der Code zwischen den geschweiften Klammern, ausgeführt. In den geschweiften Klammern dürfen auch mehrere Zeilen Code stehen.
+
+In diesem Beispiel wurde eine Bedingung verwendet, bei der nur einer der beiden möglichen Fälle (der andere wäre, dass `alter` kleiner als 18 ist) behandelt wird. Wenn der gegenteilige Fall eintreten würde, würde der _Bedingungsinhalt_ einfach übersprungen werden.
+
+Es gibt aber auch die Möglichkeit, Code zu definieren, der ausgeführt wird, falls die Bedingung nicht wahr ist. Dazu wird das Schlüsselwort `else` verwendet.
+
+```js
+var alter = prompt('Wie alt bist du?');
+if(alter >= 18) {
+  alert('Du bist volljährig');
+} else {
+  alert('Du bist minderjährig');
+}
+```
+
+Der Code im Block nach `else` wird **nur** ausgeführt, wenn die Bedingung nicht wahr ist, das heisst, wenn `alter` kleiner als 18 ist.
+
+In dieser Art können beliebig viele Fälle in die Bedingung eingeführt werden, indem sie mit `else if` abgetrennt werden. Wichtig: sobald eine der Bedingungen erfüllt ist, wird der entsprechende Code ausgeführt und alle anderen Bedingungen übersprungen. Es kann also nie sein, dass der PC in einem `if`-`else if`-`else`-Block den Code mehrerer Bedingungen ausführt.
+
+```js
+var marke = prompt('Welche Automarke hast du?');
+var modelle = '';
+if(marke == 'VW') {
+  modelle = 'Golf, Passat';
+} else if (marke == 'Fiat') {
+  modelle = 'Lupo, Punto';
+} else if (marke == 'Toyota') {
+  modelle = 'Prius, Yaris';
+}
+alert('Die Modelle deiner Automarke sind: ' + modelle);
+```
+
+Um mehrere Bedingungen zu verknüpfen gibt es zwei logische Operatoren, den UND- und den ODER-Operator.
+
+Der UND-Operator verlangt, dass alle Bedingungen wahr sind, damit der Codeblock ausgeführt wird. In diesem Beispiel müssen der Name _und_ das Passwort stimmen.
+
+```js
+if(name == "Hans" && passwort == "8z43c4") {
+  alert('Richtig');
+}
+```
+
+Der ODER-Operator verknüpft die Bedingungen so, dass mindestens eine davon wahr sein muss. Sobald eine wahr ist, wird der Code ausgeführt.
+
+```js
+if(note < 1 || note > 6) {
+  alert('Note ungültig')
+}
+```
+
+## Schleifen
+
+Damit Code oder Codeteile mehrmals wiederholt werden können, existieren sogenannte Schleifen. Sie funktionieren ähnlich wie Bedingungen, und trennen Code vom Rest des Programms ab. Eine bekannte Form von Schleifen sind die _while-Schleifen_ und werden in Javascript so geschrieben:
+
+```js
+var i = 1
+while(i <= 10) {
+  alert(i)
+  i = i + 1
+}
+```
+
+Das Schlüsselwort `while` leitet die Schleife ein und sagt dem PC, dass als nächstes eine _Schleifenbedingung_ kommt. So lange diese Schleifenbedingung _wahr_ ist,
+wird der _Schleifeninhalt_, also der Code zwischen den geschweiften Klammern, ausgeführt.
+Damit die Schleifenbedingung nicht für immer wahr ist, muss sie auf einer Variable basieren, die _vor_ der Schleife definiert wird und im Schleifencode verändert wird.
+Eine solche Variable wird _Schleifenvariable_ genannt und wird oft mit `var i = 1` initialisiert. Solange die Schleifenbedingung wahr ist (`i <= 10`), wird der ganze Schleifencode ausgeführt.
+Standardmässig wird die Schleifenvariable in der letzten Zeile verändert, beispielsweise mit `i = i + 1` um `1` erhöhrt.
+
+Im Beispiel wird der Code `alert(i)` also insgesamt 10 Mal ausgeführt. Jedes Mal wird der Wert von i (und damit die Nachricht in der Nachrichtenbox) um 1 erhöht.
+Zu Beginn wird die Zahl 1 angezeigt, danach die Zahl 2, dann die 3 und so weiter, bis als letztes die Zahl 10 angezeigt wird.
+Sobald der _Endcode_ die Variable `i` auf den Wert 11 erhöht hat, ist die Schleifen-Bedingung nicht mehr wahr und der PC springt aus der Schleife raus und führt das
+Programm (alles was nach der geschweiften Klammer folgt) weiter aus.
+
+## Referenz
+
+* `alert()`: Nachricht anzeigen; [Dokumentation](https://developer.mozilla.org/en-US/docs/Web/API/Window.alert)
+* `prompt()`: Nachricht anzeigen und zu Eingabe auffordern; [Dokumentation](https://developer.mozilla.org/en-US/docs/Web/API/Window.prompt)
+* `Number()`: Text in Zahl umwandeln; [Dokumentation](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number#Example.3A_Convert_numeric_strings_to_numbers)
+
+## Einbindung
+
+Javascript wird über ein spezielles HTML-Tag, das `<script>`-Tag, in eine Seite eigebunden. Die Einbindung sieht so aus:
+
+```html
+<​html>
+  <​body>
+    <​script type="text/javascript">
+      alert("Hallo");
+    <​/script>
+  <​/body>
+<​/html>  
+```
+Zu beachten ist, dass das `<script>`-Tag immer das letzte Element im <body> sein sollte.
+      
+      
+Code, der in einem `<script>` Tag steht, wird immer sofort nach dem Laden der Seite ausgeführt.
+      
+## Buttons
+
+Knöpfe werden im HTML wie folgt definiert:
+
+```html
+<​b​utton>Klick mich<​/button>
+```
+
+Über das `onclick`-Attribut kann festgelegt werden, was bei einem Klick auf den Knopf passieren soll. Der Wert des Attributs ist der Name der Funktion, die ausgeführt werden soll:
+
+```html
+<​b​utton onclick="etwas_machen()">Klick mich<​/button>
+```
+
+Die Funktion muss in einem Skript-Tag definiert sein:
+
+```html
+<script type="text/javascript">
+  function etwas_machen() {
+    alert('Hallo');
+  }
+</script>
+```
+
+## Elemente verändern
+
+Um Elemente einer HTML-Seite zu verändern, muss immer zuerst eine Referenz auf das Element geholt werden und das Element dann in einer Variable gespeichert werden. Um HTML-Elemente in Javascript zu referenzieren, können die bekannten CSS-Selektoren verwendet werden (`#` für ID, `.` für Klassen).
+
+Der Code
+
+```js
+var bodyElement = document.querySelector('body');
+bodyElement.style.backgroundColor = 'red';
+```
+
+wählt zuerst mit `document.querySelector` das `body`-Element aus und speichert es in der Variable `bodyElement`. Danach wird mit `.style.backgroundColor` die Hintergrundfarbe auf rot gesetzt.
+
+Der Ausdruck nach `.style` entspricht jeweils der CSS-Regel (hier: `background-color`). Wichtig ist hier, dass CSS-Regeln mit einem Bindestrich leicht abgeändert werden: der Bindestrich wird gelöscht, dafür der nächste Buchstabe gross geschrieben (`font-size` &rarr; `fontSize`, `border-radius` &rarr; `borderRadius`) - der Wert kann hingegen **immer** direkt aus dem CSS übernommen werden.
+
+Der Code
+
+```js
+var bodyElement = document.querySelector('body');
+bodyElement.style.backgroundColor = 'red';
+```
+entspricht somit den CSS-Regeln
+
+```css
+body {
+  background-color: red;
+}
+```
+
+
+## Mehrere Elemente anwählen
+
+Eine Einschränkung von `document.querySelector()` ist, dass immer nur das erste passende Element ausgewählt wird. Wenn mehrere Elemente ausgewählt werden sollen, muss `document.querySelectorAll()` verwendet werden. Die Funktionsweise ist dieselbe, mit dem Unterschied, dass `querySelectorAll` statt einem einzigen Elemente eine Liste von Elementen zurückgibt.
+
+Die Elemente müssen dann mithilfe einer for-Schleife einzeln bearbeitet werden:
+
+```js
+var elemente = document.querySelectorAll('p');
+for(var i = 0; i < elemente.length; i = i + 1) {
+    elemente[i].style.color = 'red';
+}
+```
+
+
+## Events
+
+Statt nur auf Klicks zu reagieren, können mit Hilfe von `Events` beliebige Ereignisse abgefangen werden, wie zum Beispiel das auswählen eines Textfelds oder das Drüberfahren der Maus über ein Bild.
+
+Die Funktion `addEventListener` lässt den PC auf ein bestimmtes Ereignis warten und dann bestimmten Code ausführen:
+
+```html
+<div style="background-color: red">Bla</div>
+```
+
+```js
+var d = document.querySelector('div');
+d.addEventListener("click", klick);
+
+function klick() {
+    d.style.backgroundColor = 'blue';
+}
+```
+
+In diesem Beispiel wartet der PC auf den Event `click` auf dem ersten Div-Element, das heisst, auf einen Klick auf das Div. Nach dem Klick wird die Funktion (bzw. der **Event-Handler**) `klick` ausgeführt, die unten definiert ist, und die Hintergrundfarbe des `div`s auf blau ändert.
+
+Eine vollständige Liste der Ereignisse befindet sich <a href="https://developer.mozilla.org/en-US/docs/Web/Reference/Events">hier</a>.
+
+Sollen Events für mehrere Elemente separat ausgewertet werden, existiert in den Event-Handlern die Variable `this`. In ihr ist das Element gespeichert, das vom Event betroffen war, z.B. das Div, auf das geklickt wurde.
+
+```js
+var d = document.querySelectorAll('input');
+for(var i = 0; i < d.length; i = i + 1) {
+  d[i].addEventListener('focus', grau);
+  d[i].addEventListener('blur', weiss);
+}
+
+function grau() {
+  this.style.backgroundColor = 'red';
+}
+
+function weiss() {
+  this.style.backgroundColor = 'white';
+}
+```
+
+So wird jeweils nur die Farbe des ausgewählten Elements geändert, anstatt die Farbe aller Input-Elemente.
+
+
+## Attribute lesen
+
+Manchmal muss man die Attribute von Elementen lesen, z.B. das `href`-Attribut eines Link-Elements. Javascript bietet eine einfache Möglichkeit dazu, `getAttribute`:
+
+```js
+var link = document.querySelector('a');
+var url = link.getAttribute('href');
+```
+
+`getAttribute()` wird der Attributname angegeben, der gesucht wird (hier: `href`). Umgekehrt können mit Javascript Attribute auch gesetzt werden, und zwar mit `setAttribute`. Hier müssen der Attributname und der neue Wert angegeben werden:
+
+```js
+var link = document.querySelector('a');
+link.setAttribute('href', 'http://www.google.com');
+```
+
+## Elemente generieren
+
+Es gibt Anwendungen, bei denen neue Elemente per Javascript generiert werden müssen. Das funktioniert ähnlich wie die bisherigen Funktionen zur Bearbeitung von Elementen, und zwar mit der Funktion `createElement()`:
+
+```js
+var div = document.createElement("div");
+var body = document.querySelector('body');
+body.appendChild(div);
+```
+
+`createElement` generiert ein neues Div, zeigt es aber noch nicht an. Dazu muss das neue Element zuerst an ein schon existierendes Element angehängt werden (hier: `body`). Dies geschieht mit `appendChild`.
+
+Nach diesen Schritten ist das neue `div`-Element als letztes Element im `body` sichtbar.
+
+## Elemente löschen
+
+Elemente können auch per JS wieder gelöscht werden. Dies ist ein bisschen kompliziert, weil ein Umweg über das Elternelement gemacht werden muss:
+
+```js
+var überschrift = document.querySelector('h1');
+überschrift.parentNode.removeChild(überschrift);
+```
+
+Das heisst, dass man eigentlich dem Elternelement sagen muss, welches seiner Kinderelemente gelöscht werden sollen. Das ist analog zur Erstellung eines Elements, bei der auch dem Elternelement gesagt wird, dass ihm jetzt ein neues Kinderelement angehängt wird.
+
+## Formulardaten
+
+Ähnlich wie das Lesen von Attributen können auch Formulardaten gelesen werden. Dazu muss zuerst das Eingabefeld mit `querySelector` ausgewählt werden, und dann der Wert mit `.value` gelesen werden:
+
+```js
+var e = document.querySelector('#nameInput');
+var wert = e.value;
+```
+
+Genau gleich kann auch ein neuer Wert gesetzt werden:
+
+```js
+e.value = 'Test';
+```
+
+## JQuery
+
+JQuery ist eine Programmbibliothek, die uns viel Arbeit abnimmt. Sie vereinfacht die Interaktion mit HTML-Elementen und verkürzt den zu schreibenden Code stark. JQuery kann direkt über ein `<script>`-Tag in die Seite eingebunden werden:
+
+```html
+<​head>
+  <​script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"><​/script>
+<​/head>
+```
+
+  Alle Befehle sind bei JQuery ähnlich aufgebaut; es wird jeweils mit einem (CSS-) Selektor ein oder mehrere Elemente ausgewählt, und dann auf diese Elemente eine Aktion ausgeführt:
+
+
+`$(selektor).aktion();`
+
+Aktionen können verschiedene Änderungen am Element selber sein, wie ein Wechsel der Schriftfarbe oder der Position.
+
+Um beispielsweise alle Textabschnitte (`<p>`) einer Website auszuwählen und ihre Schriftfarbe auf blau zu setzen, kann man mit JQuery den folgenden Code schreiben:
+
+Alle Textabschnitte auswählen und ausblenden:
+
+```js
+$("p").css({'color': 'blue'});
+```
+
+Zum Vergleich der "normale" JavaScript-Code:
+
+```js
+var paragraphs = document.querySelectorAll('p');
+for(var i = 0; i < paragraphs.length; i = i + 1) {
+  paragraphs[i].style.color = 'blue';
+}
+```
+
+Wichtig: JQuery wählt immer alle Elemente aus, die auf den Selektor passen!
+
+Ähnlich dazu können auch alle Bilder einer Website ausgeblendet werden:
+
+```js
+$("img").hide();
+```
+
+Wenn nur ein Teil aller gleichen Elemente verändert werden sollen, muss man diesen im HTML eine Klasse geben und dann in JQuery nur die Elemente mit der entsprechenden Klasse auswählen (gleich wie in CSS!):
+
+```js
+$('img.large').css({position: 'fixed'});
+```
+
+## Event-Handler
+
+Auch die Event-Listener können mit JQuery sehr viel kürzer als im normalen JavaScript geschrieben werden. Der folgende Code wählt den Button mit der ID `test` aus und sagt dem PC, dass er den Website-Hintergrund rot färben soll, sobald ein Benutzer auf den gewählten Button klickt:
+
+```js
+$("button#test").click(function(){
+  $("body").css({'background-color': 'red'});
+});
+```
+
+Weitere Events (neben dem `click` wie im Beispiel stehen in der [JQuery-Dokumentation](https://api.jquery.com/category/events/).
+
+# Javascript-Games
+
+## Game-Loop
+
+Bisherige Programme haben jeweils auf eine Benutzereingabe reagiert, ihren Code ausgeführt, und beendeten dann. Spiele müssen im Gegensatz dazu auch ohne Benutzereingabe weiterlaufen können. Dazu gibt es den sogenannten **Game-Loop**. Der Game-Loop ist eine spezielle Schleife (wie eine `for`-Schleife), die unendlich lange ausgeführt wird. Der Loop wird etwa 60 Mal pro Sekunde ausgeführt, und bei jedem Durchlauf werden Positionen von Spielern, Benutzereingaben und weitere Berechnungen neu gemacht. Wenn sich ein Objekt im Spiel bewegt, heisst das, dass es in Wirklichkeit nur 60 Mal pro Sekunde einen kleinen Sprung macht. Weil das Auge aber nicht so schnell ist, sieht es aus, als ob die Bewegung flüssig sei.
+
+  Der Game-Loop wird wie folgt programmiert:
+  
+  ```js
+  function repeat() {
+      // rechnen
+
+      requestAnimationFrame(repeat);
+  }
+
+  requestAnimationFrame(repeat);
+  ```
+
+  Damit kontrolliert der PC selbständig, dass der Loop etwa 60 Mal pro Sekunde ausgeführt wird. Der gesamte Code, der zwischen den geschweiften Klammern von `repeat` steht, wird bei jedem Berechnungsschritt des Spiels wiederholt.
+
+## Einrichtung
+
+  Das Spiel benötigt 2 JavaScript-Dateien, die mit einem Skript-Tag eingebunden werden müssen:
+
+* `http://lukasdiener.ch/bbz/game.js`
+* `http://lukasdiener.ch/bbz/jquery.js`
+
+Ausserdem muss im HTML-Code ein Element definiert sein, das das Spielfeld darstellt:
+
+```html
+<body>
+  <div id="game"></div>
+</body>
+```
+
+Danach kann mit dem folgenden Code ein kleines Spiel erzeugt werden:
+
+```js
+var game = createGame($('#game'));
+var player = createEntity($('<div class="player"></div>'));
+game.add(player);
+
+player.geschwindigkeit = 2;
+player.richtung = 0;
+
+function repeat() {
+  player.move();
+
+  if(player.positionX() > 300) {
+    player.richtung = 180;
+  }
+
+  requestAnimationFrame(repeat);
+}
+
+requestAnimationFrame(repeat);
+```
+
+Die Zeilen `createGame` und `createEntity` generieren hier das Spielfeld beziehungsweise das Spielobjekt. Jedes Spielobjekt kann nun auf verschiedene Arten verändert werden. Die einzelnen Eigenschaften und Funktionen sind [auf den Folien](http://lukasdiener.ch/bbz/index11.html#/2/3) erklärt.
+
+Wichtig ist hier die Unterscheidung zwischen dem Code, der zur Vorbereitung des Spiels dient, und dem Code, der während dem Spiel den Verlauf bestimmt.
+
+Zum **Vorbereitungscode** gehören Abläufe, die nur einmal ausgeführt werden müssen, wie die Erstellung des Spielfelds und der Objekte im Spiel, sowie das Setzen der anfänglichen Geschwindigkeit und Bewegungsrichtung. Dieser Code steht **vor** dem Game-Loop.
+
+Zum **Spielcode** gehören alle Abläufe, die während jedem kleinen Schritt des Spiels ausgeführt werden müssen, wie die Überprüfung, ob ein Spieler ausserhalb des Spielfelds ist. Dieser Code steht **im** Game-Loop.
+
+## Kollisionen
+
+Mit wenig Code kann auch getestet werden, ob zwei Elemente kollidieren, und passend drauf reagiert werden.
+
+```js
+if(player1.collision(player2)) {
+  player1.richtung = 180;
+}
+```
+
+Sobald die beiden Objekte `player1` und `player2` sich berühren, ist der Aufruf `collision()` wahr und der Code der Bedingung wird ausgeführt (`player1` wechselt die Richtung).
+
+##### Dieses Skript darf nur mit Genehmigung des <a href="mailto:lukas@zeilenwerk.ch">Autors</a> weiterverbreitet werden.
+
+</xmp>
+
+<script src="https://cdn.rawgit.com/Naereen/StrapDown.js/master/strapdown.min.js"></script>
+</html>
