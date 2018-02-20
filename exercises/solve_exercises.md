@@ -1,0 +1,167 @@
+Im Folgenden sind einige Tips für das Lösen von Programmier-Aufgaben gegeben
+
+### Aufgabe: FizzBuzz
+
+* Schreibe ein Programm, das durch die ersten 20 ganzen Zahlen durchläuft und jeweils
+  * "Fizz" anzeigt, wenn die Zahl durch 3 teilbar ist
+  * "Buzz" anzeigt, wenn die Zahl durch 5 teilbar ist
+  * "FizzBuzz" anzeigt, wenn die Zahl durch 3 und 5 teilbar ist
+  * Die Zahl selber anzeigt, wenn sie weder durch 3 noch durch 5 teilbar ist
+
+Um zu testen, ob Zahl `a` durch die Zahl `b` teilbar ist, kannst du den Modulo-Operator `%` verwenden. Dieser
+Operator berechnet den Rest einer Division. `5 % 3` ergibt beispielsweise 2, weil der Rest von `5 / 3` gerade 2 ist.
+Wenn der Rest von `a % b` gerade 0 ist, ist a durch b teilbar (z.B. `8 % 4` gibt 0).
+
+Das heisst, wenn `if(x % 3 == 0)`, dann ist `x` durch 3 teilbar.
+
+### Herangehensweise
+
+Zuerst die ganze Aufgabe durchlesen, so dass die Frage "Was soll das Programm können" beantwortet werden kann, ohne die Aufgabe vor sich zu haben.
+Anschliessend kann schematisch vorgegangen werden: Immer kleine "einfache" Teile lösen und nicht versuchen, alles auf einmal zu lösen. Bspw.
+
+1. Alle Zahlen zwischen 1 und 20 ausgeben.
+  * Ausgabe einer Zahl mit `console.log()` möglich.
+  * repetitive Aufgabe, also lösbar mit einer `while()`-loop!
+  ```js
+  var i = 1
+  while (i <= 20) {
+    console.log(i)
+    i = i + 1
+  }
+  ```
+
+  2. Die Aufgabe beinhaltet 3 Spezialfälle, die Schritt für Schritt implementiert werden können. Das Behandeln von Spezialfällen kann durch den Programmfluss geregelt werden (Bedingte Ausführung von Code --> `if`-Bedingungen):
+    *  "Fizz" anzeigen, wenn die Zahl durch 3 teilbar ist
+    Teilbarkeit kann mit dem `%`-Operator überprüft werden.
+
+    ```js
+    var i = 1
+    while (i <= 20) {
+      /* wenn i % 3 gleich null*/
+      if (i % 3 == 0) {
+        console.log('Fizz')
+      } else {
+        console.log(i)
+      }
+      i = i + 1
+    }
+    ```
+
+    * "Buzz" anzeigen, wenn die Zahl durch 5 teilbar ist. Wo schreiben wir diese Bedingung hin? Zum jetztigen Zeitpunkt ist es okay, wenn wir nur Zahlen anschauen, die durch `5` aber nicht durch `3` teilbar sind. Solche Zahlen finden sich im `else`-Block!
+
+    ```js
+    var i = 1
+    while (i <= 20) {
+      /* wenn i % 3 gleich null*/
+      if (i % 3 == 0) {
+        console.log('Fizz')
+      } else {
+        if (i % 5 == 0) {
+          console.log('Buzz)
+        } else {
+          console.log(i)
+        }
+      }
+      i = i + 1
+    }
+    ```
+
+    * "FizzBuzz" anzeigen, wenn die Zahl durch 3 und 5 teilbar ist. Welche Zahl kommt für `FizzBuzz` in Frage?
+    `3 * 5 = 15` ist das erste Auftreten. Da `15` durch `3` teilbar ist, wird bei unserem Code `Fizz` ausgegeben. Wir führen also eine weitere Bedingung in der ersten `if`-Bedingung ein: Kommt man in diesen Code-Block, weiss man dass i bereits durch 3 teilbar ist. Man muss nun nur noch überprüfen, ob `i` durch `5` teilbar ist.
+
+    ```js
+    var i = 1
+    while (i <= 20) {
+      if (i % 3 == 0) {
+        if (i % 5 == 0){
+          console.log('FizzBuzz')
+        } else {
+          console.log('Fizz')
+        }
+      } else {
+        if (i % 5 == 0) {
+          console.log('Buzz)
+        } else {
+          console.log(i)
+        }
+      }
+      i = i + 1
+    }
+    ```
+
+#### Summe 3
+Schreibe ein Programm, das dich nach einer Zahl fragt und dich dann so viele male mit einem Prompt-Fenster nach weiteren Zahlen fragt und danach die Summe davon ausrechnet. Beispiel: Eingabe von 3 fragt nach 3 Zahlen und rechnet deren Summe aus.
+
+### Herangehensweise
+1. Problem: wie können wir, abhängig von der Eingabe, eine variable Anzahl Eingabeaufforderungen ausgeben?
+Idee: benutzen einer `while`-Schleife, in welcher das Eingabe-Statement steht.
+Die Summe ist zu Beginn `0` und wird nach jeder Eingabe um die eingegebene Zahl erhöht (`summe = summe + zahl`)
+Wir vereinfachen die Aufgabe im ersten Schritt und nehmen an, dass der Nutzer 3 eingibt:
+
+```js
+var i = 1
+summe = 0
+while(i <= 3) {
+  var zahl = Number(prompt('Zahl ' + i))
+  summe = summe + zahl
+  i = i + 1
+}
+```
+
+2. Erweitern des codes, so dass der Nutzer eingeben kann, wie oft nach einer Zahl gefragt wird:
+
+```js
+var wiederholungen = Number(prompt('Anzahl Wiederholungen?'))
+var i = 1
+summe = 0
+while(i <= wiederholungen) {
+  var zahl = Number(prompt('Zahl ' + i))
+  summe = summe + zahl
+  i = i + 1
+}
+```
+
+
+#### Summen
+
+* Schreibe ein Programm, das die Summe aller Zahlen von 1 bis 100 berechnet und anzeigt (1 + 2 + 3 + ... + 100)
+* Ändere das Programm so, dass du eine Obergrenze eingeben kannst. Wenn du 23 eingibst, soll das Programm nur noch die Zahlen bis und mit 23 addieren.
+* Ändere das Programm so ab, dass es nicht bei 1, sondern bei 10 beginnt.
+
+#### Herangehensweise
+
+1. Es soll die Summen der ersten 100 Zahlen gebildet werden. Mit Schleifen können wir Folgen sehr gut generieren (bspw. `3`er-Reihe). Wir können also auch die `1`er-Reihe benutzen und mit einer `while`-Schleife programmieren. Im Schleifenblock kann dann immer die Schleifenvariable zur Summe hinzugefügt werden (`summe = summe + i`), wobei die Summe VOR der Schleife definiert wird (`var summe = 0`):
+```js
+var summe = 0
+var i = 1
+while (i < 100) {
+  summe = summe + i
+  i = i + 1
+}
+```
+
+2. Ändere das Programm so, dass du eine Obergrenze eingeben kannst. Wenn du 23 eingibst, soll das Programm nur noch die Zahlen bis und mit 23 addieren.
+Userabfragen können mit `prompt()` gemacht werden. Um statt wie zuvor bis `100` zu zählen, verwenden wir die Eingabe:
+
+```js
+var max = Number(prompt('Maximum?'))
+var summe = 0
+var i = 1
+while (i < max) {
+  summe = summe + i
+  i = i + 1
+}
+```
+
+2. Ändere das Programm so ab, dass es nicht bei 1, sondern bei 10 beginnt.
+Der erste Summand ist aktuell `1`. Also wechseln wir diesen Startwert zu `10` und sind fertig :)
+
+```js
+var max = Number(prompt('Maximum?'))
+var summe = 0
+var i = 10
+while (i < max) {
+  summe = summe + i
+  i = i + 1
+}
+```
