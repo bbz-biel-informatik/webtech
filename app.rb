@@ -10,7 +10,7 @@ class MyApp < Sinatra::Base
   end
 
   get '/skript.html' do
-    send_file 'skript.html'
+    send_file 'skript_while.html'
   end
 
   get '/plugin/*' do |file|
