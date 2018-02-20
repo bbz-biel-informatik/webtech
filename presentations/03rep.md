@@ -141,7 +141,7 @@ Sind dazu da, einen Codeteil zu wiederholen solange die while-Bedingung wahr ist
 var alter = 18
 var i = 1
 while(i <= alter) {
-  Console.log("Happy Birthday zum " + i + ". Geburtstag")
+  console.log("Happy Birthday zum " + i + ". Geburtstag")
   i = i + 1
 }
 ```
