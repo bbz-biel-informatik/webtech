@@ -10,10 +10,8 @@
 ## Zusammenfassung
 
 ```js
-var i = 1
-while(i < 10) {
-  alert(i)
-  i = i + 1
+for(var i = 1; i < 10; i = i + 1) {
+  alert(i);
 }
 ```
 
@@ -32,19 +30,6 @@ while(i < 10) {
 * Schreibe ein Programm, das den Besucher nach einer Zahl fragt und dann diese
 Reihe anzeigt (z.B. Dreierreihe für Eingabe 3). Es soll die ersten 10 Zahlen der
 Reihe anzeigen.
-
-### Treppe
-
-Die Aufgabe ist auf [dieser Seite](exercise03_stairs.html) beschrieben.
-
-![stairs](images/exercise03_stairs.png)
-
-### Quadrat im Quadrat
-
-Die Aufgabe zu den geschachtelten Quadraten sind auf [dieser Seite](exercise03_quadrat.html).
-
-![quadrat](images/exercise03_quadrat_a.png)
-![quadrat](images/exercise03_quadrat_b.png)
 
 ### FizzBuzz
 
@@ -91,11 +76,114 @@ deren Summe aus.
 
 Schreibe ein Programm, das in der Konsole eine Multiplikationstabelle anzeigt.
 
-### Spirale
 
-Die Aufgabe ist auf [dieser Seite](exercise03_helix.html).
+## Lösungen
 
-![helix](images/exercise03_helix.png)
+### Dreierreihe
+
+```js
+for(var i = 1; i <= 20; i = i + 3) {
+  alert(i);
+}
+
+// ODER
+
+for(var i = 1; i <= 20; i = i + 1) {
+  alert(i * 3);
+}
+```
+
+### Beliebige Reihe
+
+```js
+var reihe = prompt("Reihe?")
+reihe = Number(reihe)
+for(var i = reihe; i <= reihe * 10; i = i + reihe) {
+  alert(i)
+}
+```
+
+
+### FizzBuzz
+
+```js
+for(var i = 1; i <= 20; i = i + 1) {
+  if(i % 3 == 0 && i % 5 == 0) {
+    alert("FizzBuzz");
+  } else if(i % 3 == 0) {
+    alert("Fizz");
+  } else if(i % 5 == 0) {
+    alert("Buzz");
+  } else {
+    alert(i);
+  }
+}
+```
+
+### Summe
+
+```js
+var summe = 0;
+for(var i = 1; i <= 20; i = i + 1) {
+  summe = summe + i;
+}
+alert(summe);
+```
+
+### Rückwärts
+
+```js
+for(var i = 10; i >= 0; i = i - 1) {
+  alert(i);
+}
+```
+
+### Summe der Quadrate vs. Quadrat der Summe
+
+```js
+var summe = 0;
+
+for(var i = 0; i < 100; i = i + 1) {
+  summe = summe + i;
+}
+
+alert("Quadrat der Summe: " + (summe * summe));
+
+var summe2 = 0;
+
+for(var i = 0; i < 100; i = i + 1) {
+  summe2 = summe2 + (i * i);        // entspricht i^2
+}
+
+alert("Summe der Quadrate: " + summe2);
+```
+
+### Summe 3
+
+```js
+var anzahl = prompt("Anzahl Zahlen?")
+
+var summe = 0
+
+for(var i = 1; i <= anzahl; i = i + 1) {
+  var zahl = prompt('Zahl?')
+  summe = summe + zahl
+}
+
+alert(summe)
+```
+
+### Multiplikationstabelle
+
+```js
+for(var i = 1; i <= 10; i = i + 1) {
+  var zeile = '';
+  for(var j = 1; j <= 10; j = j + 1) {
+    zeile = zeile + ' ' + i * j
+  }
+  console.log(zeile)
+}
+```
 
 </xmp>
 
