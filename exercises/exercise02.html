@@ -3,19 +3,19 @@
 <head>
  <meta charset="UTF-8">
 </head>
-<xmp theme="united" style="display:none;">
+<xmp theme="united" style="display:none">
 
 # Übungen Bedingungen
 
 ## Zusammenfassung
 
 ```js
-var a = prompt("Wie alt bist du?");
-var alter = Number(a);
+var a = prompt("Wie alt bist du?")
+var alter = Number(a)
 if(alter < 18) {
-  alert("Du bist minderjährig");
+  alert("Du bist minderjährig")
 } else {
-  alert("Du bist volljährig");
+  alert("Du bist volljährig")
 }
 ```
 
@@ -34,8 +34,8 @@ if(alter < 18) {
 * Schreibe ein Programm, das den Benutzer ein Passwort eingeben lässt, und anzeigt, ob es sicher genug ist. Das Passwort gilt (hier) als sicher, wenn es 8 oder mehr Zeichen beinhaltet. Die Länge eines Texts kannst du mit `.length` rausfinden
 
 ```js
-var a = "Testpasswort";
-var länge = a.length;
+var a = "Testpasswort"
+var länge = a.length
 ```
 
 ### Wochentage
@@ -72,95 +72,95 @@ Tipp: um herauszufinden, ob eine Zahl durch eine andere teilbar ist, kannst du d
 
 ### Noten
 ```js
-var note = prompt("Note?");
+var note = prompt("Note?")
 if(note < 4) {
-  alert("ungenügend");
+  alert("ungenügend")
 } else {
-  alert("genügend");
+  alert("genügend")
 }
 ```
 
 ### Vorzeichen
 ```js
-var zahl = prompt("Zahl?");
+var zahl = prompt("Zahl?")
 if(zahl < 0) {
-  alert("negativ");
+  alert("negativ")
 } else if(zahl > 0) {
-  alert("positiv");
+  alert("positiv")
 } else {
-  alert("Null");
+  alert("Null")
 }
 ```
 
 ### Passworttest
 ```js
-var pw = prompt("Passwort?");
+var pw = prompt("Passwort?")
 if(pw.length >= 8) {
-  alert("sicher");
+  alert("sicher")
 } else {
-  alert("unsicher");
+  alert("unsicher")
 }
 ```
 
 ### Wochentage
 ```js
-var tag = prompt("Wochentag?");
+var tag = prompt("Wochentag?")
 if(tag == 1) {
-  alert("Montag");
+  alert("Montag")
 } else if(tag == 2) {
-  alert("Dienstag");
+  alert("Dienstag")
 } else if(tag == 3) {
-  alert("Mittwoch");
+  alert("Mittwoch")
 } else if(tag == 4) {
-  alert("Donnerstag");
+  alert("Donnerstag")
 } else if(tag == 5) {
-  alert("Freitag");
+  alert("Freitag")
 } else if(tag == 6) {
-  alert("Samstag");
+  alert("Samstag")
 } else if(tag == 7) {
-  alert("Sonntag");
+  alert("Sonntag")
 } else {
-  alert("ungültig");
+  alert("ungültig")
 }
 ```
 
 ### Tageszeit
 ```js
-var stunde = prompt("Stunde?");
+var stunde = prompt("Stunde?")
 if(stunde < 12) {
-  alert("Morgen");
+  alert("Morgen")
 } else if (stunde < 13){
-  alert("Mittag");
+  alert("Mittag")
 } else if (stunde < 17){
-  alert("Nachmittag");
+  alert("Nachmittag")
 }  else if (stunde < 21){
-  alert("Abend");
+  alert("Abend")
 }
 ```
 
 ### Alterskontrolle
 ```js
-var alter = prompt("Alter?");
+var alter = prompt("Alter?")
 if(alter < 16) {
-  alert("Sirup");
+  alert("Sirup")
 } else if (alter < 18){
-  alert("Bier");
+  alert("Bier")
 } else {
-  alert("Schnaps");
+  alert("Schnaps")
 }
 ```
 
 ### Schaltjahre
 ```js
-var jahr = prompt("Jahr?");
+var jahr = prompt("Jahr?")
 if(jahr % 4 != 0) {
-  alert("Normal");
+  alert("Normal")
 } else if(jahr % 100 != 0) {
-  alert("Schaltjahr");
+  alert("Schaltjahr")
 } else if(jahr % 400 != 0) {
-  alert("Normal");
+  alert("Normal")
 } else {
-  alert("Schaltjahr");
+  alert("Schaltjahr")
 }
 ```
 
