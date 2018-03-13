@@ -38,6 +38,19 @@ for(var i = 1; i < 10; i = i + 1) {
 Reihe anzeigt (z.B. Dreierreihe für Eingabe 3). Es soll die ersten 10 Zahlen der
 Reihe anzeigen.
 
+### Treppe
+
+Die Aufgabe ist auf [dieser Seite](exercise03_stairs.html) beschrieben.
+
+![stairs](images/exercise03_stairs.png)
+
+### Quadrat im Quadrat
+
+Die Aufgabe zu den geschachtelten Quadraten sind auf [dieser Seite](exercise03_quadrat.html).
+
+![quadrat](images/exercise03_quadrat_a.png)
+![quadrat](images/exercise03_quadrat_b.png)
+
 ### FizzBuzz
 
 * Schreibe ein Programm, das durch die ersten 20 ganzen Zahlen durchläuft und jeweils
@@ -83,6 +96,11 @@ deren Summe aus.
 
 Schreibe ein Programm, das in der Konsole eine Multiplikationstabelle anzeigt.
 
+### Spirale
+
+Die Aufgabe ist auf [dieser Seite](exercise03_helix.html).
+
+![helix](images/exercise03_helix.png)
 
 ## Lösungen
 
@@ -90,19 +108,56 @@ Schreibe ein Programm, das in der Konsole eine Multiplikationstabelle anzeigt.
 
 ```js
 for(var i = 1; i <= 20; i = i + 3) {
-  alert(i)}
+  alert(i)
+}
 
 // ODER
 
 for(var i = 1; i <= 20; i = i + 1) {
-  alert(i * 3)}
-```
+  alert(i * 3)
+}
 
-```js
+// ODER
+
 var i = 1
 while(i <= 20) {
   alert(i)
   i = i + 3
+}
+```
+
+### Treppe
+
+```js
+for(var i = 1; i <= 15; i = i + 1) {
+  up()
+  right()
+}
+```
+
+### Quadrat im Quadrat
+
+a.)
+
+```js
+for(var i = 1; i <= 10; i = i + 1) {
+  var breite = i * 20
+  right(breite)
+  up(breite)
+  left(breite)
+  down(breite)
+}
+```
+
+b.)
+```js
+for(var i = 1; i <= 10; i = i + 1) {
+  var breite = i * 20
+  goTo( -breite / 2, -breite / 2)
+  right(breite)
+  up(breite)
+  left(breite)
+  down(breite)
 }
 ```
 
@@ -187,10 +242,26 @@ alert(summe)
 
 ```js
 for(var i = 1; i <= 10; i = i + 1) {
-  var zeile = ''  for(var j = 1; j <= 10; j = j + 1) {
+  var zeile = ''
+  for(var j = 1; j <= 10; j = j + 1) {
     zeile = zeile + ' ' + i * j
   }
   console.log(zeile)
+}
+```
+
+### Spirale
+
+```js
+for(var i = 1; i <= 20; i = i + 1) {
+  var breite = i * 10
+  if (i % 2 == 0){
+    up(breite)
+    left(breite)
+  } else {
+    down(breite)
+    right(breite)
+  }
 }
 ```
 
