@@ -13,26 +13,13 @@
 Ein paar Beispiele, wie jQuery verwendet werden kann:
 
 ```js
-$('img').css({"border-top": "20px solid black"})  // <-- Alle Bilder erhalten oben einen schwarzen Rahmen
+$('img').css({"border-top": "20px solid black"})
 ```
 
 
 ```js
-$('img').click(groesse)         // <-- Ein Klick auf irgend ein <img> soll den Befehl groesse ausführen
-
-function groesse() {
-  $(this).css({"width": "300px"})
-}
+$('p').css({'color': 'blue', 'margin-left': '20px'})
 ```
-
-```js
-$('img').click(groesse)
-
-function groesse() {
-  $(this).animate({"width": "300px"})
-}
-```
-
 
 ## Vorbereitung
 
@@ -43,23 +30,9 @@ function groesse() {
 Baue jQuery auf deiner Website ein, indem du das Skript im &lt;head&gt;-Bereich deiner Website einbindest.
 Die Anleitung dazu steht in der Präsentation.
 
-## Event-Listener
+## Umbau
 
-Versuche, einen der Event-Listener auf deiner Website mit jquery zu ersetzen. Orientiere dich an den Beispielen oben.
-
-## Animation
-
-Baue bestehenden Code auf deiner Website so um, dass neu eine jquery-Animation verwendet wird. Wenn du z.B. Code hast, der die opacity eines Bildes verändert, kannst du den folgenden Code verwenden:
-
-```js
-function bildZeigen() {
-  $(this).animate({"opacity": 1})
-}
-
-function bildAusblenden() {
-  $(this).animate({"opacity": 0})
-}
-```
+Versuche den bisherigen Code auf deiner Website (der Code mit `document.querySelector()`) umzubauen und stattdessen den `$()`-Befehl von jQuery zu verwenden. Kannst du die Codemenge reduzieren?
 
 </xmp>
 
