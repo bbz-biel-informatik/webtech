@@ -8,11 +8,10 @@
 # Events
 
 ```js
-var x = document.querySelector('img')
-x.addEventListener("click", randHinzufügen)
+$('img').click(randHinzufügen)
 
 function randHinzufügen() {
-  this.style.border = '5px solid blue'
+  $(this).css({"border": "5px solid blue"})
 }
 ```
 
@@ -23,7 +22,6 @@ Baue auf deiner Website ein, dass ein Klick auf den Titel die Nachricht "Willkom
 # Aufgabe 1
 
 Baue auf deiner Website ein, dass wenn der Benutzer auf die Überschrift klickt, sich die Textfarbe der Überschrift auf rot ändert
-
 
 # Aufgabe 2
 
@@ -38,13 +36,23 @@ Ereignis 'mouseout' verwenden.
 
 # Aufgabe 3
 
-Baue auf deiner Website ein, dass Bilder, sobald man mit der Maus drüberfährt, einen roten Rahmen erhalten.
+Baue auf deiner Website ein, dass Bilder standardmässig einen Unschärfefilter besitzen. Das kannst du mit dem folgenden CSS-Code erreichen
+
+```css
+img {
+  filter: blur(20px);
+}
+```
+
+Wenn man nun mit der Maus über ein Bild fährt, soll dieses scharf werden.
 
 # Aufgabe 4
 
-Baue auf deiner Website einen hell/dunkel-Modus ein. Ein Klick auf einen Button soll das Farbschema der
-gesamten Website ändern, und zwar zwischen einem eher hellen Schema und einem dunklen.
+?
 
+</xmp>
+
+<!--
 ## Lösungen
 
 ### Aufgabe 0
@@ -127,6 +135,6 @@ function farbe() {
 
 
 </xmp>
-
+-->
 <script src="https://cdn.rawgit.com/Naereen/StrapDown.js/master/strapdown.min.js"></script>
 </html>
