@@ -60,15 +60,12 @@ Füge am unteren Ende deiner Website eine Schaltfläche ein, die an den Seitenan
 
 Baue JS-Code ein, der die Schaltfläche nur anzeigt, wenn man mehr als 100 Pixel nach unten gescrollt ist. Du kannst dafür den `scroll`-Event verwenden und du kannst die aktuelle Scrollposition mit `$(window).scrollTop()` herausfinden.
 
-</xmp>
-
-<!--
 ## Lösungen
 
 ### Aufgabe 0
 ```js
-var title = document.querySelector('h1')
-title.addEventListener('click', nachricht)
+var title = $('h1')
+title.on('click', nachricht)
 
 function nachricht() {
   alert("Willkommen")
@@ -77,71 +74,89 @@ function nachricht() {
 
 ### Aufgabe 1
 ```js
-var title = document.querySelector('h1')
-title.addEventListener('click', farbe)
+var title = $('h1')
+title.on('click', farbe)
 
 function farbe() {
-  this.style.color = 'red'
+  $(this).css({"color": 'red'})
 }
 ```
 
 ### Aufgabe 2
 ```js
-var title = document.querySelector('h1')
-title.addEventListener('mouseover', farbe)
+var title = $('h1')
+title.on('mouseover', farbe)
 
 function farbe() {
-  this.style.color = 'red'
+  $(this).css({"color": 'red'})
 }
 ```
 
 ### Aufgabe 2.5
 ```js
-var title = document.querySelector('h1')
-title.addEventListener('mouseover', farbe)
-title.addEventListener('mouseout', farbeWeg)
+var title = $('h1')
+title.on('mouseover', farbe)
+title.on('mouseout', farbeWeg)
 
 function farbe() {
-  this.style.color = 'red'
+  $(this).css({"color": 'red'})
 }
 
 function farbeWeg() {
-  this.style.color = ''
+  $(this).css({"color": ''})
 }
 ```
 
 ### Aufgabe 3
 ```js
-var bilder = document.querySelectorAll('img')
-for(var i = 0; i < bilder.length; i = i + 1) {
-  bilder[i].addEventListener('mouseover', rand)
-}
+var bilder = $('img')
+bilder.on("click", unblur)
 
-function rand() {
-  this.style.border = '1px solid red'
+function unblur() {
+  $(this).css({"filter": "blur(0px)"})
 }
 ```
 
 ### Aufgabe 4
 ```js
-var title = document.querySelector('h1')
-var body = document.querySelector('body')
+var bilder = $('*')
+bilder.on("dblclick", color)
 
-var button = document.querySelector('button')
-
-button.addEventListener('click', farbe)
-
-function farbe() {
-  if(body.style.backgroundColor == 'black') {
-    body.style.backgroundColor = 'white'
-    title.style.color = 'black'
-  } else {
-    body.style.backgroundColor = 'black'
-    title.style.color = 'white'
-  }
+function color() {
+  var farbe = prompt("Farbe?")
+  $(this).css({"background-color": color})
 }
 ```
 
+### Aufgabe 5
+
+```html
+<button>Feedback</button>
+```
+
+```js
+var button = $('button')
+button.on("mouseover", verstecken)
+
+function color() {
+  $(this).css({"display": "none"})
+}
+```
+
+### Aufgabe 6
+
+```js
+$(document).on('scroll', check)
+
+function check() {
+  var distanz = $(window).scrollTop();
+  if(distanz > 100) {
+    $('.top').css({"display": "block"})
+  } else {
+    $('.top').css({"display": "none"})
+  }
+}
+```
 
 
 </xmp>
