@@ -52,6 +52,7 @@ unt erstelle eine Demo-Website ('create > Demo'). Besuche anschliessend dieselbe
 Bewegungssensoren in deinem Smartphone (Accelerometer) den Stift auf der Website steuern.
 
 Es lassen sich auch eigene Websites hochladen, die dann zugriff auf das Event `motionData` erhalten.
+</div>
 ```js
 on('motionData', function(data){
   // data.gameId => uploaded website id
@@ -61,7 +62,7 @@ on('motionData', function(data){
   // data.acceleration.z => value [-9.81, 9.81]
 })
 ```
-
+<div style="background-color: #f4f142; border-radius: 5px; padding: 12px; border: 1px solid #444;"></div>
 Bei der hochgeladenen Website muss die angezeigte Website den Dateinamen `main.html` besitzen. Es können beliebige andere
 html-Dokumente, Stylesheets und Javascripts referenziert werden, es müssen sich aber alle im selben Ordner befinden. Unterordner werden nicht unterstützt!
 </div>
