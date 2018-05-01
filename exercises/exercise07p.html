@@ -52,7 +52,6 @@ unt erstelle eine Demo-Website ('create > Demo'). Besuche anschliessend dieselbe
 Bewegungssensoren in deinem Smartphone (Accelerometer) den Stift auf der Website steuern.
 
 Es lassen sich auch eigene Websites hochladen, die dann zugriff auf das Event `motionData` erhalten.
-</div>
 
 ```javascript
 on('motionData', function(data){
@@ -64,7 +63,6 @@ on('motionData', function(data){
 })
 ```
 
-<div style="background-color: #f4f142; border-radius: 5px; padding: 12px; border: 1px solid #444;">
 Bei der hochgeladenen Website muss die angezeigte Website den Dateinamen `main.html` besitzen. Es können beliebige andere
 html-Dokumente, Stylesheets und Javascripts referenziert werden, es müssen sich aber alle im selben Ordner befinden. Unterordner werden nicht unterstützt!
 </div>
@@ -77,13 +75,9 @@ möglich das uploaden von Bildern - wechsel also alle Bilder-Quellen auf deiner 
 ### Hintergrundfarbe
 
 Ändere deine Website so, dass sich die Hintergrundfarbe abhängig von der Ausrichtung deines Smartphones ändert. Benutze die drei Accelerometer-Werte
-als RGB-Werte (`$('body').css({'background-color': 'rgb(255, 0, 0)'})` setzt den Hintergrund auf rot).
+als RGB-Werte (Beispiel: `$('body').css({'background-color': 'rgb(255, 0, 0)'})` setzt den Hintergrund auf rot).
 Beachte, dass die Accelerometer-Werte im Bereich 
 zwischen `-9.81` und `9.81` liegen. Überlege dir, wie du damit Werte zwischen `0` und `255` erzeugen kannst.
-
-
-### Bilder verdoppeln
-
 
 </xmp>
 
