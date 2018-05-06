@@ -69,7 +69,7 @@ on('motionData', function(data){
 
 Bei der hochgeladenen Website muss die angezeigte Website den Dateinamen `main.html` besitzen. Es können beliebige andere
 html-Dokumente, Stylesheets und Javascripts referenziert werden, es müssen sich aber alle im selben Ordner befinden. Unterordner werden nicht unterstützt!
-<div>
+</div>
 
 ### Vorbereitung
 
@@ -83,6 +83,60 @@ als RGB-Werte (Beispiel: `$('body').css({'background-color': 'rgb(255, 0, 0)'})`
 Beachte, dass die Accelerometer-Werte im Bereich 
 zwischen `-9.81` und `9.81` liegen. Überlege dir, wie du damit Werte zwischen `0` und `255` erzeugen kannst.
 
+## Lösungen
+
+## Uhrzeit
+
+```html
+<body>
+  <div id='Time'></div>
+  <script>
+    var zeit = new Date()
+    $('#Time').text(zeit)
+    // oder schöner formatiert
+    $('#Time').text(zeit.getHours() + ':' + zeit.getMinutes())
+    // oder mit Erzeugung eines neuen Paragraphs im <div>
+    var p = $('<p>' + zeit.getHours() + ':' + zeit.getMinutes() + '</p>')
+    p.appendTo($('#Time'))
+  </script>
+</body>
+```
+
+
+## Uhrzeit 2
+
+```html
+<body>
+  <div id='Time'></div>
+  <button id='updateTime'>Zeit aktualisieren</button>
+  <script>
+    var zeit = new Date()
+    $('#Time').text(zeit.getHours() + ':' + zeit.getMinutes())
+
+    $('#updateTime').on('click', function(e) {
+      var zeit = new Date()
+      $('#Time').text(zeit.getHours() + ':' + zeit.getMinutes())
+    })
+  </script>
+</body>
+```
+
+## Wörter anstreichen
+
+```js
+$('h1, h2, h3, p').on('click', function(e) {
+  $(this).addClass('highlighted')
+})
+```
+
+## Textlänge
+
+```js
+$('h1, h2, h3, p').on('click', function(e) {
+  var text = $(this).text()
+  alert(text.length)
+})
+```
 </xmp>
 
 <!--
@@ -145,9 +199,8 @@ Sobald Benutzer mit der Maus über den Eintrag "Seiten" fahren, soll ein Unterme
 Baue eine Website, die eine Diashow beinhaltet. Die Diashow soll zum nächsten Bild wechseln, sobald die Besucher auf das Bild klicken. Am einfachsten geht das, indem du ein Array mit den Internet-Adressen der Bilder speicherst und beim Klick jeweils ein neues Bild-Element generierst, das die entsprechende Adresse als `src`-Attribut hat. Dann positionierst du das Bild gleich wie das vorherige.
 </xmp>
 -->
-<!--
-## Lösungen
 
+<!--
 ## Divs
 
 ```js
