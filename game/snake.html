@@ -14,10 +14,10 @@
     </div>
     <script>
       key = []
-      $(document).keydown(function(e) {
+      $(document).on('keydown', function(e) {
         key[e.key] = true;
       });
-      $(document).keyup(function (e) {
+      $(document).on('keyup', function (e) {
         key[e.key] = false;
       });
 
