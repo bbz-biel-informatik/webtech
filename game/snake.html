@@ -43,7 +43,20 @@
           $('.player').css('left', '+=2');
         }
 
-
+        var foods = $('.food');
+        var player = $('.player');
+        var rect1 = player.get(0).getBoundingClientRect();
+        for(var i = 0; i < foods.length; i++) {
+          var food = foods[i];
+          var rect2 = food.getBoundingClientRect();
+          var overlap = !(rect1.right < rect2.left ||
+            rect1.left > rect2.right ||
+            rect1.bottom < rect2.top ||
+            rect1.top > rect2.bottom)
+          if(overlap) {
+            $(food).remove();
+          }
+        }
       }, 16);
     </script>
   </body>
