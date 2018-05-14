@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="jquery.js"></script>
+    <style>
+      .container { width: 600px; height: 600px; border: 1px solid black;}
+      .player { width: 24px; height: 24px; background-color: red; position: absolute;}
+      .food { width: 24px; height: 24px; color: yellow; position: absolute; font-size: 24px;}
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="player"></div>
+    </div>
+    <script>
+      key = []
+      $(document).keydown(function(e) {
+        key[e.key] = true;
+      });
+      $(document).keyup(function (e) {
+        key[e.key] = false;
+      });
+
+      for(var i = 0; i < 20; i++) {
+        var food = $('<div class="food">&#9733;</div>');
+        food.appendTo('.container');
+        var lt = Math.round(Math.random() * 20) * 24;
+        var tp = Math.round(Math.random() * 20) * 24;
+        food.css({'left': lt + 'px', 'top': tp + 'px'});
+      }
+
+      window.setInterval(function() {
+        if(key['w']) {
+          $('.player').css('top', '-=2');
+        }
+        if (key['a']) {
+          $('.player').css('left', '-=2');
+        }
+        if (key['s']) {
+          $('.player').css('top', '+=2');
+        }
+        if (key['d']) {
+          $('.player').css('left', '+=2');
+        }
+
+
+      }, 16);
+    </script>
+  </body>
+</html>
