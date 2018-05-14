@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Übungen Scrollen &amp; Sound</title>
+</head>
+<xmp theme="united" style="display:none;">
+
+# Animiertes Scrollen
+
+Animationen sind viele kleine Bewegungsschritte, die schnell nacheinander ausgeführt werden. Der Mensch
+kann die einzelnen Schritte nicht mehr auseinanderhalten und sieht sie als Bewegung.
+
+Mit dem Befehl `setTimeout` kannst du einen Befehl in einer gewissen Zeit in der Zukunft ausführen.
+Das kannst du verwenden, um eine Scroll-Animation zu bauen:
+
+```js
+function scrollen() {
+  window.scrollBy(0, 3)         // 3 Pixel nach unten scrollen
+  setTimeout(scrollen, 16)    // in 16ms (60x pro Sekunde) weiterscrollen
+}
+```
+
+Dieses Codestück führt den Befehl `scrollen` aus, der
+
+a) 3px nach unten scrollt
+
+b) sich selber nach 16ms wieder ausführt
+
+Für das menschliche Auge sieht das dann aus wie eine Animation.
+
+Baue den Scroll-Code auf deiner Website so um, dass das Scrollen animiert ist.
+
+# Fussnoten
+
+Baue in einen Text deiner Website eine Referenz auf eine Fussnote ein, ähnlich wie auf Wikipedia: <h4>Haus<sup>1</sup></h4>
+Ein Klick auf die Zahl soll zu der entsprechenden Fussnote scrollen. Die Fussnote soll einen Link beinhalten, der wieder nach oben scrollt.
+
+## Motion Data
+<div style="background-color: #f4f142; border-radius: 5px; padding: 12px; border: 1px solid #444;">
+Wir wollen Events von unseren Mobiltelefonen verwenden, um Websites zu verändern. Gehe mit dem PC auf [streaming.bbz.cloud](http://streaming.bbz.cloud)
+und erstelle eine Demo-Website ('create > Demo'). Besuche anschliessend dieselbe Website mit deinem Handy und trete dem Raum bei. Du kannst nun über die 
+Bewegungssensoren in deinem Smartphone (Accelerometer) den Stift auf der Website steuern.
+
+Es lassen sich auch eigene Websites hochladen, die dann zugriff auf das Event `motionData` erhalten.
+</div>
+
+```javascript
+on('motionData', function(data){
+  // data.gameId => uploaded website id
+  // data.sender => joined device/player id
+  // data.acceleration.x => value [-9.81, 9.81]
+  // data.acceleration.y => value [-9.81, 9.81]
+  // data.acceleration.z => value [-9.81, 9.81]
+})
+
+```
+
+<div style="background-color: #f4f142; border-radius: 5px; padding: 12px; border: 1px solid #444;">
+
+Bei der hochgeladenen Website muss die angezeigte Website den Dateinamen `main.html` besitzen. Es können beliebige andere
+html-Dokumente, Stylesheets und Javascripts referenziert werden, es müssen sich aber alle im selben Ordner befinden. Unterordner werden nicht unterstützt!
+</div>
+
+### Vorbereitung
+
+Baue deine Seite so um, dass sie auf [streaming.bbz.cloud](http://streaming.bbz.cloud) hochgeladen und richtig dargetsellt werden kann. Vermeide wenn 
+möglich das uploaden von Bildern - wechsel also alle Bilder-Quellen auf deiner Website zu Referenzen auf Webressourcen.
+
+## Device Scrolling
+
+Baue auf deiner Website Code ein, so dass du durch Neigen des Smartphones die Seite scrollen kannst. Gehe wie folgt vor:
+
+1. Ausgabe der Accelerometer-Werte auf der Konsole --> welche Achse ändert sich, wenn das Smartphone nach Vorn/Hinten geneigt wird?
+2. Scrolle bei jedem Event 1px nach oben, wenn die Accelerometer-Werte negativ sind, 1px nach unten wenn sie positiv sind.
+3. Passe die Seite so an, dass die Seite nicht ständig in Bewegung ist, sondern nur wenn das Smartphone genug stark geneigt ist.
+4. Ändere die Scrollgeschwindigkeit abhängig von der Neigung - daher je stärker die Neigung desto schneller soll es scrollen. 
+
+## Bilder einfangen
+
+Benutze folgende Website als Grundgerüst: XXXXXXXXXXXXXXXXXXXXXX
+
+Schreibe code, so dass du
+
+</xmp>
+
+<script src="https://cdn.rawgit.com/Naereen/StrapDown.js/master/strapdown.min.js"></script>
+</html>
