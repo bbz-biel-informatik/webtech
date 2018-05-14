@@ -45,19 +45,26 @@
 
         var foods = $('.food');
         var player = $('.player');
+        var collidedFoods = checkCollision(player, foods);
+        collidedFoods.remove();
+      }, 16);
+
+      function checkCollision(player, targets) {
+        var collisions = []
         var rect1 = player.get(0).getBoundingClientRect();
-        for(var i = 0; i < foods.length; i++) {
-          var food = foods[i];
+        for (var i = 0; i < targets.length; i++) {
+          var food = targets[i];
           var rect2 = food.getBoundingClientRect();
           var overlap = !(rect1.right < rect2.left ||
             rect1.left > rect2.right ||
             rect1.bottom < rect2.top ||
             rect1.top > rect2.bottom)
-          if(overlap) {
-            $(food).remove();
+          if (overlap) {
+            collisions.push(food);
           }
         }
-      }, 16);
+        return $(collisions);
+      }
     </script>
   </body>
 </html>

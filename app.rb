@@ -17,6 +17,10 @@ class MyApp < Sinatra::Base
     send_file "plugin/#{params[:splat].first}"
   end
 
+  get '/game/*' do |file|
+    send_file "game/#{params[:splat].first}"
+  end
+
   get '/tests/*' do |file|
     send_file "tests/#{params[:splat].first}"
   end
