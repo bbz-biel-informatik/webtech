@@ -16,14 +16,16 @@ das Objekt sich überlappen.
 
 Um die Grösse von Spieler oder Objekt zu finden, kann der Befehl 
 `var position = $('.player').get(0).getBoundingClientRect()` verwendet werden. So erhält man eine Variable,
-in der die Position aller Ränder des Objekts gespeichert sind. Zwei Objekte überlappen
-sich nun, wenn alle der folgenden Bedingungen erfüllt ist:
+in der die Position aller Ränder des Objekts gespeichert sind:
+```js
+var players = $('.player') // mehrere player-Objekte
+var pos = players.get(0).getBoundingClientRect()
+// pos => { x: 10, y: 8, width: 24, height: 24, top: 8, right: 60, bottom: 58, left: 10 }
+```
 
-* Rechter Rand Objekt 1 weiter rechts als linker Rand Objekt 2
-* Linker Rand Objekt 1 weiter links als rechter Rand Objekt 2
-* Unterer Rand Objekt 1 weiter unten als oberer Rand Objekt 2
-* Oberer Rand Objekt 1 weiter oben als unterer Rand Objekt 2
+![overlapping](images/overlapping.png)
 
+Wann überlappen sich zwei Objekte? Notiere deine Vermutung bevor du [hier](overlapping_solution.html) nachschaust.
 
 ## Spielstand
 
