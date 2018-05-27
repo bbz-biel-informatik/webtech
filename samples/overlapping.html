@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <link rel="stylesheet" href="overlapping.css">
+</head>
+
+<body>
+  <div class="container">
+    <div class="player">
+      <div class="line_v top"></div>
+      <div class="line_v bottom"></div>
+      <div class="line_h left"></div>
+      <div class="line_h right"></div>
+      80px
+    </div>
+    <div class="food">
+      <div class="line_v top"></div>
+      <div class="line_v bottom"></div>
+      <div class="line_h left"></div>
+      <div class="line_h right"></div>
+      80px
+    </div>
+  </div>
+  <script>
+    const UP = 87;
+    const DOWN = 83;
+    const LEFT = 65;
+    const RIGHT = 68;
+    const BORDER_SZ = 10
+
+    key = []
+    $(document).on('keydown', function (e) {
+      key[e.which] = true;
+    });
+    $(document).on('keyup', function (e) {
+      key[e.which] = false;
+    });
+
+    var food = $('.food').first();
+    food.appendTo('.container');
+    var lt = Math.round(Math.random() * 20) * 24;
+    var tp = Math.round(Math.random() * 20) * 24;
+    food.css({ 'left': lt + 'px', 'top': tp + 'px' });
+
+    window.setInterval(function () {
+      if (key[UP]) {
+        $('.player').css('top', '-=2');
+      }
+      if (key[LEFT]) {
+        $('.player').css('left', '-=2');
+      }
+      if (key[DOWN]) {
+        $('.player').css('top', '+=2');
+      }
+      if (key[RIGHT]) {
+        $('.player').css('left', '+=2');
+      }
+
+      var foods = $('.food');
+      var player = $('.player');
+      var collidedFoods = checkCollision(player, foods);
+      if (collidedFoods.length > 0) {
+        player.css('background-color', '#10e5ec')
+        food.css('background-color', '#10e5ec')
+      } else {
+        player.css('background-color', '')
+        food.css('background-color', '')
+      }
+      updateBorderDistanceTexts('.player')
+      updateBorderDistanceTexts('.food')
+      markOverlappingBorders(player, food)
+    }, 16);
+
+
+    function updateBorderDistanceTexts(object_selector) {
+      var obj = $(object_selector)
+      var bb = obj.get(0).getBoundingClientRect();
+      var container = $('.container').get(0).getBoundingClientRect()
+
+      var left = $(object_selector + ' > .left')
+      var size = bb.left - container.left + parseInt(obj.css('border-left-width'))
+      left.css({
+        'width': size + 'px',
+        'left': -size + 'px',
+        'top': -obj.height() / 2 + 'px'
+      })
+      left.text(size + 'px')
+
+      var right = $(object_selector + ' > .right')
+      size = container.right - bb.left - bb.width + parseInt(obj.css('border-right-width'))
+      right.css({
+        'width': size + 'px',
+        'left': obj.width() + 'px',
+        'top': -obj.width() / 2 + 'px'
+      })
+      right.text(size + 'px')
+
+
+      var top = $(object_selector + ' > .top')
+      size = bb.top - container.top + parseInt(obj.css('border-top-width'))
+      top.css({
+        'height': size + 'px',
+        'line-height': size + 'px',
+        'top': -size + 'px',
+        'left': (obj.width() / 2.0 - top.width()) + 'px'
+      })
+      top.text(size + 'px')
+
+
+      var bottom = $(object_selector + ' > .bottom')
+      size = container.bottom - bb.top - bb.height + parseInt(obj.css('border-bottom-width'))
+      bottom.css({
+        'height': size + 'px',
+        'line-height': size + 'px',
+        'top': obj.height() + 'px',
+        'left': (obj.width() / 2.0 - bottom.width()) + 'px'
+      })
+      bottom.text(size + 'px')
+    }
+
+    function markOverlappingBorders(player, target) {
+      player.css('border', '')
+      target.css('border', '')
+      var rect1 = player.get(0).getBoundingClientRect();
+      var rect2 = target.get(0).getBoundingClientRect();
+      if (rect1.right >= rect2.left) {
+        player.css('border-right', BORDER_SZ + 'px solid #0fbbe6')
+        target.css('border-left', BORDER_SZ + 'px solid #0fbbe6')
+      }
+      if (rect1.left <= rect2.right) {
+        player.css('border-left', BORDER_SZ + 'px solid #0fbbe6')
+        target.css('border-right', BORDER_SZ + 'px solid #0fbbe6')
+      }
+      if (rect1.bottom >= rect2.top) {
+        player.css('border-bottom', BORDER_SZ + 'px solid #0fbbe6')
+        target.css('border-top', BORDER_SZ + 'px solid #0fbbe6')
+      }
+      if (rect1.top <= rect2.bottom) {
+        player.css('border-top', BORDER_SZ + 'px solid #0fbbe6')
+        target.css('border-bottom', BORDER_SZ + 'px solid #0fbbe6')
+      }
+    }
+
+    function checkCollision(player, targets) {
+      var collisions = []
+      var rect1 = player.get(0).getBoundingClientRect();
+      for (var i = 0; i < targets.length; i++) {
+        var food = targets[i];
+        var rect2 = food.getBoundingClientRect();
+        var overlap = !(rect1.right < rect2.left ||
+          rect1.left > rect2.right ||
+          rect1.bottom < rect2.top ||
+          rect1.top > rect2.bottom)
+        if (overlap) {
+          collisions.push(food);
+        }
+      }
+      return $(collisions);
+    }
+  </script>
+</body>
+
+</html>
