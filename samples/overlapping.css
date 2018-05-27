@@ -26,16 +26,24 @@
     z-index: -2;
 }
 
-.line_v {
-    border-right: 2px solid blue;
-    height: 150px;
-    line-height: 150px;
-    position: absolute;
+.line_v_l {
+  border-left: 2px solid blue;
+  height: 150px;
+  line-height: 150px;
+  position: absolute;
+}
+
+.line_v_r {
+  border-right: 2px solid blue;
+  height: 150px;
+  line-height: 150px;
+  position: absolute;
 }
 
 .line_h {
     border-bottom: 2px solid blue;
     width: 150px;
+    line-height: 10px;
     position: absolute;
     text-align: center;
 }

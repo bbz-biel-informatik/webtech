@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <meta charset="UTF-8">
+</head>
+<xmp theme="united" style="display:none;">
+
+# Elemente generieren und löschen
+
+## Motion Data
+<div style="background-color: #f4f142; border-radius: 5px; padding: 12px; border: 1px solid #444;">
+Wir wollen Events von unseren Mobiltelefonen verwenden, um Websites zu verändern. Gehe mit dem PC auf [streaming.bbz.cloud](http://streaming.bbz.cloud)
+und erstelle eine Demo-Website ('create > Demo'). Besuche anschliessend dieselbe Website mit deinem Handy und trete dem Raum bei. Du kannst nun über die 
+Bewegungssensoren in deinem Smartphone (Accelerometer) den Stift auf der Website steuern.
+
+Es lassen sich auch eigene Websites hochladen, die dann zugriff auf das Event `motionData` erhalten.
+</div>
+
+```javascript
+on('motionData', function(data){
+  // data.gameId => uploaded website id
+  // data.sender => joined device/player id
+  // data.acceleration.x => value [-9.81, 9.81]
+  // data.acceleration.y => value [-9.81, 9.81]
+  // data.acceleration.z => value [-9.81, 9.81]
+})
+
+```
+
+<div style="background-color: #f4f142; border-radius: 5px; padding: 12px; border: 1px solid #444;">
+
+Bei der hochgeladenen Website muss die angezeigte Website den Dateinamen `main.html` besitzen. Es können beliebige andere
+html-Dokumente, Stylesheets und Javascripts referenziert werden, es müssen sich aber alle im selben Ordner befinden. Unterordner werden nicht unterstützt!
+</div>
+
+### Vorbereitung
+
+Baue deine Seite so um, dass sie auf [streaming.bbz.cloud](http://streaming.bbz.cloud) hochgeladen und richtig dargetsellt werden kann. Vermeide wenn 
+möglich das uploaden von Bildern - wechsel also alle Bilder-Quellen auf deiner Website zu Referenzen auf Webressourcen.
+</xmp>
+<script src="https://cdn.rawgit.com/Naereen/StrapDown.js/master/strapdown.min.js"></script>
+</html>

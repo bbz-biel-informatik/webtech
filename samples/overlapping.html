@@ -10,21 +10,25 @@
 <body>
   <div class="container">
     <div class="player">
-      <div class="line_v top"></div>
-      <div class="line_v bottom"></div>
+      <div class="line_v_l top"></div>
+      <div class="line_v_r bottom"></div>
       <div class="line_h left"></div>
       <div class="line_h right"></div>
       80px
     </div>
     <div class="food">
-      <div class="line_v top"></div>
-      <div class="line_v bottom"></div>
+      <div class="line_v_l top"></div>
+      <div class="line_v_r bottom"></div>
       <div class="line_h left"></div>
       <div class="line_h right"></div>
       80px
     </div>
   </div>
+  <button onclick="goBack()">Go Back</button>
   <script>
+    function goBack() {
+      window.history.back();
+    }
     const UP = 87;
     const DOWN = 83;
     const LEFT = 65;
@@ -85,18 +89,18 @@
       left.css({
         'width': size + 'px',
         'left': -size + 'px',
-        'top': -obj.height() / 2 + 'px'
+        'top': '0px'
       })
-      left.text(size + 'px')
+      left.text('left:' + size + 'px')
 
       var right = $(object_selector + ' > .right')
-      size = container.right - bb.left - bb.width + parseInt(obj.css('border-right-width'))
+      size = bb.left - container.left + parseInt(obj.css('border-left-width')) + obj.width()
       right.css({
         'width': size + 'px',
-        'left': obj.width() + 'px',
-        'top': -obj.width() / 2 + 'px'
+        'left': -(bb.left - container.left + parseInt(obj.css('border-left-width'))) + 'px',
+        'top': obj.height() - 20 + 'px'
       })
-      right.text(size + 'px')
+      right.text('right:' + size + 'px')
 
 
       var top = $(object_selector + ' > .top')
@@ -105,20 +109,20 @@
         'height': size + 'px',
         'line-height': size + 'px',
         'top': -size + 'px',
-        'left': (obj.width() / 2.0 - top.width()) + 'px'
+        'left': (obj.width() - 15) + 'px'
       })
-      top.text(size + 'px')
+      top.text('top:' + size + 'px')
 
 
       var bottom = $(object_selector + ' > .bottom')
-      size = container.bottom - bb.top - bb.height + parseInt(obj.css('border-bottom-width'))
+      size = bb.bottom - container.top -  parseInt(obj.css('border-bottom-width'))
       bottom.css({
         'height': size + 'px',
         'line-height': size + 'px',
-        'top': obj.height() + 'px',
-        'left': (obj.width() / 2.0 - bottom.width()) + 'px'
+        'top': -size + obj.height() + 'px',
+        'left':  15 - bottom.width() + 'px'
       })
-      bottom.text(size + 'px')
+      bottom.text('bottom:' + size + 'px')
     }
 
     function markOverlappingBorders(player, target) {
