@@ -1,0 +1,25 @@
+.spielfeld {
+	width: 600px;
+	height: 600px;
+	border: 1px solid black;
+	margin: auto;
+}
+
+.player {
+	width: 25px;
+	height: 25px;
+	background-color: red;
+	position: absolute;
+}
+
+.food {
+	width: 25px;
+	height: 25px;
+	background-color: yellow;
+	position: absolute;
+}
+
+.zone {
+	background-color: coral;
+	position: absolute
+}

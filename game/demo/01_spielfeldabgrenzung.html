@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<link rel="stylesheet" href="style.css">
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+</head>
+
+<body>
+	<div class="spielfeld">
+		<div class="player"></div>
+	</div>
+
+	<script>
+		var keys = []
+
+		$(document).on("keydown", tasteUnten)
+		$(document).on("keyup", tasteOben)
+
+		function tasteUnten(e) {
+			keys[e.which] = true
+		}
+
+		function tasteOben(e) {
+			keys[e.which] = false
+		}
+	
+		window.setInterval(loop, 16)
+		// wir möchten erreichen, dass der Spieler einen gewissen Bereich nicht verlassen kann.
+		function loop() {
+			var player = $('.player') // mit jQuery alle Spieler auswählen
+			var spielfeld = $('.spielfeld') // mit jQuery das Spielfeld auswählen
+			
+			var playerBounds = player.get(0).getBoundingClientRect() //    { top: Abstand des oberen Rands des Spielers/Spielfelds vom oberen Rand des Browsers,
+			var spielfedBounds = spielfeld.get(0).getBoundingClientRect() // right: Abstand des rechten Rands des Spielers/Spielfelds vom linken Rand des Browsers,
+																														     //    bottom: Abstand des unteren Rands des Spielers/Spielfelds vom oberen Rand des Browsers,
+																																 //    left: Abstand des linken Rands des Spielers/Spielfelds vom linken Rand des Browsers }
+			// Der Spieler wird nur dann nach links verschoben, wenn
+			//   - die linke Pfeiltaste gedrückt ist und
+			// 	 - der linke Rand des Spielers nach weiter rechts ist als der linke Spielfeldrand
+			if (keys[37] && playerBounds.left > spielfedBounds.left) {
+				player.css({ "left": "-=2" }) // Distanz zum linken Rand um 2px verkleinern --> Bewegung nach links
+			}
+
+			// Der Spieler wird nur dann nach oben verschoben, wenn
+			//   - die Pfeiltaste nach oben gedrückt ist und
+			// 	 - der obere Rand des Spielers nach weiter unten ist als der obere Spielfeldrand
+			if (keys[38] && playerBounds.top > spielfedBounds.top) {
+				player.css({ "top": "-=2" }) // Distanz zum oberen Rand um 2px verkleinern --> Bewegung nach Oben
+			}
+
+			// Der Spieler wird nur dann nach rechts verschoben, wenn
+			//   - die rechte Pfeiltaste gedrückt ist und
+			// 	 - der rechte Rand des Spielers nach weiter links ist als der rechte Spielfeldrand
+			if (keys[39] && playerBounds.right < spielfedBounds.right) {
+				player.css({ "left": "+=2" }) // Distanz zum linken Rand um 2px vergrössern --> Bewegung nach rechts
+			}
+
+			// Der Spieler wird nur dann nach unten verschoben, wenn
+			//   - die Pfeiltaste nach unten gedrückt ist und
+			// 	 - der untere Rand des Spielers nach weiter oben ist als der untere Spielfeldrand
+			if (keys[40] && playerBounds.bottom < spielfedBounds.bottom) {
+				player.css({ "top": "+=2" }) // Distanz zum oberen Rand um 2px vergrössern --> Bewegung nach Unten
+			}
+		}
+	</script>
+</body>
+
+</html>

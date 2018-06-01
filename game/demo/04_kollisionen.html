@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<link rel="stylesheet" href="style.css">
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+</head>
+
+<body>
+	<div class="spielfeld">
+		<div class="player"></div>
+	</div>
+
+	<script>
+		//--------------- GAME STATE ---------------------
+		var keys = []   		// Array um Tastenzustände zu speichern
+
+		$(document).on("keydown", tasteUnten)
+		$(document).on("keyup", tasteOben)
+
+		function tasteUnten(e) {
+			keys[e.which] = true
+		}
+
+		function tasteOben(e) {
+			keys[e.which] = false
+		}
+
+		// NEUE OBJEKTE HINZUFÜGEN
+		for (i = 1; i <= 10; i = i + 1){
+			var food = $("<div class='food'></div>")
+			var spielfedBounds = $('.spielfeld').get(0).getBoundingClientRect()
+			var posX = Math.random() * (spielfedBounds.width - 25)
+			var posY = Math.random() * (spielfedBounds.height - 25)
+			food.css({
+				'left': posX + 'px',
+				'top': posY + 'px'
+			})
+			food.css({
+				'left': '+=' + spielfedBounds.left,
+				'top': '+=' + spielfedBounds.top
+			})
+
+			food.appendTo('.spielfeld')
+		}
+
+
+	
+
+		//--------------- GAME LOOP ---------------------
+		window.setInterval(loop, 16)
+
+		function loop() {
+			var player = $('.player')
+			if (keys[37]) {
+				player.css({ "left": "-=2" })
+			}
+			if (keys[38]) {
+				player.css({ "top": "-=2" })
+			}
+			if (keys[39]) {
+				player.css({ "left": "+=2" })
+			}
+			if (keys[40]) {
+				player.css({ "top": "+=2" })
+			}
+
+			// alle food-elemente auswählen
+			var food = $('.food')
+
+			var kollisionen = checkCollision(player, food)
+			// bspw. wenn player ein food-element überlagert, soll es entfernt werden
+			kollisionen.remove() 
+		}
+
+		// gibt ein jquery-array mit allen sich überlagernden objekten zurück 
+		function checkCollision(player, targets) {
+			var collisions = []
+			var rect1 = player.get(0).getBoundingClientRect();
+			for (var i = 0; i < targets.length; i++) {
+				var food = targets[i];
+				var rect2 = food.getBoundingClientRect();
+				var overlap = !(rect1.right < rect2.left ||
+					rect1.left > rect2.right ||
+					rect1.bottom < rect2.top ||
+					rect1.top > rect2.bottom)
+				if (overlap) {
+					collisions.push(food);
+				}
+			}
+			return $(collisions);
+		}
+	</script>
+</body>
+
+</html>

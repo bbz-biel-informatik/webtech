@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<link rel="stylesheet" href="style.css">
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+</head>
+
+<body>
+	<div class="spielfeld">
+		<div class="player"></div>
+	</div>
+
+	<script>
+		//--------------- GAME STATE ---------------------
+		var keys = []   		// Array um Tastenzustände zu speichern
+
+		// GAME STEUERUNG --> events (vgl. Präsentation)
+		$(document).on("keydown", tasteUnten)
+		$(document).on("keyup", tasteOben)
+
+		function tasteUnten(e) {
+			// e.which --> gibt die eindeutige Zahl der gedrückten Taste zurück
+			// Tastenzustand auf gedrückt ändern
+			keys[e.which] = true
+		}
+
+		function tasteOben(e) {
+			// e.which --> gibt die eindeutige Zahl der gedrückten Taste zurück
+			// Tastenzustand auf gedrückt ändern
+			keys[e.which] = false
+		}
+	
+
+		//--------------- GAME LOOP ---------------------
+		// der code innerhalb der Funktion loop() wird alle
+		// 16ms aufgerufen
+		window.setInterval(loop, 16)
+
+		function loop() {
+			// Hier wird abhängig vom Gamestate die Anzeige abgeposst.
+			// Beispiel: Wenn Pfeiltaste links gedrückt ist, soll der Spieler
+			//					 um 2 Pixel nach links wandern
+			// Tastenzuordnungen nachschauen unter www.keycode.info/
+
+			var player = $('.player') // mit jQuery alle Spieler auswählen
+			if (keys[37]) {
+				player.css({ "left": "-=2" }) // Distanz zum linken Rand um 2px verkleinern --> Bewegung nach links
+			}
+			if (keys[38]) {
+				player.css({ "top": "-=2" }) // Distanz zum oberen Rand um 2px verkleinern --> Bewegung nach Oben
+			}
+			if (keys[39]) {
+				player.css({ "left": "+=2" }) // Distanz zum linken Rand um 2px vergrössern --> Bewegung nach rechts
+			}
+			if (keys[40]) {
+				player.css({ "top": "+=2" }) // Distanz zum oberen Rand um 2px vergrössern --> Bewegung nach Unten
+			}
+		}
+	</script>
+</body>
+
+</html>

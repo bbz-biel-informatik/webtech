@@ -17,6 +17,12 @@ class MyApp < Sinatra::Base
     send_file "plugin/#{params[:splat].first}"
   end
 
+  get '/game/demo.zip' do
+    if File.exist?('game/demo.zip')
+      send_file 'game/demo.zip'
+    end
+  end
+
   get '/game/*' do |file|
     send_file "game/#{params[:splat].first}"
   end
