@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<link rel="stylesheet" href="style.css">
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+</head>
+
+<body>
+	<div class="spielfeld">
+		<div class="zone start" style="width: 370px; height: 70px"></div>
+		<div class="zone" style="width: 70px; height: 270px; margin-left: 300px;"></div>
+		<div class="zone" style="width: 270px; height: 70px; margin-left: 100px; margin-top: 200px;"></div>
+		<div class="zone ziel" style="width: 50px; height: 70px; margin-left: 100px; margin-top: 200px;"></div>
+		<div class="player"></div>
+	</div>
+
+	<script>
+		//--------------- GAME STATE ---------------------
+		var keys = []   		// Array um Tastenzustände zu speichern
+		var resets = 0
+
+		$(document).on("keydown", tasteUnten)
+		$(document).on("keyup", tasteOben)
+
+		function tasteUnten(e) {
+			keys[e.which] = true
+		}
+
+		function tasteOben(e) {
+			keys[e.which] = false
+		}
+
+		// jedes mal, wenn ein food-objekt gegessen wird, soll ein geräusch abgespielt
+		// werden. Dazu ein neues Audio-Objekt erstellen
+		var eatSound = new Audio('http://soundbible.com/mp3/Slurping 2-SoundBible.com-1269549524.mp3')
+		// um den soundeffekt zu verkürzen, spielen wir den sound in doppelter Geschwindigkeit ab
+		eatSound.playbackRate = 2
+
+	
+
+		//--------------- GAME LOOP ---------------------
+		window.setInterval(loop, 16)
+
+		function loop() {
+			var player = $('.player')
+			if (keys[37]) {
+				player.css({ "left": "-=2" })
+			}
+			if (keys[38]) {
+				player.css({ "top": "-=2" })
+			}
+			if (keys[39]) {
+				player.css({ "left": "+=2" })
+			}
+			if (keys[40]) {
+				player.css({ "top": "+=2" })
+			}
+
+			// alle zonen-elemente auswählen
+			var zonen = $('.zone')
+			// überprüfen, ob der Spieler wenigstens mit einer Zone überlagert ist
+			var overlaps = checkOverlaps(player, zonen)
+
+			// wenn keine Kollision (= Überlagerung) mit einer Zone
+			// vorliegt, muss wieder neu begonnen werden...
+			// Die start-zone hat neben der css-Klasse 'zone' auch die klasse 'start'
+			if (overlaps.length == 0){
+				player.css({
+					"left": $('.start').get(0).getBoundingClientRect().left,
+					"top": $('.start').get(0).getBoundingClientRect().top
+				})
+				resets = resets + 1
+				console.log(resets)
+			}
+
+			// wenn das Ziel Erreicht wird, hat man gewonnen
+			// --> überprüfen ob überlagerung mit '.ziel' vorliegt
+			if (checkOverlaps(player, $('.ziel')).length > 0){
+				$('.spielfeld').text('GEWONNEN')
+			}
+		}
+
+		// gibt ein jquery-array mit allen sich VOLLSTÄNDIG überlagernden objekten zurück
+		function checkOverlaps(player, targets) {
+			var overlpas = []
+			var rect1 = player.get(0).getBoundingClientRect();
+			for (var i = 0; i < targets.length; i++) {
+				var food = targets[i];
+				var rect2 = food.getBoundingClientRect();
+				var overlap = (rect1.right <= rect2.right &&
+					rect1.left >= rect2.left &&
+					rect1.bottom <= rect2.bottom &&
+					rect1.top >= rect2.top)
+				if (overlap) {
+					overlpas.push(food);
+				}
+			}
+			return $(overlpas);
+		}
+	</script>
+</body>
+
+</html>

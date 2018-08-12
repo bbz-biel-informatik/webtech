@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<link rel="stylesheet" href="style.css">
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+</head>
+
+<body>
+	<div class="spielfeld">
+		<div class="player"></div>
+	</div>
+
+	<script>
+		//--------------- GAME STATE ---------------------
+		var keys = []   		// Array um Tastenzustände zu speichern
+
+		$(document).on("keydown", tasteUnten)
+		$(document).on("keyup", tasteOben)
+
+		function tasteUnten(e) {
+			keys[e.which] = true
+		}
+
+		function tasteOben(e) {
+			keys[e.which] = false
+		}
+
+		// NEUE OBJEKTE HINZUFÜGEN
+		// Beispiel 1: in der Diagonalen von links oben nach rechts unten 10 div's mit der Klasse food hinzufügen:
+		var i = 0;
+		for (i = 1; i <= 10; i = i + 1){
+			// 1. erzeugen
+			var food = $("<div class='food'></div>") // food element mit jQuery erzeugt. Belibiges HTML kann hier drin stehen
+			// 2. css styling ändern
+			food.css({
+				'left': i * 50 + 'px', // abstand von links auf Schlaufenzähler i * 50 px festlegen (also Position [50, 100, 150, 200, 250, 300, 350, 400, 450, 500])
+				'top': i * 50 + 'px' 	 // abstand von oben auf Schlaufenzähler i * 50 px festlegen (also Position [50, 100, 150, 200, 250, 300, 350, 400, 450, 500])
+			})
+			// damit das Element im Spielfeld positioniert ist (und nicht relativ zum Browserfenster), muss links
+			// die Distanz vom Spielfeld zum linken Browserrand hinzugefügt werden, dasselbe von oben
+			var spielfedBounds = $('.spielfeld').get(0).getBoundingClientRect() //    { top: Abstand des oberen Rands des Spielers/Spielfelds vom oberen Rand des Browsers,
+																																					// right: Abstand des rechten Rands des Spielers/Spielfelds vom linken Rand des Browsers,
+																														     					//    bottom: Abstand des unteren Rands des Spielers/Spielfelds vom oberen Rand des Browsers,
+																																 					//    left: Abstand des linken Rands des Spielers/Spielfelds vom linken Rand des Browsers }
+			food.css({
+				'left': '+=' + spielfedBounds.left,
+				'top': '+=' + spielfedBounds.top
+			})
+
+			// 3. element zum spielfeld hinzufügen
+			food.appendTo('.spielfeld')
+		}
+
+		// Beispiel 2:
+		// zufällige Positionen: Math.random() gibt einen zufälligen Wert zwischen 0 und 1 zurück 
+		for (i = 1; i <= 10; i = i + 1){
+			var food = $("<div class='food'></div>") // food element mit jQuery erzeugt. Belibiges HTML kann hier drin stehen
+			var spielfedBounds = $('.spielfeld').get(0).getBoundingClientRect()
+			// die breite des Spielfelds minus die Breite des Foods ergibt die rechteste
+			// Position auf dem Spielfeld, so dass das Objekt noch vollständig auf dem Spielfeld ist
+			// --> Multipliziert mit einer Zahl zwischen 0 und 1 ergibt eine zufällige Position
+			//     übers ganze Spielfeld 
+			var posX = Math.random() * (spielfedBounds.width - 25)
+			var posY = Math.random() * (spielfedBounds.height - 25)
+			food.css({
+				'left': posX + 'px',
+				'top': posY + 'px'
+			})
+			food.css({
+				'left': '+=' + spielfedBounds.left,
+				'top': '+=' + spielfedBounds.top,
+				'background-color': 'green'
+			})
+
+			// 3. element zum spielfeld hinzufügen
+			food.appendTo('.spielfeld')
+		}
+
+
+	
+
+		//--------------- GAME LOOP ---------------------
+		window.setInterval(loop, 16)
+
+		function loop() {
+			var player = $('.player')
+			if (keys[37]) {
+				player.css({ "left": "-=2" })
+			}
+			if (keys[38]) {
+				player.css({ "top": "-=2" })
+			}
+			if (keys[39]) {
+				player.css({ "left": "+=2" })
+			}
+			if (keys[40]) {
+				player.css({ "top": "+=2" })
+			}
+		}
+	</script>
+</body>
+
+</html>

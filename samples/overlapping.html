@@ -50,16 +50,16 @@
     food.css({ 'left': lt + 'px', 'top': tp + 'px' });
 
     window.setInterval(function () {
-      if (key[UP]) {
+      if (key[UP] || key[38]) {
         $('.player').css('top', '-=2');
       }
-      if (key[LEFT]) {
+      if (key[LEFT] || key[37]) {
         $('.player').css('left', '-=2');
       }
-      if (key[DOWN]) {
+      if (key[DOWN] || key[40]) {
         $('.player').css('top', '+=2');
       }
-      if (key[RIGHT]) {
+      if (key[RIGHT] || key[39]) {
         $('.player').css('left', '+=2');
       }
 
@@ -91,7 +91,7 @@
         'left': -size + 'px',
         'top': '0px'
       })
-      left.text('left:' + size + 'px')
+      left.text('left:' + Math.round(size) + 'px')
 
       var right = $(object_selector + ' > .right')
       size = bb.left - container.left + parseInt(obj.css('border-left-width')) + obj.width()
@@ -100,7 +100,7 @@
         'left': -(bb.left - container.left + parseInt(obj.css('border-left-width'))) + 'px',
         'top': obj.height() - 20 + 'px'
       })
-      right.text('right:' + size + 'px')
+      right.text('right:' + Math.round(size) + 'px')
 
 
       var top = $(object_selector + ' > .top')
@@ -111,7 +111,7 @@
         'top': -size + 'px',
         'left': (obj.width() - 15) + 'px'
       })
-      top.text('top:' + size + 'px')
+      top.text('top:' + Math.round(size) + 'px')
 
 
       var bottom = $(object_selector + ' > .bottom')
@@ -122,7 +122,7 @@
         'top': -size + obj.height() + 'px',
         'left':  15 - bottom.width() + 'px'
       })
-      bottom.text('bottom:' + size + 'px')
+      bottom.text('bottom:' + Math.round(size) + 'px')
     }
 
     function markOverlappingBorders(player, target) {

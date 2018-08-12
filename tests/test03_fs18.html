@@ -25,7 +25,19 @@ Im letzten Kurs werden die Games der Klasse vorgestellt.
 
 Der Code muss selber geschrieben werden. Es ist besser, ein kleines eigenes Projekt abzugeben als ein grosses kopiertes.
 
-**Vortrag**:
+**Kriterien Projekt (Abgabe 14.6. 24:00)**:
+
+* Das Spiel funktioniert und ist in den Browsern Chrome und Firefox spielbar [2 Punkte]
+* Das Ziel des Spiels ist ersichtlich und verständlich [2 Punkte]
+* Das Spiel hat eine Anzeige der Punkte, die der Spieler erreicht hat [2 Punkte]
+* Die Steuerung fühlt sich natürlich an [1 Punkte]
+* Grafiken und Layout sind sorgfältig gemacht [2 Punkte]
+* Das Spiel macht Spass [2 Punkte]
+* Variablennamen beschreiben deren Inhalt, Funktionsnamen deren Tätigkeit [2 Punkte]
+* Der Code ist korrekt formatiert (Durchgehend gleiche Einrückung; Funktionen, Bedingungen, Schleifen eingerückt. Siehe [hier](codeformat.png)) [3 Punkte]
+
+
+**Vortrag (18.6./19.6.)**:
 
 * Dauer: 5-7 Minuten
 * Präsentation Gameidee
@@ -36,17 +48,6 @@ Der Code muss selber geschrieben werden. Es ist besser, ein kleines eigenes Proj
   * Codeausschnitt
 * Schwiergikeiten & Verbesserungsvorschläge
 * Fragen zum Code
-
-
-**Kriterien Projekt**:
-
-* Das Spiel funktioniert und ist in den Browsern Chrome und Firefox spielbar
-* Das Ziel des Spiels ist ersichtlich und verständlich
-* Das Spiel hat eine Anzeige der Punkte, die der Spieler erreicht hat
-* Die Steuerung fühlt sich natürlich an
-* Grafiken und Layout sind sorgfältig gemacht
-* Das Spiel macht Spass
-* Variablennamen beschreiben deren Inhalt, Funktionsnamen deren Tätigkeit
 
 
 ## Ideen
@@ -61,11 +62,28 @@ Der Code muss selber geschrieben werden. Es ist besser, ein kleines eigenes Proj
 Einen ZIP-Ordner pro Gruppe. Im Ordner müssen alle Dateien, Bilder und Sounds enthalten sein.
 Ausserdem muss der Ordnername die Namen der Gruppenmitgliedern enthalten.
 
-Termin: 10.06.2018, 24:00 Uhr per Mail an
+Termin: 14.06.2018, 24:00 Uhr per Mail an
 
 * lukas.diener@bbz-biel.ch (MDM2017a,b,c,d,f)
 * balthasar.hofer@bbz-biel.ch (MDM2017e)
 
+
+---
+
+# Code-Beispiele
+
+[Code downloaden](../game/demo.zip)
+
+| Code-Komponente | Demo | Voraussetzung |
+|:----------------|:-----|:--------------|
+| Gameloop, Basis, Spielsteuerung | [demo](../game/demo/00_basis.html) | jQuery, Events |
+| Spielfeldabgrenzung | [demo](../game/demo/01_spielfeldabgrenzung.html) | jQuery, [.getBoundingClientRect()](https://webtech.bbz.cloud/index9_fs18.html#/2) |
+| Dynamisches Hinzufügen von html Elementen | [demo](../game/demo/02_objekteHinzufügen.html) | Schleifen, jQuery, Elemente, [.getBoundingClientRect()](https://webtech.bbz.cloud/index9_fs18.html#/2) |
+| Elemente Animieren mit GIFs | [demo](../game/demo/03_animationen_gif.html) | jQuery, Elemente |
+| Elemente Animieren | [demo](../game/demo/03_animationen.html) | Schleifen, jQuery, [.getBoundingClientRect()](https://webtech.bbz.cloud/index9_fs18.html#/2) |
+| Überlagerung Spieler mit Objekt| [demo](../game/demo/04_kollisionen.html) | Schleifen, [.getBoundingClientRect()](https://webtech.bbz.cloud/index9_fs18.html#/2) |
+| Vollständige Überlagerung Spieler mit Zone | [demo](../game/demo/04_overlapping.html) | Schleifen, [.getBoundingClientRect()](https://webtech.bbz.cloud/index9_fs18.html#/2) |
+| Sound | [demo](../game/demo/05_sound.html) | Events |
 
 </xmp>
 

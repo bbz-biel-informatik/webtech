@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<link rel="stylesheet" href="style.css">
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+</head>
+
+<body>
+	<div class="spielfeld">
+		<img class="player"></img>
+	</div>
+
+	<script>
+		var blink_img = 'https://vrmigliaccioimaging.files.wordpress.com/2015/01/blinking_shape.gif'
+		var no_blink_img = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAflBMVEX////tHCTsAADtFR7tEBrtGSHtFB3sAA7yXmP//Pz1iIv0d3vuJy/+8fH5vb/+9fb82dr3nJ/95ufwTlP2l5r0gYXxaGv96+zsCBX6y8zuIir4tbfxU1j709T83N34ra/vNDrvRkr1jpHzZ2v4pajwO0LuMDfvR03zc3f4rrEEwT4TAAAD+0lEQVR4nO3ciXaiSBQG4ABV7KLgQuGuUaDf/wUHYtIk2OMIXk5dev7vCfjPrb1K394AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAOB/K80Oi2VQrlarcnm+RHvd30PJS3exG5qm4yglako5pmls/Syd6v42Ckl2nhuOkEaLtJV9Ksdfy+QyD4V9F++TpdaFP9P9jS+Yzkrp/Gu8WyUt5bjRWBvrzj+qh/E+CSPIPN0f28P0kFvWE/k+umS+THR/b1deVDhP5vvI6OSXie5v7mQSh+L5fDVrXY6pjElpdCjgZxnFNtP93U/Ljs4zI0ybCOORDDibU8cW+sUy4lHMG7+unVvo74jhYgRV/KV6B6w7Y8A+4qZ/BW8RuTfU7PRSwCpiftCd4aHk2HOQadjhRneKByal82rAKuKR79TvxUafebDNCdgu4KLwxU74SXKd+afFy53wxroyXb8dCDrhjXjXneWPdjlNG62ZHMfTqU8X0BBuqjvPvdmRMKFcMyxiqegCVkXcsitiIimmwoZkV8QL2UB6I1zdiVqSuU2b0DCZnRRnIW0jrdZuse5MP3hnouVMQ7isVqcpeSOtNoqslm47kk1FKyKrrXBMPJLWVMDpPMMl74bVDqPgNOmTj6RGvXJjdHuamvQBq/ki0p2rkQ2SUJ1152rQ7X2/EyvduRqLQRLac925GkvSndMXGerO1QgGmCzqE37duRrlIAkNU3euxgoJkZB9wmH6oVS6czX+/tniPEhC66Q7V4P6oO2G0+1FNMzK29edq7EfJKHJ6RhjgGMaQ0pGO+C3LflRWz3QcLrP9wcYTMWK04FpNkANxUV3qu/SVx8K3WN2IjylvT2s8eqG1Yy4Jr+ZWejO9NO+oG6mJqtG+kY/mlpX3YnaZtR3wKxG0g+0Vxd2wWucqUWkKzeL4XPoaUA469tzfiWs1jU5XRFNfr2w4i3pXu5d+bXRWkL1dE+GjO7VfrgQLWykz7OE9TNvkhlDFJy2vj8lW4KIUu5053gge/2lt1zzegzVFnf/WV4roL3ktLW/58UvPstQzANWS5vF/U/vO7A4Pn9u8YL+EaVy+Q6jDS/Oe65Qqz7Iv4K16SHsFVGu2ffB3zbHHktUIePRBKym/kB2nDWkLDhP9Pcm8bXT8sYO/TGMMd952bv59KBqm9eI62L7kY27fiqjbc0vY8xXSTdb+Z9t1RLFguORxZPSjWv+4f+FvkjLMa+XZKQF/DKL3Vwq6/5flCwh8tOC28l2L5PsEBRrRwn79tsoWYVTjjytLtmIm2fLNN1H59U8FGZFhad3/7BPRjS/AwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAdPMPAfY7+yCRIWYAAAAASUVORK5CYII='
+		$('.player').attr('src', no_blink_img)
+		//--------------- GAME STATE ---------------------
+		var keys = []   		// Array um Tastenzustände zu speichern
+
+		$(document).on("keydown", tasteUnten)
+		$(document).on("keyup", tasteOben)
+
+		function tasteUnten(e) {
+			keys[e.which] = true
+		}
+
+		function tasteOben(e) {
+			keys[e.which] = false
+		}
+
+		// gibt an, ob der Spieler im letzten Zeitschritt am laufen war oder nicht.
+		// Das ist nötig, um die GIF-src nur dann zu definieren, wenn der spieler losläuft.
+		// Wenn die Src jedes mal wieder neu gesetzt wird, startet auch das gif immer mit dem ersten Bild
+		// so dass es statisch aussieht statt animiert... 
+		var playerWalking = false
+		
+		//--------------- GAME LOOP ---------------------
+		window.setInterval(loop, 16)
+
+		function loop() {
+			var player = $('.player')
+			var playerWalk = false
+			if (keys[37]) {
+				player.css({ "left": "-=2" })
+				playerWalk = true
+			}
+			if (keys[38]) {
+				player.css({ "top": "-=2" })
+				playerWalk = true
+			}
+			if (keys[39]) {
+				player.css({ "left": "+=2" })
+				playerWalk = true
+			}
+			if (keys[40]) {
+				player.css({ "top": "+=2" })
+				playerWalk = true
+			}
+			
+			// wenn sich der Spieler bisher nicht bewegt hat (also playerWalking=false)
+			// nun aber neu am bewegen ist (playerWalk = true), dann setzen wir
+			// die img-src auf blink_img.
+			// Andernfalls wenn der Spieler nicht läuft, setzen wir die src no_blink_img 
+			if (playerWalk && !playerWalking) {
+				$('.player').attr('src', blink_img)
+			} else if (!playerWalk) {
+				$('.player').attr('src', no_blink_img)
+			}
+			// updaten des gamestates playerWaling --> im nächsten loop wird
+			// also die img-src nicht erneut gesetzt
+			playerWalking = playerWalk
+		}
+	</script>
+</body>
+
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<link rel="stylesheet" href="style.css">
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+</head>
+
+<body>
+	<div class="spielfeld">
+		<div class="player"></div>
+	</div>
+
+	<script>
+		//--------------- GAME STATE ---------------------
+		var keys = []   		// Array um Tastenzustände zu speichern
+
+		$(document).on("keydown", tasteUnten)
+		$(document).on("keyup", tasteOben)
+
+		function tasteUnten(e) {
+			keys[e.which] = true
+		}
+
+		function tasteOben(e) {
+			keys[e.which] = false
+		}
+
+		// NEUE OBJEKTE HINZUFÜGEN
+		// in der Diagonalen von links oben nach rechts unten 10 div's mit der Klasse food hinzufügen
+		// erläutert in 02_objekteHinzufügen.html
+		var i = 0;
+		for (i = 1; i <= 10; i = i + 1){
+			var food = $("<div class='food'></div>")
+			food.css({
+				'left': i * 50 + 'px',
+				'top': i * 50 + 'px'
+			})
+			var spielfedBounds = $('.spielfeld').get(0).getBoundingClientRect()
+			food.css({
+				'left': '+=' + spielfedBounds.left,
+				'top': '+=' + spielfedBounds.top
+			})
+			food.appendTo('.spielfeld')
+		}	
+
+		//--------------- GAME LOOP ---------------------
+		window.setInterval(loop, 16)
+
+		function loop() {
+			var player = $('.player')
+			if (keys[37]) {
+				player.css({ "left": "-=2" })
+			}
+			if (keys[38]) {
+				player.css({ "top": "-=2" })
+			}
+			if (keys[39]) {
+				player.css({ "left": "+=2" })
+			}
+			if (keys[40]) {
+				player.css({ "top": "+=2" })
+			}
+			// alle food-Objekte auswählen
+			var food = $('.food')
+			// alle food-Objekte um 5 Pixel nach rechts verschieben
+			food.css({
+				"left": "+=5"
+			})
+			// alle food-Objekte, die über den rechten Spielfeldrand kommen, zurück
+			// auf den linken Spielfeldrand setzen
+			var spielfedBounds = $('.spielfeld').get(0).getBoundingClientRect()
+			// über alle food-elemente iterieren - vom ersten Element (0) bis
+			// zum letzten (food.length - 1).
+			for (var i = 0; i < food.length; i = i + 1) {
+				// mit food.get(i) wird das i-te food element ausgewählt
+				// und davon der BoundingClientRec() abgefragte 
+				var foodBounds = food.get(i).getBoundingClientRect()
+				// falls rechter Rand des food-Objekts grösser als der rechte Spielfeldrand ist,
+				// setzen wir die food-position auf den wert des linken Spielfeldrands
+				if (foodBounds.right > spielfedBounds.right){
+					// food.get(i) gibt den ganzen html-tag zurück, ist aber KEIN jQuery objekt
+					// --> mit $(food.get(i)) wird es wieder ein jQuery Objekt und nun können
+					// die bekannten Funktionen aufgerufen werden
+					var f = $(food.get(i))
+					f.css({
+						"left": spielfedBounds.left + 'px'
+					})
+				}
+			}
+
+		}
+	</script>
+</body>
+
+</html>
