@@ -132,10 +132,14 @@ $('h1, h2, h3, p').on('click', function(e) {
 ## Textlänge
 
 ```js
-$('h1, h2, h3, p').on('click', function(e) {
-  var text = $(this).text()
+var texts = document.querySelectorAll('h1, h2, h3, p');
+for(var i = 0; i < texts.length; i++) {
+  texts[i].addEventListener('click', laenge)
+}
+function laenge(e) {
+  var text = this.textContent
   alert(text.length)
-})
+}
 ```
 </xmp>
 
