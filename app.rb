@@ -59,7 +59,7 @@ class MyApp < Sinatra::Base
   get '/*.html' do
     @number = params[:splat].first.gsub('index', '').to_s
     puts "#{@number}.md"
-    if !File.exist?("#{@number}.md")
+    if !File.exist?("presentations/#{@number}.md")
       @number = "0" + @number if @number.to_i < 10
     end
     erb "slides/show".to_sym
