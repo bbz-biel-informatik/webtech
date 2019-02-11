@@ -26,7 +26,7 @@ Bestimmen, was der PC damit machen kann, z.B.
 ## Befehle
 
 Befehle werden immer mit runden Klammern aufgerufen `Befehl()`. Braucht der Befehl
-zusätzliche Informationen um den Rückgabewert zu bestimmen, kommen diese als *Argumente" in die runden Klammern:
+zusätzliche Informationen um den Rückgabewert zu bestimmen, kommen diese als "Argumente" in die runden Klammern:
 
 ```js
 // Math.sqrt() muss wissen, von welcher Zahl
@@ -60,7 +60,7 @@ console.log(3.14159)
 prompt("Wie ist dein Name?")
 ```
 
-!! Achtung, der Rückgabewert (die Antwort des Benutzers) ist **immer** ein Text.
+Achtung, der Rückgabewert (die Antwort des Benutzers) ist **immer** ein Text.
 
 
 
@@ -135,22 +135,19 @@ if(alter < 18) {
 
 ## Schleifen
 
-Sind dazu da, einen Codeteil zu wiederholen solange die while-Bedingung wahr ist:
+Sind dazu da, einen Codeteil zu wiederholen solange die Bedingung wahr ist:
 
 ```js
 var alter = 18
-var i = 1
-while(i <= alter) {
+for(var i = 0; i <= alter; i = i + 1) {
   console.log("Happy Birthday zum " + i + ". Geburtstag")
-  i = i + 1
 }
 ```
 
-Die Variable `i` wird im Codeblock immer um `1` hochgezählt (`i = i + 1`).
+Die Variable `i` wird immer um `1` hochgezählt (`i = i + 1`).
 
 * Zu welchen Geburtstagen gratuliert das Programm?
 * Welchen Wert hat die Variable `i` am Schluss?
-
 
 
 ## Modulo-Operator
