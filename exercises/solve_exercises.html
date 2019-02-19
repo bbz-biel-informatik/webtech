@@ -102,6 +102,7 @@ Wir vereinfachen die Aufgabe im ersten Schritt und nehmen an, dass der Nutzer 3 
       var zahl = Number(prompt('Zahl ' + i))
       summe = summe + zahl
   }
+  alert(summe)
   ```
 
 2. Erweitern des codes, so dass der Nutzer eingeben kann, wie oft nach einer Zahl gefragt wird:
@@ -113,6 +114,7 @@ Wir vereinfachen die Aufgabe im ersten Schritt und nehmen an, dass der Nutzer 3 
       var zahl = Number(prompt('Zahl ' + i))
       summe = summe + zahl
   }
+  alert(summe)
   ```
 
 
@@ -124,7 +126,7 @@ Wir vereinfachen die Aufgabe im ersten Schritt und nehmen an, dass der Nutzer 3 
 
 ### Herangehensweise
 
-1. Es soll die Summen der ersten 100 Zahlen gebildet werden. Mit Schleifen können wir Folgen sehr gut generieren (bspw. `3`er-Reihe). Wir können also auch die `1`er-Reihe benutzen und mit einer `while`-Schleife programmieren. Im Schleifenblock kann dann immer die Schleifenvariable zur Summe hinzugefügt werden (`summe = summe + i`), wobei die Summe VOR der Schleife definiert wird (`var summe = 0`):
+1. Es soll die Summen der ersten 100 Zahlen gebildet werden. Mit Schleifen können wir Folgen sehr gut generieren (bspw. `3`er-Reihe). Wir können also auch die `1`er-Reihe benutzen und mit einer `for`-Schleife programmieren. Im Schleifenblock kann dann immer die Schleifenvariable zur Summe hinzugefügt werden (`summe = summe + i`), wobei die Summe VOR der Schleife definiert wird (`var summe = 0`):
   ```js
   var summe = 0
   for(var i = 1; i <= 100; i = i + 1) {
@@ -138,9 +140,10 @@ Userabfragen können mit `prompt()` gemacht werden. Um statt wie zuvor bis `100`
   ```js
   var max = Number(prompt('Maximum?'))
   var summe = 0
-  for(var i = 1; i <= 100; i = i + 1) {
+  for(var i = 1; i <= max; i = i + 1) {
       summe = summe + i
   }
+  alert(summe)
 ```
 
 2. Ändere das Programm so ab, dass es nicht bei 1, sondern bei 10 beginnt.
@@ -149,9 +152,10 @@ Der erste Summand ist aktuell `1`. Also wechseln wir diesen Startwert zu `10` un
   ```js
   var max = Number(prompt('Maximum?'))
   var summe = 0
-  for(var i = 1; i <= 100; i = i + 1) {
+  for(var i = 10; i <= 100; i = i + 1) {
       summe = summe + i
   }
+  alert(summe)
   ```
 </xmp>
 
