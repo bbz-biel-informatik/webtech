@@ -30,10 +30,8 @@ Anschliessend kann schematisch vorgegangen werden: Immer kleine "einfache" Teile
   * Ausgabe einer Zahl mit `console.log()` möglich.
   * repetitive Aufgabe, also lösbar mit einer `while()`-loop!
   ```js
-  var i = 1
-  while (i <= 20) {
+  for(var i = 1; i <= 20; i = i + 1) {
       console.log(i)
-      i = i + 1
   }
   ```
 
@@ -42,23 +40,20 @@ Anschliessend kann schematisch vorgegangen werden: Immer kleine "einfache" Teile
     Teilbarkeit kann mit dem `%`-Operator überprüft werden.
 
     ```js
-    var i = 1
-    while (i <= 20) {
+    for(var i = 1; i <= 20; i = i + 1) {
         if (i % 3 == 0) {
             /* wenn i % 3 gleich null */
             console.log('Fizz')
         } else {
             console.log(i)
         }
-        i = i + 1
     }
     ```
 
     * "Buzz" anzeigen, wenn die Zahl durch 5 teilbar ist. Wo schreiben wir diese Bedingung hin? Zum jetztigen Zeitpunkt ist es okay, wenn wir nur Zahlen anschauen, die durch `5` aber nicht durch `3` teilbar sind. Solche Zahlen finden sich im `else`-Block!
 
     ```js
-    var i = 1
-    while (i <= 20) {
+    for(var i = 1; i <= 20; i = i + 1) {
         if (i % 3 == 0) {
             console.log('Fizz')
         } else {
@@ -68,7 +63,6 @@ Anschliessend kann schematisch vorgegangen werden: Immer kleine "einfache" Teile
                 console.log(i)
             }
         }
-        i = i + 1
     }
     ```
 
@@ -76,8 +70,7 @@ Anschliessend kann schematisch vorgegangen werden: Immer kleine "einfache" Teile
     `3 * 5 = 15` ist das erste Auftreten. Da `15` durch `3` teilbar ist, wird bei unserem Code `Fizz` ausgegeben. Wir führen also eine weitere Bedingung in der ersten `if`-Bedingung ein: Kommt man in diesen Code-Block, weiss man dass i bereits durch 3 teilbar ist. Man muss nun nur noch überprüfen, ob `i` durch `5` teilbar ist.
 
     ```js
-    var i = 1
-    while (i <= 20) {
+    for(var i = 1; i <= 20; i = i + 1) {
         if (i % 3 == 0) {
             if (i % 5 == 0){
                 console.log('FizzBuzz')
@@ -91,7 +84,6 @@ Anschliessend kann schematisch vorgegangen werden: Immer kleine "einfache" Teile
                 console.log(i)
             }
         }
-        i = i + 1
     }
     ```
 
@@ -105,12 +97,10 @@ Die Summe ist zu Beginn `0` und wird nach jeder Eingabe um die eingegebene Zahl 
 Wir vereinfachen die Aufgabe im ersten Schritt und nehmen an, dass der Nutzer 3 eingibt:
 
   ```js
-  var i = 1
   summe = 0
-  while(i <= 3) {
+  for(var i = 1; i <= 3; i = i + 1) {
       var zahl = Number(prompt('Zahl ' + i))
       summe = summe + zahl
-      i = i + 1
   }
   ```
 
@@ -118,12 +108,10 @@ Wir vereinfachen die Aufgabe im ersten Schritt und nehmen an, dass der Nutzer 3 
 
   ```js
   var wiederholungen = Number(prompt('Anzahl Wiederholungen?'))
-  var i = 1
   summe = 0
-  while(i <= wiederholungen) {
+  for(var i = 1; i <= wiederholungen; i = i + 1) {
       var zahl = Number(prompt('Zahl ' + i))
       summe = summe + zahl
-      i = i + 1
   }
   ```
 
@@ -139,10 +127,8 @@ Wir vereinfachen die Aufgabe im ersten Schritt und nehmen an, dass der Nutzer 3 
 1. Es soll die Summen der ersten 100 Zahlen gebildet werden. Mit Schleifen können wir Folgen sehr gut generieren (bspw. `3`er-Reihe). Wir können also auch die `1`er-Reihe benutzen und mit einer `while`-Schleife programmieren. Im Schleifenblock kann dann immer die Schleifenvariable zur Summe hinzugefügt werden (`summe = summe + i`), wobei die Summe VOR der Schleife definiert wird (`var summe = 0`):
   ```js
   var summe = 0
-  var i = 1
-  while (i < 100) {
+  for(var i = 1; i <= 100; i = i + 1) {
       summe = summe + i
-      i = i + 1
   }
   ```
 
@@ -152,10 +138,8 @@ Userabfragen können mit `prompt()` gemacht werden. Um statt wie zuvor bis `100`
   ```js
   var max = Number(prompt('Maximum?'))
   var summe = 0
-  var i = 1
-  while (i < max) {
+  for(var i = 1; i <= 100; i = i + 1) {
       summe = summe + i
-      i = i + 1
   }
 ```
 
@@ -165,10 +149,8 @@ Der erste Summand ist aktuell `1`. Also wechseln wir diesen Startwert zu `10` un
   ```js
   var max = Number(prompt('Maximum?'))
   var summe = 0
-  var i = 10
-  while (i < max) {
+  for(var i = 1; i <= 100; i = i + 1) {
       summe = summe + i
-      i = i + 1
   }
   ```
 </xmp>
