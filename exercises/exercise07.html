@@ -8,13 +8,11 @@
 # Events
 
 ```js
-var x = document.querySelector('img')
-for(var i = 0; i < x.length; i = i + 1) {
-  x[i].addEventListener("click", randHinzufügen)
-}
+var bilder = $('img')
+bilder.click(rand)
 
-function randHinzufügen() {
-  this.style.border = '5px solid blue'
+function rand() {
+  $(this).css({'border': '5px solid blue'})
 }
 ```
 
@@ -26,17 +24,18 @@ Baue auf deiner Website ein, dass ein Klick auf ein beliebiges Bild diesem einen
 
 Erweitere die Bilderrahmenaufgabe so, dass ein weiterer Klick auf ein beliebiges Bild diesem den Rahmen wieder wegnimmt
 
-## Bilderposition
+## Knopfposition
 
-Baue ein, dass sobald ein Besucher mit der Maus über ein Bild fährt, sich dieses wegverschiebt.
-Bonus: verschiebe es jedes Mal, wenn man mit der Maus drüberfährt an eine neue zufällige
+Baue auf deiner Website ein kleines Formular ein (siehe https://jsfiddle.net/s1zuev5L/). Programmiere dann, dass sobald
+ein Besucher mit der Maus über
+den "Absenden"-Knopf fährt, sich dieser wegverschiebt.
+Bonus: verschiebe ihn jedes Mal, wenn man mit der Maus drüberfährt an eine neue zufällige
 Position. Verwende dazu statt dem `click`-Ereignis das `mouseover`-Ereignis.
 
 ## Fokus
 
-Baue auf deiner Website ein kleines Formular ein (siehe https://jsfiddle.net/s1zuev5L/). Sobald
-man ein Eingabefeld mit der Maus anwählt, soll dieses leicht eingefärbt werden. Du kannst die
-Farbe selber wählen. Verwende dazu einen EventListener für den `focus`-Event statt `click`.
+Erweitere das Formular so, dass wenn man ein Eingabefeld mit der Maus anwählt, dieses leicht eingefärbt wird. Du kannst die
+Farbe selber wählen. Verwende dazu das Ereignis für den `focus`-Event statt `click`.
 
 ## Websitefarbe
 
@@ -48,86 +47,8 @@ Eine Eingabe von `blue` soll z.B. die Farbe auf blau setzen.
 
 ## Anfang der Seite
 
-Baue auf deiner Website für ein beliebeiges Element am unteren Rand der Seite ein, dass ein Klick darauf
-zum Anfang der Seite scrollt. Du kannst mit einem EventListener einen eigenen Befehl definieren, in dem du
-statt ein Element zu verändern den Code `window.scrollTo(0, 0)` verwenden.
-
-
-# Lösungen
-
-## Bilderrahmen
-
-```js
-var bilder = document.querySelectorAll('img')
-for(var i = 0; i < bilder.length; i = i + 1) {
-  bilder[i].addEventListener('click', rahmen)
-}
-
-function rahmen() {
-  this.style.border = '1px solid blue'
-}
-```
-
-## Bilderrahmen 2
-
-`rahmen` wie folgt anpassen:
-
-```js
-function rahmen() {
-  if(this.style.border == '1px solid blue') {
-    this.style.border = ''
-  } else {
-    this.style.border = '1px solid blue'
-  }
-}
-```
-
-## Bilderposition
-
-```js
-var bilder = document.querySelectorAll('img')
-for(var i = 0; i < bilder.length; i = i + 1) {
-  bilder[i].addEventListener('mouseover', position)
-}
-
-function position() {
-  this.style.position = 'absolute'
-  this.style.left = '200px'
-  this.style.top = '300px'
-}
-```
-
-## Fokus
-
-```js
-var felder = document.querySelectorAll('input')
-for(var i = 0; i < felder; i = i + 1) {
-  felder[i].addEventListener('focus', farbe)
-}
-
-function farbe() {
-  this.style.backgroundColor = 'blue'
-}
-```
-
-## Websitefarbe
-
-```js
-var farbe = prompt("Farbe?")
-
-var body = document.querySelector('body')
-body.style.backgroundColor = farbe
-```
-
-## Anfang der Seite
-
-```js
-var link = document.querySelector('#topLink')
-link.addEventListener('click', goTop)
-
-function goTop() {
-  window.scrollTo(0, 0)
-}
+Baue auf deiner Website am unteren Rand der Seite ein Bild ein und programmiere, dass ein Klick darauf
+zum Anfang der Seite scrollt. Um zum Seitenanfang zu scrollen, kannst du den Code `window.scrollTo(0, 0)` verwenden.
 ```
 
 </xmp>
