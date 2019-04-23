@@ -51,6 +51,71 @@ Baue auf deiner Website am unteren Rand der Seite ein Bild ein und programmiere,
 zum Anfang der Seite scrollt. Um zum Seitenanfang zu scrollen, kannst du den Code `window.scrollTo(0, 0)` verwenden.
 ```
 
+# Lösungen
+
+## Bilderrahmen
+
+```js
+var bilder = $('img')
+bilder.click(rahmen)
+
+function rahmen(e) {
+  $(this).css({'border': '1px solid blue'})
+}
+```
+
+## Bilderrahmen 2
+
+```js
+var bilder = $('img')
+bilder.click(rahmen)
+
+function rahmen(e) {
+  if($(this).css('border') == '1px solid blue') {
+    $(this).css({'border': 'none'})
+  } else {
+    $(this).css({'border': '1px solid blue'})
+  }
+}
+```
+## Knopfposition
+
+```js
+var knopf = $('input[type=submit]')
+knopf.mouseover(verschieben)
+
+function verschieben(e) {
+  var x = Math.random() * 1000
+  var y = Math.random() * 1000
+  knopf.css({'position': 'absolute', 'left': x + 'px', 'right': y + 'px'})
+}
+```
+## Fokus
+
+```js
+var felder = $('input')
+felder.focus(farbe)
+
+function farbe(e) {
+  $(this).css({'background-color': 'lightblue'})
+}
+```
+## Websitefarbe
+
+```js
+var farbe = prompt("Welche Farbe?")
+$('body').css({'background-color': farbe})
+```
+## Anfang der Seite
+
+```js
+var button = $('button')
+button.click(nachOben)
+
+function nachOben(e) {
+  window.scrollTo(0, 0)
+}
+```
 </xmp>
 
 <script src="https://cdn.rawgit.com/Naereen/StrapDown.js/master/strapdown.min.js"></script>
