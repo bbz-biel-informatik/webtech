@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+</head>
+<xmp theme="united" style="display:none;">
+
+# Test 2 - Lösungen
+
+## Offene Fragen
+
+1. `<script>`-Tag
+2. `$()`-Befehl
+3. `click()`, `dblclick()`, `mouseover()` usw.
+4. (Code ist für aktuelles Semester nicht relevant) Sobald auf ein `div` geklickt wird, wird dessen Schriftfarbe in einem Nachrichtenfenster angezeigt
+
+## Code schreiben
+
+1.
+
+```js
+  var titel = $('#header')
+  titel.css({"background-color": "blue"})
+```
+
+2.
+
+```js
+  var links = $('a')
+  links.click(adresse)
+
+  function adresse(e) {
+    var url = $(this).attr('href')
+    alert(url)
+  }
+```
+
+## Richtig/Falsch
+
+1. Nein, JS überschreibt CSS
+2. Nein, wählt nur das `div` aus (entspricht heute `$()`-Befehl)
+3. Ja
+4. Nein, muss im HTML (oder einer `.js`-Datei) stehen
+
+## Bonus
+
+Nicht mehr relevant, da mit JQuery schwer umsetzbar.
+
+</xmp>
+
+<script src="https://cdn.rawgit.com/Naereen/StrapDown.js/master/strapdown.min.js"></script>
+
+</html>
