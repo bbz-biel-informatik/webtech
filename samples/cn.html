@@ -1,0 +1,103 @@
+<head>
+  <script src="http://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <style>
+    body {
+      width: 800px;
+      margin: 0 auto;
+      margin-top: 48px;
+    }
+    .wetter, .witz, .fahrplan {
+      padding: 12px;
+      margin-bottom: 20px;
+    }
+
+    .witz {
+      background-color: lightgreen;
+    }
+
+    .wetter {
+      background-color: lightblue;
+    }
+
+    .fahrplan {
+      background-color: lightcoral;
+    }
+  </style>
+</head>
+
+<body>
+  <h2>AJAX</h2>
+  <p>
+    Verschiedene Internetdienste bieten ihre Informationen nicht nur als Website an, sondern zusätzlich
+    noch über eine sogenannte API. Dabei werden Informationen in einer für Computer verständlichen
+    Struktur zur Verfügung gestellt. So können die Informationen von Drittpersonen einfach verwendet
+    werden.
+  </p>
+  <p>
+    Wenn du zum Beispiel auf deiner Website das aktuelle Wetter oder den nächsten Zug nach Biel anzeigen
+    möchtest, kannst du die Informationen über eine solche API im Hintergrund abrufen und nach deinen
+    Wünschen auf deiner Website platzieren.
+  </p>
+  <p>
+    Die meisten APIs stellen die Informationen im Format JSON zur Verfügung. Dieses kann einfach von
+    Javascript-Code gelesen und verarbeitet werden. Ein Beispiel findet sich <a href="http://api.icndb.com/jokes/random">hier</a>.
+  </p>
+  <div class="witz">
+    <h3>Witz</h3>
+    <p class="witz-text">Klicke auf den Button zum Starten</p>
+    <button class="witz-button">Witz abrufen</button>
+  </div>
+
+  <div class="wetter">
+    <h3>Wetter in Bern</h3>
+    <img class="wetter-icon">  
+    <p class="wetter-text">Klick zum Starten</p>
+    <button class="wetter-button">Wetter abrufen</button>
+  </div>
+
+  <div class="fahrplan">
+      <h3>Fahrplan Bern-Basel</h3>
+      <p class="fahrplan-text">Klick zum Starten</p>
+      <button class="fahrplan-button">Fahrplan abrufen</button>
+    </div>
+
+  <script>
+    $('.witz-button').click(witzHolen)
+
+    function witzHolen() {
+      $.get( 'http://api.icndb.com/jokes/random', function( data ) {
+        $('.witz-text').text(data.value.joke)
+      })
+    }
+
+    ////////////////////////////////////////////////////////////////////////////////////////////
+
+    $('.wetter-button').click(wetterHolen)
+
+    function wetterHolen() {
+      $.get( 'https://fcc-weather-api.glitch.me/api/current?lat=47&lon=8', function( data ) {
+        var temp = data.main.temp
+        var text = data.weather[0].main
+        var icon = data.weather[0].icon
+        $('.wetter-text').text(text + " " + temp)
+        $('.wetter-icon').attr('src', icon)
+      })
+    }
+
+    ////////////////////////////////////////////////////////////////////////////////////////////
+
+    $('.fahrplan-button').click(fahrplanHolen)
+
+    function fahrplanHolen() {
+      $.get( 'http://transport.opendata.ch/v1/connections?from=Bern&to=Basel%20SBB&page=0&limit=6', function( data ) {
+        var abfahrt = data.connections[0].from.departure
+        var abfahrtGleis = data.connections[0].from.platform
+        var ankunft = data.connections[0].to.arrival
+        var ankunftGleis = data.connections[0].to.platform
+
+        var text = abfahrt + " (Gleis " + abfahrtGleis + ") - " + ankunft + " (Gleis " + ankunftGleis + ")"
+        $('.fahrplan-text').text(text)
+      })
+    }
+  </script>
+</body>
