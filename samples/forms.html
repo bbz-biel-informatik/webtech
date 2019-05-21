@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <style>.wrapper{width:600px;margin:0 auto;}.todo{background-color:lightblue;width:100%;padding:12px;margin-bottom:2px;}</style>
+  </head>
+  <body>
+    <div class="wrapper">
+      <form action="#">
+        <input type="text" id="todo">
+        <input type="submit" id="speichern" value="Speichern">
+      </form>
+    </div>
+
+      <script>
+        $("#speichern").click(speichern)
+
+        function speichern() {
+          var text = $('#todo').val()
+          var todo = $('<div class="todo">' + text + '</div>')
+          todo.click(done)
+          todo.appendTo('.wrapper')
+          $('#todo').val('')
+        }
+
+        function done() {
+          $(this).remove()
+        }
+      </script>
+  </body>
+</html>
